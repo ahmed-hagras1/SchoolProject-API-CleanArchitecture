@@ -1,0 +1,13 @@
+{
+  "version": 2,
+  "dgSpecHash": "R9dJr+OZXlc=",
+  "success": true,
+  "projectFilePath": "C:\\C#\\SchoolProject\\SchoolProject.Service\\SchoolProject.Service.csproj",
+  "expectedPackageFiles": [
+    "C:\\Users\\hgahm\\.nuget\\packages\\microsoft.extensions.dependencyinjection.abstractions\\8.0.0\\microsoft.extensions.dependencyinjection.abstractions.8.0.0.nupkg.sha512",
+    "C:\\Users\\hgahm\\.nuget\\packages\\microsoft.windowsdesktop.app.ref\\8.0.17\\microsoft.windowsdesktop.app.ref.8.0.17.nupkg.sha512",
+    "C:\\Users\\hgahm\\.nuget\\packages\\microsoft.netcore.app.ref\\8.0.17\\microsoft.netcore.app.ref.8.0.17.nupkg.sha512",
+    "C:\\Users\\hgahm\\.nuget\\packages\\microsoft.aspnetcore.app.ref\\8.0.17\\microsoft.aspnetcore.app.ref.8.0.17.nupkg.sha512"
+  ],
+  "logs": []
+}

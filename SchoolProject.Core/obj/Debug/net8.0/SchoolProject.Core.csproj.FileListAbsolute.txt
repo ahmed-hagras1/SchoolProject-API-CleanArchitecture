@@ -1,0 +1,17 @@
+C:\C#\SchoolProject\SchoolProject.Core\bin\Debug\net8.0\SchoolProject.Core.deps.json
+C:\C#\SchoolProject\SchoolProject.Core\bin\Debug\net8.0\SchoolProject.Core.dll
+C:\C#\SchoolProject\SchoolProject.Core\bin\Debug\net8.0\SchoolProject.Core.pdb
+C:\C#\SchoolProject\SchoolProject.Core\bin\Debug\net8.0\SchoolProject.Data.dll
+C:\C#\SchoolProject\SchoolProject.Core\bin\Debug\net8.0\SchoolProject.Service.dll
+C:\C#\SchoolProject\SchoolProject.Core\bin\Debug\net8.0\SchoolProject.Data.pdb
+C:\C#\SchoolProject\SchoolProject.Core\bin\Debug\net8.0\SchoolProject.Service.pdb
+C:\C#\SchoolProject\SchoolProject.Core\obj\Debug\net8.0\SchoolProject.Core.csproj.AssemblyReference.cache
+C:\C#\SchoolProject\SchoolProject.Core\obj\Debug\net8.0\SchoolProject.Core.GeneratedMSBuildEditorConfig.editorconfig
+C:\C#\SchoolProject\SchoolProject.Core\obj\Debug\net8.0\SchoolProject.Core.AssemblyInfoInputs.cache
+C:\C#\SchoolProject\SchoolProject.Core\obj\Debug\net8.0\SchoolProject.Core.AssemblyInfo.cs
+C:\C#\SchoolProject\SchoolProject.Core\obj\Debug\net8.0\SchoolProject.Core.csproj.CoreCompileInputs.cache
+C:\C#\SchoolProject\SchoolProject.Core\obj\Debug\net8.0\SchoolPr.1F8A3534.Up2Date
+C:\C#\SchoolProject\SchoolProject.Core\obj\Debug\net8.0\SchoolProject.Core.dll
+C:\C#\SchoolProject\SchoolProject.Core\obj\Debug\net8.0\refint\SchoolProject.Core.dll
+C:\C#\SchoolProject\SchoolProject.Core\obj\Debug\net8.0\SchoolProject.Core.pdb
+C:\C#\SchoolProject\SchoolProject.Core\obj\Debug\net8.0\ref\SchoolProject.Core.dll
