@@ -14,21 +14,32 @@ namespace SchoolProject.Infrastructure.Repositories
     public class StudentRepository : GenericRepositoryAsync<Student>,IStudentRepository
     {
         #region Fields
-        private readonly AppDbContext _context;
+        //private readonly AppDbContext _context;
+        private readonly DbSet<Student> _students;
         #endregion
 
         #region Constructor
         public StudentRepository(AppDbContext context) : base(context)
         {
-            _context = context;
+            //_context = context;
+            _students = context.Set<Student>();
         }
+
+
         #endregion
 
         #region Methods
         public async Task<List<Student>> GetStudentsListAsync()
         {
             // Add Include to load related Department data.
-            return await _context.Students.Include(x => x.Department).ToListAsync();
+            return await _students.Include(x => x.Department).ToListAsync();
+        }
+        public async Task<Student> GetStudentByIdWithIncludeAsync(int studentId)
+        {
+            var student = await _students.Include(x => x.Department)
+                                       .FirstOrDefaultAsync(x => x.StudId == studentId);
+
+            return student;
         }
         #endregion
     }

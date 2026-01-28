@@ -17,3 +17,4 @@ C:\C#\SchoolProject\SchoolProject.Infrastructure\obj\Debug\net8.0\SchoolProject.
 C:\C#\SchoolProject\SchoolProject.Infrastructure\obj\Debug\net8.0\ref\SchoolProject.Infrastructure.dll
 C:\C#\SchoolProject\SchoolProject.Infrastructure\bin\Debug\net8.0\SchoolProject.Service.dll
 C:\C#\SchoolProject\SchoolProject.Infrastructure\bin\Debug\net8.0\SchoolProject.Service.pdb
+C:\C#\SchoolProject\SchoolProject.Infrastructure\obj\Debug\net8.0\SchoolProject.Infrastructure.sourcelink.json

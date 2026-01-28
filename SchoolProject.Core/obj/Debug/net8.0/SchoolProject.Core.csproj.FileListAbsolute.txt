@@ -15,3 +15,4 @@ C:\C#\SchoolProject\SchoolProject.Core\obj\Debug\net8.0\SchoolProject.Core.dll
 C:\C#\SchoolProject\SchoolProject.Core\obj\Debug\net8.0\refint\SchoolProject.Core.dll
 C:\C#\SchoolProject\SchoolProject.Core\obj\Debug\net8.0\SchoolProject.Core.pdb
 C:\C#\SchoolProject\SchoolProject.Core\obj\Debug\net8.0\ref\SchoolProject.Core.dll
+C:\C#\SchoolProject\SchoolProject.Core\obj\Debug\net8.0\SchoolProject.Core.sourcelink.json

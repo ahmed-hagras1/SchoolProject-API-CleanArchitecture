@@ -10,5 +10,6 @@ namespace SchoolProject.Service.Abstracts
     public interface IStudentRepository : IGenericRepositoryAsync<Student>
     {
         public Task<List<Student>> GetStudentsListAsync();
+        public Task<Student> GetStudentByIdWithIncludeAsync(int studentId);
     }
 }

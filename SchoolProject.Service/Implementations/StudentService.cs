@@ -19,6 +19,7 @@ namespace SchoolProject.Service.Implementations
         {
             _studentRepository = studentRepository;
         }
+
         #endregion
 
         #region Methods / Handle functions
@@ -27,6 +28,13 @@ namespace SchoolProject.Service.Implementations
         {
             // Use the field (_studentRepository) to get data
             return await _studentRepository.GetStudentsListAsync();
+        }
+        public async Task<Student> GetStudentByIdAsync(int studentId)
+        {
+            //var student = await _studentRepository.GetByIdAsync(studentId);
+            var student = await _studentRepository.GetStudentByIdWithIncludeAsync(studentId);
+
+            return student;
         }
         #endregion
     }

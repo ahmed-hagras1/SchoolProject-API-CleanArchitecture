@@ -5,10 +5,33 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Student/GetStudentsList": {
+    "/Api/V1/Student/List": {
       "get": {
         "tags": [
           "Student"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Api/V1/Student/{id}": {
+      "get": {
+        "tags": [
+          "Student"
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
         ],
         "responses": {
           "200": {
