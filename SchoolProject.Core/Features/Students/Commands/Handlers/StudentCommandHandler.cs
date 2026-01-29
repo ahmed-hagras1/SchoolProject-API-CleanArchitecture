@@ -17,7 +17,8 @@ namespace SchoolProject.Core.Features.Students.Commands.Handlers
 {
     public class StudentCommandHandler : ResponseHandler,
         IRequestHandler<AddStudentCommand, Response<string>>,
-        IRequestHandler<EditStudentCommand, Response<string>>
+        IRequestHandler<EditStudentCommand, Response<string>>,
+        IRequestHandler<DeleteStudentByIdCommand, Response<string>>
     {
         #region Fields
         private readonly IStudentService _studentService;
@@ -45,11 +46,26 @@ namespace SchoolProject.Core.Features.Students.Commands.Handlers
 
         public async Task<Response<string>> Handle(EditStudentCommand request, CancellationToken cancellationToken)
         {
+            // Check If the Id is exist or not exist.
+            var student = await _studentService.GetStudentByIdAsync(request.Id);
+            if (student == null) return NotFound<string>("Student is Not found.");
+
             // Mapping from EditStudentCommand to Student entity
             var studentMapper = _mapper.Map<Student>(request);
             // update student
-            var result = _studentService.UpdateStudentAsync(studentMapper);
-            if (result.Result == "Success") return Success("Updated successfully");
+            var result = await _studentService.UpdateStudentAsync(studentMapper);
+            if (result == "Success") return Success("Updated successfully");
+            else return BadRequest<string>();
+        }
+
+        public async Task<Response<string>> Handle(DeleteStudentByIdCommand request, CancellationToken cancellationToken)
+        {
+            // Check If the Id is exist or not exist.
+            var student = await _studentService.GetStudentByIdAsync(request.Id);
+            if (student == null) return NotFound<string>("Student is Not found.");
+            // delete student
+            var result = await _studentService.DeleteStudentAsync(student);
+            if (result == "Success") return Deleted<string>($"Deleted successfully {request.Id}");
             else return BadRequest<string>();
         }
         #endregion

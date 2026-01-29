@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\C#\\SchoolProject\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{67C86F6A-A153-4DE7-A1AD-D7AB2E2D11C0}|SchoolProject.API\\SchoolProject.API.csproj|c:\\c#\\schoolproject\\schoolproject.api\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{67C86F6A-A153-4DE7-A1AD-D7AB2E2D11C0}|SchoolProject.API\\SchoolProject.API.csproj|solutionrelative:schoolproject.api\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\bases\\responsehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\bases\\responsehandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,8 +11,12 @@
       "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\features\\students\\commands\\handlers\\studentcommandhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3513870C-9E79-41BD-B99D-AC0DEC78DE74}|SchoolProject.Infrastructure\\SchoolProject.Infrastructure.csproj|c:\\c#\\schoolproject\\schoolproject.infrastructure\\repositories\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3513870C-9E79-41BD-B99D-AC0DEC78DE74}|SchoolProject.Infrastructure\\SchoolProject.Infrastructure.csproj|solutionrelative:schoolproject.infrastructure\\repositories\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\features\\students\\commands\\models\\deletestudentbyidcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\features\\students\\commands\\models\\deletestudentbyidcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\features\\students\\commands\\models\\editstudentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\features\\students\\commands\\models\\editstudentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AABBFF3A-A9B8-4B46-AAC9-3B8E7A3D6F0C}|SchoolProject.Service\\SchoolProject.Service.csproj|c:\\c#\\schoolproject\\schoolproject.service\\implementations\\studentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -27,92 +27,80 @@
       "RelativeMoniker": "D:0:0:{AABBFF3A-A9B8-4B46-AAC9-3B8E7A3D6F0C}|SchoolProject.Service\\SchoolProject.Service.csproj|solutionrelative:schoolproject.service\\abstracts\\istudentservice.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\appmetadata\\router.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\appmetadata\\router.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\features\\students\\commands\\models\\editstudentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\features\\students\\commands\\models\\editstudentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\mapping\\students\\commandmapping\\editstudentcommandmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\mapping\\students\\commandmapping\\editstudentcommandmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\features\\students\\commands\\validations\\editstudentvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\features\\students\\commands\\validations\\editstudentvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{67C86F6A-A153-4DE7-A1AD-D7AB2E2D11C0}|SchoolProject.API\\SchoolProject.API.csproj|c:\\c#\\schoolproject\\schoolproject.api\\middlewares\\errorhandlermiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{67C86F6A-A153-4DE7-A1AD-D7AB2E2D11C0}|SchoolProject.API\\SchoolProject.API.csproj|solutionrelative:schoolproject.api\\middlewares\\errorhandlermiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3513870C-9E79-41BD-B99D-AC0DEC78DE74}|SchoolProject.Infrastructure\\SchoolProject.Infrastructure.csproj|c:\\c#\\schoolproject\\schoolproject.infrastructure\\infrastructurebases\\genericrepositoryasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3513870C-9E79-41BD-B99D-AC0DEC78DE74}|SchoolProject.Infrastructure\\SchoolProject.Infrastructure.csproj|solutionrelative:schoolproject.infrastructure\\infrastructurebases\\genericrepositoryasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\behaviors\\validationbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\behaviors\\validationbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{67C86F6A-A153-4DE7-A1AD-D7AB2E2D11C0}|SchoolProject.API\\SchoolProject.API.csproj|c:\\c#\\schoolproject\\schoolproject.api\\base\\appcontrollerbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{67C86F6A-A153-4DE7-A1AD-D7AB2E2D11C0}|SchoolProject.API\\SchoolProject.API.csproj|solutionrelative:schoolproject.api\\base\\appcontrollerbase.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\features\\students\\commands\\validations\\addstudentvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\features\\students\\commands\\validations\\addstudentvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3513870C-9E79-41BD-B99D-AC0DEC78DE74}|SchoolProject.Infrastructure\\SchoolProject.Infrastructure.csproj|c:\\c#\\schoolproject\\schoolproject.infrastructure\\repositories\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3513870C-9E79-41BD-B99D-AC0DEC78DE74}|SchoolProject.Infrastructure\\SchoolProject.Infrastructure.csproj|solutionrelative:schoolproject.infrastructure\\repositories\\studentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{AABBFF3A-A9B8-4B46-AAC9-3B8E7A3D6F0C}|SchoolProject.Service\\SchoolProject.Service.csproj|c:\\c#\\schoolproject\\schoolproject.service\\abstracts\\istudentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{AABBFF3A-A9B8-4B46-AAC9-3B8E7A3D6F0C}|SchoolProject.Service\\SchoolProject.Service.csproj|solutionrelative:schoolproject.service\\abstracts\\istudentrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\mapping\\students\\studentprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\mapping\\students\\studentprofile.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{67C86F6A-A153-4DE7-A1AD-D7AB2E2D11C0}|SchoolProject.API\\SchoolProject.API.csproj|c:\\c#\\schoolproject\\schoolproject.api\\middlewares\\errorhandlermiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67C86F6A-A153-4DE7-A1AD-D7AB2E2D11C0}|SchoolProject.API\\SchoolProject.API.csproj|solutionrelative:schoolproject.api\\middlewares\\errorhandlermiddleware.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\features\\students\\commands\\models\\addstudentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\features\\students\\commands\\models\\addstudentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\appmetadata\\router.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\appmetadata\\router.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{AABBFF3A-A9B8-4B46-AAC9-3B8E7A3D6F0C}|SchoolProject.Service\\SchoolProject.Service.csproj|c:\\c#\\schoolproject\\schoolproject.service\\moduleservicedependencies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{AABBFF3A-A9B8-4B46-AAC9-3B8E7A3D6F0C}|SchoolProject.Service\\SchoolProject.Service.csproj|solutionrelative:schoolproject.service\\moduleservicedependencies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{67C86F6A-A153-4DE7-A1AD-D7AB2E2D11C0}|SchoolProject.API\\SchoolProject.API.csproj|c:\\c#\\schoolproject\\schoolproject.api\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{67C86F6A-A153-4DE7-A1AD-D7AB2E2D11C0}|SchoolProject.API\\SchoolProject.API.csproj|solutionrelative:schoolproject.api\\controllers\\studentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\modulecoredependencies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\modulecoredependencies.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\features\\students\\commands\\validations\\editstudentvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\features\\students\\commands\\validations\\editstudentvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CCFB6DA0-0ACC-4878-8BED-6332DA76D68F}|SchoolProject.Data\\SchoolProject.Data.csproj|c:\\c#\\schoolproject\\schoolproject.data\\entities\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CCFB6DA0-0ACC-4878-8BED-6332DA76D68F}|SchoolProject.Data\\SchoolProject.Data.csproj|solutionrelative:schoolproject.data\\entities\\student.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\behaviors\\validationbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\behaviors\\validationbehavior.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\mapping\\students\\commandmapping\\addstudentcommandmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\mapping\\students\\commandmapping\\addstudentcommandmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\features\\students\\commands\\validations\\deletestudentbyidvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\features\\students\\commands\\validations\\deletestudentbyidvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\features\\students\\queries\\results\\getstudentlistresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\features\\students\\queries\\results\\getstudentlistresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3513870C-9E79-41BD-B99D-AC0DEC78DE74}|SchoolProject.Infrastructure\\SchoolProject.Infrastructure.csproj|c:\\c#\\schoolproject\\schoolproject.infrastructure\\infrastructurebases\\genericrepositoryasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3513870C-9E79-41BD-B99D-AC0DEC78DE74}|SchoolProject.Infrastructure\\SchoolProject.Infrastructure.csproj|solutionrelative:schoolproject.infrastructure\\infrastructurebases\\genericrepositoryasync.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\features\\students\\queries\\handlers\\studentqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\features\\students\\queries\\handlers\\studentqueryhandler.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{AABBFF3A-A9B8-4B46-AAC9-3B8E7A3D6F0C}|SchoolProject.Service\\SchoolProject.Service.csproj|c:\\c#\\schoolproject\\schoolproject.service\\abstracts\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{AABBFF3A-A9B8-4B46-AAC9-3B8E7A3D6F0C}|SchoolProject.Service\\SchoolProject.Service.csproj|solutionrelative:schoolproject.service\\abstracts\\igenericrepository.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{67C86F6A-A153-4DE7-A1AD-D7AB2E2D11C0}|SchoolProject.API\\SchoolProject.API.csproj|c:\\c#\\schoolproject\\schoolproject.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{67C86F6A-A153-4DE7-A1AD-D7AB2E2D11C0}|SchoolProject.API\\SchoolProject.API.csproj|solutionrelative:schoolproject.api\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\features\\students\\queries\\models\\getstudentlistquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\features\\students\\queries\\models\\getstudentlistquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\features\\students\\queries\\models\\getstudentbyidquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\features\\students\\queries\\models\\getstudentbyidquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\features\\students\\queries\\results\\getstudentlistresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\features\\students\\queries\\results\\getstudentlistresponse.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\mapping\\students\\commandmapping\\editstudentcommandmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\mapping\\students\\commandmapping\\editstudentcommandmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\mapping\\students\\commandmapping\\addstudentcommandmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\mapping\\students\\commandmapping\\addstudentcommandmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\mapping\\students\\querymapping\\getstudentbyidmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\mapping\\students\\querymapping\\getstudentbyidmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\features\\students\\queries\\models\\getstudentlistquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\features\\students\\queries\\models\\getstudentlistquery.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\mapping\\students\\querymapping\\getstudentlistmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\mapping\\students\\querymapping\\getstudentlistmapping.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\features\\students\\commands\\validations\\addstudentvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\features\\students\\commands\\validations\\addstudentvalidator.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|c:\\c#\\schoolproject\\schoolproject.core\\features\\students\\commands\\models\\addstudentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{28445C5E-9A3F-4E4B-8E39-4E165A3EAEF6}|SchoolProject.Core\\SchoolProject.Core.csproj|solutionrelative:schoolproject.core\\features\\students\\commands\\models\\addstudentcommand.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -124,6 +112,19 @@
           "DockedWidth": 200,
           "SelectedChildIndex": 9,
           "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "EditStudentCommand.cs",
+              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Models\\EditStudentCommand.cs",
+              "RelativeDocumentMoniker": "SchoolProject.Core\\Features\\Students\\Commands\\Models\\EditStudentCommand.cs",
+              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Models\\EditStudentCommand.cs",
+              "RelativeToolTip": "SchoolProject.Core\\Features\\Students\\Commands\\Models\\EditStudentCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T18:22:47.573Z",
+              "EditorCaption": ""
+            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{d78612c7-9962-4b83-95d9-268046dad23a}"
@@ -142,15 +143,15 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "StudentCommandHandler.cs",
               "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Handlers\\StudentCommandHandler.cs",
               "RelativeDocumentMoniker": "SchoolProject.Core\\Features\\Students\\Commands\\Handlers\\StudentCommandHandler.cs",
               "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Handlers\\StudentCommandHandler.cs",
               "RelativeToolTip": "SchoolProject.Core\\Features\\Students\\Commands\\Handlers\\StudentCommandHandler.cs",
-              "ViewState": "AgIAACMAAAAAAAAAAAA3wDMAAAA6AAAAAAAAAA==",
+              "ViewState": "AgIAAC4AAAAAAAAAAIA6wDEAAABQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T14:01:44.129Z",
+              "WhenOpened": "2026-01-29T16:20:34.79Z",
               "EditorCaption": ""
             },
             {
@@ -161,9 +162,9 @@
               "RelativeDocumentMoniker": "SchoolProject.Service\\Abstracts\\IStudentService.cs",
               "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Service\\Abstracts\\IStudentService.cs",
               "RelativeToolTip": "SchoolProject.Service\\Abstracts\\IStudentService.cs",
-              "ViewState": "AgIAAAgAAAAAAAAAAAAgwBAAAAAcAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAwwA0AAABAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T12:58:54.826Z",
+              "WhenOpened": "2026-01-29T16:32:57.591Z",
               "EditorCaption": ""
             },
             {
@@ -174,126 +175,113 @@
               "RelativeDocumentMoniker": "SchoolProject.Service\\Implementations\\StudentService.cs",
               "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Service\\Implementations\\StudentService.cs",
               "RelativeToolTip": "SchoolProject.Service\\Implementations\\StudentService.cs",
-              "ViewState": "AgIAAC8AAAAAAAAAAAAlwDMAAABNAAAAAAAAAA==",
+              "ViewState": "AgIAABcAAAAAAAAAAADwvycAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T12:56:33.081Z",
+              "WhenOpened": "2026-01-29T16:33:25.926Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "StudentRepository.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Infrastructure\\Repositories\\StudentRepository.cs",
-              "RelativeDocumentMoniker": "SchoolProject.Infrastructure\\Repositories\\StudentRepository.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Infrastructure\\Repositories\\StudentRepository.cs",
-              "RelativeToolTip": "SchoolProject.Infrastructure\\Repositories\\StudentRepository.cs",
-              "ViewState": "AgIAADIAAAAAAAAAAAAewD8AAAAJAAAAAAAAAA==",
+              "DocumentIndex": 2,
+              "Title": "DeleteStudentByIdCommand.cs",
+              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Models\\DeleteStudentByIdCommand.cs",
+              "RelativeDocumentMoniker": "SchoolProject.Core\\Features\\Students\\Commands\\Models\\DeleteStudentByIdCommand.cs",
+              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Models\\DeleteStudentByIdCommand.cs",
+              "RelativeToolTip": "SchoolProject.Core\\Features\\Students\\Commands\\Models\\DeleteStudentByIdCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA8AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T12:54:37.344Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "ResponseHandler.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Bases\\ResponseHandler.cs",
-              "RelativeDocumentMoniker": "SchoolProject.Core\\Bases\\ResponseHandler.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Bases\\ResponseHandler.cs",
-              "RelativeToolTip": "SchoolProject.Core\\Bases\\ResponseHandler.cs",
-              "ViewState": "AgIAACQAAAAAAAAAAAAcwB8AAAAvAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T16:54:24.605Z",
+              "WhenOpened": "2026-01-29T16:19:20.876Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "StudentController.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.API\\Controllers\\StudentController.cs",
-              "RelativeDocumentMoniker": "SchoolProject.API\\Controllers\\StudentController.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.API\\Controllers\\StudentController.cs",
-              "RelativeToolTip": "SchoolProject.API\\Controllers\\StudentController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACMAAAAtAAAAAAAAAA==",
+              "Title": "ResponseHandler.cs",
+              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Bases\\ResponseHandler.cs",
+              "RelativeDocumentMoniker": "SchoolProject.Core\\Bases\\ResponseHandler.cs",
+              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Bases\\ResponseHandler.cs",
+              "RelativeToolTip": "SchoolProject.Core\\Bases\\ResponseHandler.cs",
+              "ViewState": "AgIAADUAAAAAAAAAAAA9wE0AAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T17:51:09.102Z",
+              "WhenOpened": "2026-01-29T18:08:43.254Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 6,
-              "Title": "Router.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\AppMetaData\\Router.cs",
-              "RelativeDocumentMoniker": "SchoolProject.Core\\AppMetaData\\Router.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\AppMetaData\\Router.cs",
-              "RelativeToolTip": "SchoolProject.Core\\AppMetaData\\Router.cs",
-              "ViewState": "AgIAAAoAAAAAAAAAAAAIwBcAAAA6AAAAAAAAAA==",
+              "Title": "StudentRepository.cs",
+              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Infrastructure\\Repositories\\StudentRepository.cs",
+              "RelativeDocumentMoniker": "SchoolProject.Infrastructure\\Repositories\\StudentRepository.cs",
+              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Infrastructure\\Repositories\\StudentRepository.cs",
+              "RelativeToolTip": "SchoolProject.Infrastructure\\Repositories\\StudentRepository.cs",
+              "ViewState": "AgIAACEAAAAAAAAAAAAYwC0AAABTAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T17:49:33.87Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "EditStudentCommand.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Models\\EditStudentCommand.cs",
-              "RelativeDocumentMoniker": "SchoolProject.Core\\Features\\Students\\Commands\\Models\\EditStudentCommand.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Models\\EditStudentCommand.cs",
-              "RelativeToolTip": "SchoolProject.Core\\Features\\Students\\Commands\\Models\\EditStudentCommand.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-29T12:07:17.742Z",
+              "WhenOpened": "2026-01-29T18:20:36.678Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 8,
-              "Title": "EditStudentCommandMapping.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Mapping\\Students\\CommandMapping\\EditStudentCommandMapping.cs",
-              "RelativeDocumentMoniker": "SchoolProject.Core\\Mapping\\Students\\CommandMapping\\EditStudentCommandMapping.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Mapping\\Students\\CommandMapping\\EditStudentCommandMapping.cs",
-              "RelativeToolTip": "SchoolProject.Core\\Mapping\\Students\\CommandMapping\\EditStudentCommandMapping.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABQAAABdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-29T12:10:35.763Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "EditStudentValidator.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Validations\\EditStudentValidator.cs",
-              "RelativeDocumentMoniker": "SchoolProject.Core\\Features\\Students\\Commands\\Validations\\EditStudentValidator.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Validations\\EditStudentValidator.cs",
-              "RelativeToolTip": "SchoolProject.Core\\Features\\Students\\Commands\\Validations\\EditStudentValidator.cs",
-              "ViewState": "AgIAACAAAAAAAAAAAAD4vzEAAABhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-29T12:20:16.99Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
               "Title": "ErrorHandlerMiddleware.cs",
               "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.API\\MiddleWares\\ErrorHandlerMiddleware.cs",
               "RelativeDocumentMoniker": "SchoolProject.API\\MiddleWares\\ErrorHandlerMiddleware.cs",
               "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.API\\MiddleWares\\ErrorHandlerMiddleware.cs",
               "RelativeToolTip": "SchoolProject.API\\MiddleWares\\ErrorHandlerMiddleware.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEcAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T23:49:56.064Z",
+              "WhenOpened": "2026-01-29T18:18:37.519Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "StudentController.cs",
+              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.API\\Controllers\\StudentController.cs",
+              "RelativeDocumentMoniker": "SchoolProject.API\\Controllers\\StudentController.cs",
+              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.API\\Controllers\\StudentController.cs",
+              "RelativeToolTip": "SchoolProject.API\\Controllers\\StudentController.cs",
+              "ViewState": "AgIAABsAAAAAAAAAAAAYwCwAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T16:49:29.575Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "IStudentRepository.cs",
+              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Service\\Abstracts\\IStudentRepository.cs",
+              "RelativeDocumentMoniker": "SchoolProject.Service\\Abstracts\\IStudentRepository.cs",
+              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Service\\Abstracts\\IStudentRepository.cs",
+              "RelativeToolTip": "SchoolProject.Service\\Abstracts\\IStudentRepository.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAwwA0AAABAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T16:34:31.775Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "Router.cs",
+              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\AppMetaData\\Router.cs",
+              "RelativeDocumentMoniker": "SchoolProject.Core\\AppMetaData\\Router.cs",
+              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\AppMetaData\\Router.cs",
+              "RelativeToolTip": "SchoolProject.Core\\AppMetaData\\Router.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T16:18:17.835Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 11,
-              "Title": "GenericRepositoryAsync.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Infrastructure\\InfrastructureBases\\GenericRepositoryAsync.cs",
-              "RelativeDocumentMoniker": "SchoolProject.Infrastructure\\InfrastructureBases\\GenericRepositoryAsync.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Infrastructure\\InfrastructureBases\\GenericRepositoryAsync.cs",
-              "RelativeToolTip": "SchoolProject.Infrastructure\\InfrastructureBases\\GenericRepositoryAsync.cs",
-              "ViewState": "AgIAACwAAAAAAAAAAAAlwD4AAAAMAAAAAAAAAA==",
+              "Title": "EditStudentValidator.cs",
+              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Validations\\EditStudentValidator.cs",
+              "RelativeDocumentMoniker": "SchoolProject.Core\\Features\\Students\\Commands\\Validations\\EditStudentValidator.cs",
+              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Validations\\EditStudentValidator.cs",
+              "RelativeToolTip": "SchoolProject.Core\\Features\\Students\\Commands\\Validations\\EditStudentValidator.cs",
+              "ViewState": "AgIAAB4AAAAAAAAAAAAYwDMAAABEAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-29T12:34:50.005Z",
+              "WhenOpened": "2026-01-29T16:27:57.95Z",
               "EditorCaption": ""
             },
             {
@@ -304,191 +292,105 @@
               "RelativeDocumentMoniker": "SchoolProject.Core\\Behaviors\\ValidationBehavior.cs",
               "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Behaviors\\ValidationBehavior.cs",
               "RelativeToolTip": "SchoolProject.Core\\Behaviors\\ValidationBehavior.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAACMAAAAMAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T22:57:57.473Z",
+              "WhenOpened": "2026-01-29T17:53:32.438Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 13,
-              "Title": "AppControllerBase.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.API\\Base\\AppControllerBase.cs",
-              "RelativeDocumentMoniker": "SchoolProject.API\\Base\\AppControllerBase.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.API\\Base\\AppControllerBase.cs",
-              "RelativeToolTip": "SchoolProject.API\\Base\\AppControllerBase.cs",
-              "ViewState": "AgIAAB0AAAAAAAAAAIAwwDAAAAAIAAAAAAAAAA==",
+              "Title": "DeleteStudentByIdValidator.cs",
+              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Validations\\DeleteStudentByIdValidator.cs",
+              "RelativeDocumentMoniker": "SchoolProject.Core\\Features\\Students\\Commands\\Validations\\DeleteStudentByIdValidator.cs",
+              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Validations\\DeleteStudentByIdValidator.cs",
+              "RelativeToolTip": "SchoolProject.Core\\Features\\Students\\Commands\\Validations\\DeleteStudentByIdValidator.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACQAAABMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T20:56:12.731Z",
+              "WhenOpened": "2026-01-29T16:27:03.064Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 14,
-              "Title": "AddStudentValidator.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Validations\\AddStudentValidator.cs",
-              "RelativeDocumentMoniker": "SchoolProject.Core\\Features\\Students\\Commands\\Validations\\AddStudentValidator.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Validations\\AddStudentValidator.cs",
-              "RelativeToolTip": "SchoolProject.Core\\Features\\Students\\Commands\\Validations\\AddStudentValidator.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Title": "GenericRepositoryAsync.cs",
+              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Infrastructure\\InfrastructureBases\\GenericRepositoryAsync.cs",
+              "RelativeDocumentMoniker": "SchoolProject.Infrastructure\\InfrastructureBases\\GenericRepositoryAsync.cs",
+              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Infrastructure\\InfrastructureBases\\GenericRepositoryAsync.cs",
+              "RelativeToolTip": "SchoolProject.Infrastructure\\InfrastructureBases\\GenericRepositoryAsync.cs",
+              "ViewState": "AgIAADoAAAAAAAAAAAAqwEYAAAAJAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T22:18:17.083Z",
+              "WhenOpened": "2026-01-29T16:35:47.447Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 15,
-              "Title": "IStudentRepository.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Service\\Abstracts\\IStudentRepository.cs",
-              "RelativeDocumentMoniker": "SchoolProject.Service\\Abstracts\\IStudentRepository.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Service\\Abstracts\\IStudentRepository.cs",
-              "RelativeToolTip": "SchoolProject.Service\\Abstracts\\IStudentRepository.cs",
-              "ViewState": "AgIAAAIAAAAAAAAAAAAswA0AAABDAAAAAAAAAA==",
+              "Title": "IGenericRepository.cs",
+              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Service\\Abstracts\\IGenericRepository.cs",
+              "RelativeDocumentMoniker": "SchoolProject.Service\\Abstracts\\IGenericRepository.cs",
+              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Service\\Abstracts\\IGenericRepository.cs",
+              "RelativeToolTip": "SchoolProject.Service\\Abstracts\\IGenericRepository.cs",
+              "ViewState": "AgIAAAgAAAAAAAAAAAA0wBYAAAAjAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T12:56:48.161Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "StudentProfile.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Mapping\\Students\\StudentProfile.cs",
-              "RelativeDocumentMoniker": "SchoolProject.Core\\Mapping\\Students\\StudentProfile.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Mapping\\Students\\StudentProfile.cs",
-              "RelativeToolTip": "SchoolProject.Core\\Mapping\\Students\\StudentProfile.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAoAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T16:49:27.365Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "AddStudentCommand.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Models\\AddStudentCommand.cs",
-              "RelativeDocumentMoniker": "SchoolProject.Core\\Features\\Students\\Commands\\Models\\AddStudentCommand.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Models\\AddStudentCommand.cs",
-              "RelativeToolTip": "SchoolProject.Core\\Features\\Students\\Commands\\Models\\AddStudentCommand.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAuwBEAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T13:56:23.826Z",
+              "WhenOpened": "2026-01-29T16:35:10.248Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
               "DocumentIndex": 18,
-              "Title": "ModuleServiceDependencies.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Service\\ModuleServiceDependencies.cs",
-              "RelativeDocumentMoniker": "SchoolProject.Service\\ModuleServiceDependencies.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Service\\ModuleServiceDependencies.cs",
-              "RelativeToolTip": "SchoolProject.Service\\ModuleServiceDependencies.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-29T12:35:48.958Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "ModuleCoreDependencies.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\ModuleCoreDependencies.cs",
-              "RelativeDocumentMoniker": "SchoolProject.Core\\ModuleCoreDependencies.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\ModuleCoreDependencies.cs",
-              "RelativeToolTip": "SchoolProject.Core\\ModuleCoreDependencies.cs",
-              "ViewState": "AgIAAAQAAAAAAAAAAAAmwBkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T23:09:08.555Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "Student.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Data\\Entities\\Student.cs",
-              "RelativeDocumentMoniker": "SchoolProject.Data\\Entities\\Student.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Data\\Entities\\Student.cs",
-              "RelativeToolTip": "SchoolProject.Data\\Entities\\Student.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAVAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T13:57:37.833Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "AddStudentCommandMapping.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Mapping\\Students\\CommandMapping\\AddStudentCommandMapping.cs",
-              "RelativeDocumentMoniker": "SchoolProject.Core\\Mapping\\Students\\CommandMapping\\AddStudentCommandMapping.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Mapping\\Students\\CommandMapping\\AddStudentCommandMapping.cs",
-              "RelativeToolTip": "SchoolProject.Core\\Mapping\\Students\\CommandMapping\\AddStudentCommandMapping.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T16:39:18.177Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
               "Title": "GetStudentListResponse.cs",
               "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Queries\\Results\\GetStudentListResponse.cs",
               "RelativeDocumentMoniker": "SchoolProject.Core\\Features\\Students\\Queries\\Results\\GetStudentListResponse.cs",
               "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Queries\\Results\\GetStudentListResponse.cs",
               "RelativeToolTip": "SchoolProject.Core\\Features\\Students\\Queries\\Results\\GetStudentListResponse.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAoAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T16:51:57.901Z"
+              "WhenOpened": "2026-01-29T16:32:35.903Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "StudentQueryHandler.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Queries\\Handlers\\StudentQueryHandler.cs",
-              "RelativeDocumentMoniker": "SchoolProject.Core\\Features\\Students\\Queries\\Handlers\\StudentQueryHandler.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Queries\\Handlers\\StudentQueryHandler.cs",
-              "RelativeToolTip": "SchoolProject.Core\\Features\\Students\\Queries\\Handlers\\StudentQueryHandler.cs",
-              "ViewState": "AgIAABcAAAAAAAAAAAAAwCgAAAAIAAAAAAAAAA==",
+              "DocumentIndex": 19,
+              "Title": "EditStudentCommandMapping.cs",
+              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Mapping\\Students\\CommandMapping\\EditStudentCommandMapping.cs",
+              "RelativeDocumentMoniker": "SchoolProject.Core\\Mapping\\Students\\CommandMapping\\EditStudentCommandMapping.cs",
+              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Mapping\\Students\\CommandMapping\\EditStudentCommandMapping.cs",
+              "RelativeToolTip": "SchoolProject.Core\\Mapping\\Students\\CommandMapping\\EditStudentCommandMapping.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T14:01:33.427Z"
+              "WhenOpened": "2026-01-29T16:31:53.52Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.API\\Program.cs",
-              "RelativeDocumentMoniker": "SchoolProject.API\\Program.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.API\\Program.cs",
-              "RelativeToolTip": "SchoolProject.API\\Program.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAArwC0AAAAeAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-29T00:01:59.96Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
+              "DocumentIndex": 17,
               "Title": "GetStudentByIdQuery.cs",
               "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Queries\\Models\\GetStudentByIdQuery.cs",
               "RelativeDocumentMoniker": "SchoolProject.Core\\Features\\Students\\Queries\\Models\\GetStudentByIdQuery.cs",
               "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Queries\\Models\\GetStudentByIdQuery.cs",
               "RelativeToolTip": "SchoolProject.Core\\Features\\Students\\Queries\\Models\\GetStudentByIdQuery.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAABLAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T16:18:52.638Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "AddStudentCommandMapping.cs",
+              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Mapping\\Students\\CommandMapping\\AddStudentCommandMapping.cs",
+              "RelativeDocumentMoniker": "SchoolProject.Core\\Mapping\\Students\\CommandMapping\\AddStudentCommandMapping.cs",
+              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Mapping\\Students\\CommandMapping\\AddStudentCommandMapping.cs",
+              "RelativeToolTip": "SchoolProject.Core\\Mapping\\Students\\CommandMapping\\AddStudentCommandMapping.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T13:56:26.754Z"
+              "WhenOpened": "2026-01-29T16:31:48.334Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "GetStudentByIdMapping.cs",
-              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Mapping\\Students\\QueryMapping\\GetStudentByIdMapping.cs",
-              "RelativeDocumentMoniker": "SchoolProject.Core\\Mapping\\Students\\QueryMapping\\GetStudentByIdMapping.cs",
-              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Mapping\\Students\\QueryMapping\\GetStudentByIdMapping.cs",
-              "RelativeToolTip": "SchoolProject.Core\\Mapping\\Students\\QueryMapping\\GetStudentByIdMapping.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T15:34:51.601Z"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
+              "DocumentIndex": 16,
               "Title": "GetStudentListQuery.cs",
               "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Queries\\Models\\GetStudentListQuery.cs",
               "RelativeDocumentMoniker": "SchoolProject.Core\\Features\\Students\\Queries\\Models\\GetStudentListQuery.cs",
@@ -496,7 +398,60 @@
               "RelativeToolTip": "SchoolProject.Core\\Features\\Students\\Queries\\Models\\GetStudentListQuery.cs",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-01-28T13:56:44.273Z"
+              "WhenOpened": "2026-01-29T16:19:00.6Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "GetStudentListMapping.cs",
+              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Mapping\\Students\\QueryMapping\\GetStudentListMapping.cs",
+              "RelativeDocumentMoniker": "SchoolProject.Core\\Mapping\\Students\\QueryMapping\\GetStudentListMapping.cs",
+              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Mapping\\Students\\QueryMapping\\GetStudentListMapping.cs",
+              "RelativeToolTip": "SchoolProject.Core\\Mapping\\Students\\QueryMapping\\GetStudentListMapping.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T16:31:26.575Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "AddStudentValidator.cs",
+              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Validations\\AddStudentValidator.cs",
+              "RelativeDocumentMoniker": "SchoolProject.Core\\Features\\Students\\Commands\\Validations\\AddStudentValidator.cs",
+              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Validations\\AddStudentValidator.cs",
+              "RelativeToolTip": "SchoolProject.Core\\Features\\Students\\Commands\\Validations\\AddStudentValidator.cs",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAADMAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T16:27:05.375Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "GetStudentByIdMapping.cs",
+              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Mapping\\Students\\QueryMapping\\GetStudentByIdMapping.cs",
+              "RelativeDocumentMoniker": "SchoolProject.Core\\Mapping\\Students\\QueryMapping\\GetStudentByIdMapping.cs",
+              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Mapping\\Students\\QueryMapping\\GetStudentByIdMapping.cs",
+              "RelativeToolTip": "SchoolProject.Core\\Mapping\\Students\\QueryMapping\\GetStudentByIdMapping.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T16:22:07.071Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "AddStudentCommand.cs",
+              "DocumentMoniker": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Models\\AddStudentCommand.cs",
+              "RelativeDocumentMoniker": "SchoolProject.Core\\Features\\Students\\Commands\\Models\\AddStudentCommand.cs",
+              "ToolTip": "C:\\C#\\SchoolProject\\SchoolProject.Core\\Features\\Students\\Commands\\Models\\AddStudentCommand.cs",
+              "RelativeToolTip": "SchoolProject.Core\\Features\\Students\\Commands\\Models\\AddStudentCommand.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAFAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-01-29T16:18:41.631Z",
+              "EditorCaption": ""
             }
           ]
         },

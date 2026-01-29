@@ -42,7 +42,7 @@ namespace SchoolProject.Core.Features.Students.Queries.Handlers
 
         public async Task<Response<GetStudentResponse>> Handle(GetStudentByIdQuery request, CancellationToken cancellationToken)
         {
-            var student = await _studentService.GetStudentByIdAsync(request.StudentId);
+            var student = await _studentService.GetStudentByIdWithIncludeAsync(request.StudentId);
 
             if (student == null) return NotFound<GetStudentResponse>("Student not found");
 

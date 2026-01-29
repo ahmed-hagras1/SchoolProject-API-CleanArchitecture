@@ -46,14 +46,10 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
         public void ApplyCustomValidations()
         {
             // Add any custom validation logic here if needed in the future.
-            RuleFor(x => x.Id)
-               .MustAsync(async (id, cancellationToken) => await _studentService.IsStudentIdExist(id))
-               .WithMessage("This student not exist.");
-
+            
             RuleFor(x => x.Name)
                 .MustAsync(async (model, key, cancellationToken) => !await _studentService.IsNameExistExcludeSelf(key,model.Id))
                 .WithMessage("This student name is already taken.");
-
 
         }
         #endregion

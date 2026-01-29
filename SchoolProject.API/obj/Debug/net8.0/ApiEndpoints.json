@@ -33,6 +33,22 @@
   },
   {
     "ContainingType": "SchoolProject.API.Controllers.StudentController",
+    "Method": "DeleteStudentByIdAsync",
+    "RelativePath": "api/Student/Api/V1/Student/Delete/{id}",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SchoolProject.API.Controllers.StudentController",
     "Method": "GetStudentsListAsync",
     "RelativePath": "api/Student/Api/V1/Student/List",
     "HttpMethod": "GET",

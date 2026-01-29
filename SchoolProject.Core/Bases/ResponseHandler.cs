@@ -13,13 +13,13 @@ namespace SchoolProject.Core.Bases
         {
 
         }
-        public Response<T> Deleted<T>()
+        public Response<T> Deleted<T>(string message = null)
         {
             return new Response<T>()
             {
                 StatusCode = System.Net.HttpStatusCode.OK,
                 Succeeded = true,
-                Message = "Deleted Successfully"
+                Message = message == null ? "Deleted Successfully." : message
             };
         }
         public Response<T> Success<T>(T entity, object Meta = null)

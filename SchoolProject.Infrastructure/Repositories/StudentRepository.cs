@@ -41,6 +41,10 @@ namespace SchoolProject.Infrastructure.Repositories
 
             return student;
         }
+        public async Task<Student> GetStudentByIdAsync(int studentId)
+        {
+            return await _students.FirstOrDefaultAsync(x => x.StudId == studentId);
+        }
 
         public async Task<bool> IsNameExistExcludeSelf(string name, int id = 0)
         {
