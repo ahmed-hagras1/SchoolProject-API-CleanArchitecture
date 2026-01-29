@@ -2,7 +2,9 @@
 using Microsoft.AspNetCore.Components.Routing;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using SchoolProject.API.Base;
 using SchoolProject.Core.AppMetaData;
+using SchoolProject.Core.Features.Students.Commands.Models;
 using SchoolProject.Core.Features.Students.Queries.Models;
 using Router = SchoolProject.Core.AppMetaData.Router;
 
@@ -10,32 +12,28 @@ namespace SchoolProject.API.Controllers
 {
     //[Route("api/[controller]")]
     [ApiController]
-    public class StudentController : ControllerBase
+    public class StudentController : AppControllerBase
     {
-        #region Fields
-        private readonly IMediator _mediator;
-        #endregion
-        #region Constructor
-        public StudentController(IMediator mediator) 
-        {
-            _mediator = mediator;
-        }
-        #endregion
+       
         #region Endpoints
         //[HttpGet("GetStudentsList")]
         [HttpGet(Router.StudentRouting.List)]
         public async Task<IActionResult> GetStudentsListAsync()
         {
-            var students = await _mediator.Send(new GetStudentListQuery());
-            return Ok(students);
+            return NewResult(await Mediator.Send(new GetStudentListQuery()));
         }
         //[HttpGet("GetStudentById/{id}")]
         [HttpGet(Router.StudentRouting.GetById)]
-        public async Task<IActionResult> GetStudentById([FromRoute]int id)
+        public async Task<IActionResult> GetStudentById([FromRoute] int id)
         {
-            var student = await _mediator.Send(new GetStudentByIdQuery(id));
-            return Ok(student);
+            return NewResult(await Mediator.Send(new GetStudentByIdQuery(id)));
         }
+        [HttpPost(Router.StudentRouting.Add)]
+        public async Task<IActionResult> AddStudentAsync([FromBody] AddStudentCommand addStudentCommand)
+        {
+            return NewResult(await Mediator.Send(addStudentCommand));
+        }
+
         #endregion
     }
 }

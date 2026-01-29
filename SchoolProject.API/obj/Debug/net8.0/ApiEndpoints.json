@@ -2,7 +2,7 @@
   {
     "ContainingType": "SchoolProject.API.Controllers.StudentController",
     "Method": "GetStudentById",
-    "RelativePath": "Api/V1/Student/{id}",
+    "RelativePath": "api/Student/Api/V1/Student/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -17,8 +17,24 @@
   },
   {
     "ContainingType": "SchoolProject.API.Controllers.StudentController",
+    "Method": "AddStudentAsync",
+    "RelativePath": "api/Student/Api/V1/Student/Add",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "addStudentCommand",
+        "Type": "SchoolProject.Core.Features.Students.Commands.Models.AddStudentCommand",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SchoolProject.API.Controllers.StudentController",
     "Method": "GetStudentsListAsync",
-    "RelativePath": "Api/V1/Student/List",
+    "RelativePath": "api/Student/Api/V1/Student/List",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,

@@ -41,6 +41,11 @@ namespace SchoolProject.Infrastructure.Repositories
 
             return student;
         }
+
+        public async Task<bool> IsNameExist(string name)
+        {
+            return await _students.AnyAsync(x => x.Name == name);
+        }
         #endregion
     }
 }

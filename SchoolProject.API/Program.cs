@@ -1,5 +1,6 @@
 ﻿
 using Microsoft.EntityFrameworkCore;
+using SchoolProject.API.MiddleWares;
 using SchoolProject.Core;
 using SchoolProject.Infrastructure;
 using SchoolProject.Infrastructure.Data;
@@ -40,6 +41,9 @@ namespace SchoolProject.API
 
 
             var app = builder.Build();
+
+            // Use Custom MiddleWares
+            app.UseMiddleware<ErrorHandlerMiddleware>();
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

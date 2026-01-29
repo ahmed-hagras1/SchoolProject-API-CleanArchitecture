@@ -5,7 +5,7 @@
     "version": "1.0"
   },
   "paths": {
-    "/Api/V1/Student/List": {
+    "/api/Student/Api/V1/Student/List": {
       "get": {
         "tags": [
           "Student"
@@ -17,7 +17,7 @@
         }
       }
     },
-    "/Api/V1/Student/{id}": {
+    "/api/Student/Api/V1/Student/{id}": {
       "get": {
         "tags": [
           "Student"
@@ -39,7 +39,64 @@
           }
         }
       }
+    },
+    "/api/Student/Api/V1/Student/Add": {
+      "post": {
+        "tags": [
+          "Student"
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddStudentCommand"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddStudentCommand"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AddStudentCommand"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
     }
   },
-  "components": { }
+  "components": {
+    "schemas": {
+      "AddStudentCommand": {
+        "type": "object",
+        "properties": {
+          "name": {
+            "type": "string",
+            "nullable": true
+          },
+          "address": {
+            "type": "string",
+            "nullable": true
+          },
+          "phone": {
+            "type": "string",
+            "nullable": true
+          },
+          "departmentId": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      }
+    }
+  }
 }

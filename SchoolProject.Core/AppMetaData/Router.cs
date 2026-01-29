@@ -20,6 +20,7 @@ namespace SchoolProject.Core.AppMetaData
             public const string List = Prefix + "/List";
             public const string GetById = Prefix + SignleRoute;
             // Result: "Api/V1/Student/{id}"
+            public const string Add = Prefix + "/Add";
         }
     }
 }

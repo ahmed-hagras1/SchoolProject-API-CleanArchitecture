@@ -36,6 +36,26 @@ namespace SchoolProject.Service.Implementations
 
             return student;
         }
+
+        public async Task<string> CreateStudentAsync(Student student)
+        {
+            // Check if the name is exists
+            var isNameExist = await _studentRepository.IsNameExist(student.Name);
+
+            if (isNameExist)
+                return "Exist"; // Return specific status
+
+            // Add the student
+            await _studentRepository.AddAsync(student);
+
+            // Return Success
+            return "Success";
+        }
+
+        public Task<bool> IsNameExist(string name)
+        {
+            return _studentRepository.IsNameExist(name);
+        }
         #endregion
     }
 }

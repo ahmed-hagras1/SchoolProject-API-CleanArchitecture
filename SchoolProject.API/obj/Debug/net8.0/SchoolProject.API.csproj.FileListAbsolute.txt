@@ -154,3 +154,5 @@ C:\C#\SchoolProject\SchoolProject.API\bin\Debug\net8.0\System.Diagnostics.Diagno
 C:\C#\SchoolProject\SchoolProject.API\bin\Debug\net8.0\AutoMapper.dll
 C:\C#\SchoolProject\SchoolProject.API\bin\Debug\net8.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
 C:\C#\SchoolProject\SchoolProject.API\obj\Debug\net8.0\SchoolProject.API.sourcelink.json
+C:\C#\SchoolProject\SchoolProject.API\bin\Debug\net8.0\FluentValidation.dll
+C:\C#\SchoolProject\SchoolProject.API\bin\Debug\net8.0\FluentValidation.DependencyInjectionExtensions.dll
