@@ -42,9 +42,27 @@ namespace SchoolProject.Infrastructure.Repositories
             return student;
         }
 
-        public async Task<bool> IsNameExist(string name)
+        public async Task<bool> IsNameExistExcludeSelf(string name, int id = 0)
         {
-            return await _students.AnyAsync(x => x.Name == name);
+            var query = _students.AsNoTracking().AsQueryable();
+
+            if (id != 0)
+            {
+                // UPDATE CASE: Check if name exists, BUT ignore the record with this specific ID
+                query = query.Where(x => x.Name == name && x.StudId != id);
+            }
+            else
+            {
+                // ADD CASE: Just check if name exists
+                query = query.Where(x => x.Name == name);
+            }
+
+            return await query.AnyAsync();
+        }
+
+        public async Task<bool> IsStudentIdExist(int studentId)
+        {
+            return await _students.AnyAsync(x => x.StudId == studentId);
         }
         #endregion
     }

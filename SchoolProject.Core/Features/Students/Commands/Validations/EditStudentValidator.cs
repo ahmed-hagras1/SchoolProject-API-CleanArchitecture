@@ -1,6 +1,5 @@
 ﻿using FluentValidation;
 using SchoolProject.Core.Features.Students.Commands.Models;
-using SchoolProject.Data.Entities;
 using SchoolProject.Service.Abstracts;
 using System;
 using System.Collections.Generic;
@@ -10,14 +9,14 @@ using System.Threading.Tasks;
 
 namespace SchoolProject.Core.Features.Students.Commands.Validations
 {
-    public class AddStudentValidator : AbstractValidator<AddStudentCommand>
+    public class EditStudentValidator : AbstractValidator<EditStudentCommand>
     {
         #region Fields
         private readonly IStudentService _studentService;
         #endregion
 
         #region Constructor
-        public AddStudentValidator( IStudentService studentService)
+        public EditStudentValidator(IStudentService studentService)
         {
             ApplyValidationRules();
             ApplyCustomValidations();
@@ -29,6 +28,9 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
         #region Actions
         public void ApplyValidationRules()
         {
+            RuleFor(x => x.Id)
+                .NotEmpty().WithMessage("Student Id is required.")
+                .GreaterThan(0).WithMessage("Student Id must be a positive integer.");
             RuleFor(x => x.Name)
                 .NotEmpty().WithMessage("Student name is required.")
                 .MaximumLength(100).WithMessage("Student name must not exceed 100 characters.");
@@ -44,9 +46,15 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
         public void ApplyCustomValidations()
         {
             // Add any custom validation logic here if needed in the future.
+            RuleFor(x => x.Id)
+               .MustAsync(async (id, cancellationToken) => await _studentService.IsStudentIdExist(id))
+               .WithMessage("This student not exist.");
+
             RuleFor(x => x.Name)
-                .MustAsync(async (name, cancellationToken) => !await _studentService.IsNameExistExcludeSelf(name))
+                .MustAsync(async (model, key, cancellationToken) => !await _studentService.IsNameExistExcludeSelf(key,model.Id))
                 .WithMessage("This student name is already taken.");
+
+
         }
         #endregion
     }

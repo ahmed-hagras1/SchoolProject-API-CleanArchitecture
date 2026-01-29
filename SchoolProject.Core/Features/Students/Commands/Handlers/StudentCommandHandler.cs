@@ -16,7 +16,8 @@ using System.Threading.Tasks;
 namespace SchoolProject.Core.Features.Students.Commands.Handlers
 {
     public class StudentCommandHandler : ResponseHandler,
-        IRequestHandler<AddStudentCommand, Response<string>>
+        IRequestHandler<AddStudentCommand, Response<string>>,
+        IRequestHandler<EditStudentCommand, Response<string>>
     {
         #region Fields
         private readonly IStudentService _studentService;
@@ -38,10 +39,17 @@ namespace SchoolProject.Core.Features.Students.Commands.Handlers
             var studentMapper = _mapper.Map<Student>(request);
             // add student
             var result = await _studentService.CreateStudentAsync(studentMapper);
-            // check conditions
-            if (result == "Exist") return UnprocessableEntity<string>("Name is Exists");
-            // return response
-            else if (result == "Success") return Created("Added successfully");
+            if (result == "Success") return Created("Added successfully");
+            else return BadRequest<string>();
+        }
+
+        public async Task<Response<string>> Handle(EditStudentCommand request, CancellationToken cancellationToken)
+        {
+            // Mapping from EditStudentCommand to Student entity
+            var studentMapper = _mapper.Map<Student>(request);
+            // update student
+            var result = _studentService.UpdateStudentAsync(studentMapper);
+            if (result.Result == "Success") return Success("Updated successfully");
             else return BadRequest<string>();
         }
         #endregion

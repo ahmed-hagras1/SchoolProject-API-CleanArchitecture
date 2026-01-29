@@ -2,6 +2,7 @@
 using SchoolProject.Service.Abstracts;
 using System.Collections.Generic;
 using System.Threading.Tasks;
+using System.Xml.Linq;
 
 namespace SchoolProject.Service.Implementations
 {
@@ -39,12 +40,6 @@ namespace SchoolProject.Service.Implementations
 
         public async Task<string> CreateStudentAsync(Student student)
         {
-            // Check if the name is exists
-            var isNameExist = await _studentRepository.IsNameExist(student.Name);
-
-            if (isNameExist)
-                return "Exist"; // Return specific status
-
             // Add the student
             await _studentRepository.AddAsync(student);
 
@@ -52,9 +47,20 @@ namespace SchoolProject.Service.Implementations
             return "Success";
         }
 
-        public Task<bool> IsNameExist(string name)
+        public async Task<bool> IsNameExistExcludeSelf(string name, int id = 0)
         {
-            return _studentRepository.IsNameExist(name);
+            return await _studentRepository.IsNameExistExcludeSelf(name, id);
+        }
+
+        public async Task<bool> IsStudentIdExist(int id)
+        {
+            return await _studentRepository.IsStudentIdExist(id);
+        }
+
+        public async Task<string> UpdateStudentAsync(Student student)
+        {
+            await _studentRepository.UpdateAsync(student);
+            return "Success";
         }
         #endregion
     }
