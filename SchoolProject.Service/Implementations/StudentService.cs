@@ -1,4 +1,5 @@
 ﻿using SchoolProject.Data.Entities;
+using SchoolProject.Data.Helpers;
 using SchoolProject.Service.Abstracts;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -29,6 +30,14 @@ namespace SchoolProject.Service.Implementations
         {
             // Use the field (_studentRepository) to get data
             return await _studentRepository.GetStudentsListAsync();
+        }
+        public IQueryable<Student> GetStudentsQueryable()
+        {
+            return _studentRepository.GetStudentsQueryable();
+        }
+        public IQueryable<Student> FilterStudentsPaginatedQueryable(string search, StudentOrderingEnum orderBy = StudentOrderingEnum.StudentId)
+        {
+            return _studentRepository.FilterStudentsPaginatedQueryable(search, orderBy);
         }
         public async Task<Student> GetStudentByIdWithIncludeAsync(int studentId)
         {
@@ -73,6 +82,10 @@ namespace SchoolProject.Service.Implementations
             await _studentRepository.DeleteAsync(student);
             return "Success";
         }
+
+
+
+
         #endregion
     }
 }

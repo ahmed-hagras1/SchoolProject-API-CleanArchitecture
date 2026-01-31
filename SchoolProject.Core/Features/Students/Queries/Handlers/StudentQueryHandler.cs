@@ -3,11 +3,13 @@ using MediatR;
 using SchoolProject.Core.Bases;
 using SchoolProject.Core.Features.Students.Queries.Models;
 using SchoolProject.Core.Features.Students.Queries.Results;
+using SchoolProject.Core.Wrappers;
 using SchoolProject.Data.Entities;
 using SchoolProject.Service.Abstracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -15,7 +17,8 @@ namespace SchoolProject.Core.Features.Students.Queries.Handlers
 {
     public class StudentQueryHandler :ResponseHandler, 
         IRequestHandler<GetStudentListQuery,Response<List<GetStudentListResponse>>>,
-        IRequestHandler<GetStudentByIdQuery, Response<GetStudentResponse>>
+        IRequestHandler<GetStudentByIdQuery, Response<GetStudentResponse>>,
+        IRequestHandler<GetStudentPaginatedListQuery, PaginatedResult<GetStudentPaginatedListResponse>>
     {
         #region Fields
         private readonly IStudentService _studentService;
@@ -48,6 +51,24 @@ namespace SchoolProject.Core.Features.Students.Queries.Handlers
 
             var studentMapper = _mapper.Map<GetStudentResponse>(student);
             return Success(studentMapper);
+        }
+
+        //public Task<PaginatedResult<GetStudentPaginatedListResponse>> Handle(GetStudentPaginatedListQuery request, CancellationToken cancellationToken)
+        //{
+        //    throw new NotImplementedException();
+        //}
+        public async Task<PaginatedResult<GetStudentPaginatedListResponse>> Handle(GetStudentPaginatedListQuery request, CancellationToken cancellationToken)
+        {
+
+
+            Expression<Func<Student, GetStudentPaginatedListResponse>> expression = 
+                e => new GetStudentPaginatedListResponse(e.StudId, e.Name, e.Address, e.Department.DeptName);
+
+            var queryable = _studentService.FilterStudentsPaginatedQueryable(search: (string.IsNullOrEmpty(request.Search)? null : request.Search.Trim()) , request.OrderBy);
+   
+            var paginatedList = await queryable.Select(expression).ToPaginatedListAsync(request.PageNumber, request.PageSize);
+
+            return paginatedList;
         }
         #endregion
     }

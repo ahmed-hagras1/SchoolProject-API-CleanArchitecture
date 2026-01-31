@@ -23,6 +23,7 @@ namespace SchoolProject.Core.AppMetaData
             public const string Add = Prefix + "/Add";
             public const string Edit = Prefix + "/Update";
             public const string Delete = Prefix + "/Delete" + SignleRoute;
+            public const string Paginated = Prefix + "/Paginated";
         }
     }
 }

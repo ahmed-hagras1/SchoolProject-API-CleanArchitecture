@@ -1604,6 +1604,7 @@
           "FluentValidation": "12.1.1",
           "FluentValidation.DependencyInjectionExtensions": "12.1.1",
           "MediatR": "14.0.0",
+          "Microsoft.EntityFrameworkCore": "8.0.0",
           "SchoolProject.Data": "1.0.0",
           "SchoolProject.Service": "1.0.0"
         },

@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using SchoolProject.Data.Entities;
+using SchoolProject.Data.Helpers;
 using SchoolProject.Infrastructure.Data;
 using SchoolProject.Infrastructure.InfrastructureBases;
 using SchoolProject.Service.Abstracts;
@@ -33,6 +34,42 @@ namespace SchoolProject.Infrastructure.Repositories
         {
             // Add Include to load related Department data.
             return await _students.Include(x => x.Department).ToListAsync();
+        }
+        public IQueryable<Student> GetStudentsQueryable()
+        {
+            return _students.AsNoTracking().Include(x => x.Department).AsQueryable();
+        }
+        public IQueryable<Student> FilterStudentsPaginatedQueryable(string search, StudentOrderingEnum orderBy = StudentOrderingEnum.StudentId)
+        {
+            var queryable = _students.AsNoTracking().Include(x => x.Department).AsQueryable();
+            if (!string.IsNullOrEmpty(search))
+            {
+                queryable = queryable.Where(x => x.Name.Contains(search) || x.Address.Contains(search));
+            }
+
+            switch (orderBy)
+            {
+                case StudentOrderingEnum.None:
+                    queryable = queryable.OrderBy(x => x.StudId);
+                    break;
+                case StudentOrderingEnum.StudentId:
+                    queryable = queryable.OrderBy(x => x.StudId);
+                    break;
+                case StudentOrderingEnum.StudentName:
+                    queryable = queryable.OrderBy(x => x.Name);
+                    break;
+                case StudentOrderingEnum.StudentAddress:
+                    queryable = queryable.OrderBy(x => x.Address);
+                    break;
+                case StudentOrderingEnum.DepartmentName:
+                    queryable = queryable.OrderBy(x => x.Department.DeptName);
+                    break;
+                default:
+                    queryable = queryable.OrderBy(x => x.StudId);
+                    break;
+            }
+
+            return queryable;
         }
         public async Task<Student> GetStudentByIdWithIncludeAsync(int studentId)
         {
@@ -68,6 +105,10 @@ namespace SchoolProject.Infrastructure.Repositories
         {
             return await _students.AnyAsync(x => x.StudId == studentId);
         }
+
+
+
+
         #endregion
     }
 }

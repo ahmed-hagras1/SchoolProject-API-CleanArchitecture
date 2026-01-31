@@ -59,6 +59,37 @@
   },
   {
     "ContainingType": "SchoolProject.API.Controllers.StudentController",
+    "Method": "GetStudentsPaginatedAsync",
+    "RelativePath": "api/Student/Api/V1/Student/Paginated",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "PageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "PageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Search",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "OrderBy",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SchoolProject.API.Controllers.StudentController",
     "Method": "UpdateStudentAsync",
     "RelativePath": "api/Student/Api/V1/Student/Update",
     "HttpMethod": "PUT",
