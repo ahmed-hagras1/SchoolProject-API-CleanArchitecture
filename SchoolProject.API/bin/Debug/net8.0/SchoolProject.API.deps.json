@@ -522,6 +522,14 @@
           }
         }
       },
+      "Microsoft.Extensions.Localization.Abstractions/10.0.2": {
+        "runtime": {
+          "lib/netstandard2.0/Microsoft.Extensions.Localization.Abstractions.dll": {
+            "assemblyVersion": "10.0.0.0",
+            "fileVersion": "10.0.225.61305"
+          }
+        }
+      },
       "Microsoft.Extensions.Logging/8.0.0": {
         "dependencies": {
           "Microsoft.Extensions.DependencyInjection": "8.0.0",
@@ -963,6 +971,7 @@
           "FluentValidation.DependencyInjectionExtensions": "12.1.1",
           "MediatR": "14.0.0",
           "Microsoft.EntityFrameworkCore": "8.0.0",
+          "Microsoft.Extensions.Localization.Abstractions": "10.0.2",
           "SchoolProject.Data": "1.0.0",
           "SchoolProject.Service": "1.0.0"
         },
@@ -970,6 +979,14 @@
           "SchoolProject.Core.dll": {
             "assemblyVersion": "1.0.0.0",
             "fileVersion": "1.0.0.0"
+          }
+        },
+        "resources": {
+          "ar/SchoolProject.Core.resources.dll": {
+            "locale": "ar"
+          },
+          "en/SchoolProject.Core.resources.dll": {
+            "locale": "en"
           }
         }
       },
@@ -1230,6 +1247,13 @@
       "sha512": "sha512-NSmDw3K0ozNDgShSIpsZcbFIzBX4w28nDag+TfaQujkXGazBm+lid5onlWoCBy4VsLxqnnKjEBbGSJVWJMf43g==",
       "path": "microsoft.extensions.dependencymodel/8.0.0",
       "hashPath": "microsoft.extensions.dependencymodel.8.0.0.nupkg.sha512"
+    },
+    "Microsoft.Extensions.Localization.Abstractions/10.0.2": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-O28Xu6BMUYfFwzK2U5OyctQDrcGC3cewL026Af5WaQKmsdhJK1KEmCFloC2ZqHhh4ldizJOg4j/BuBEJeRZcrw==",
+      "path": "microsoft.extensions.localization.abstractions/10.0.2",
+      "hashPath": "microsoft.extensions.localization.abstractions.10.0.2.nupkg.sha512"
     },
     "Microsoft.Extensions.Logging/8.0.0": {
       "type": "package",

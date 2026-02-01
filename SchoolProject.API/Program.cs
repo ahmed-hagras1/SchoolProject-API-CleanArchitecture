@@ -1,10 +1,12 @@
 ﻿
+using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using SchoolProject.API.MiddleWares;
 using SchoolProject.Core;
 using SchoolProject.Infrastructure;
 using SchoolProject.Infrastructure.Data;
 using SchoolProject.Service;
+using System.Globalization;
 
 namespace SchoolProject.API
 {
@@ -13,6 +15,11 @@ namespace SchoolProject.API
         public static void Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+
+            #region Localization
+            // 1. Add Localization Service
+            builder.Services.AddLocalization(options => options.ResourcesPath = "");
+            #endregion
 
             // Configure Database Connection String
             //builder.Services.AddDbContext<AppDbContext>(options =>
@@ -44,6 +51,22 @@ namespace SchoolProject.API
 
             // Use Custom MiddleWares
             app.UseMiddleware<ErrorHandlerMiddleware>();
+
+            #region Localization Middleware
+            // 2. Configure Supported Cultures
+            var supportedCultures = new[]
+            {
+                new CultureInfo("en-US"),
+                new CultureInfo("ar-EG") // Add more if needed
+            };
+
+            app.UseRequestLocalization(new RequestLocalizationOptions
+            {
+                DefaultRequestCulture = new RequestCulture("ar-EG"),
+                SupportedCultures = supportedCultures,
+                SupportedUICultures = supportedCultures
+            });
+            #endregion
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())

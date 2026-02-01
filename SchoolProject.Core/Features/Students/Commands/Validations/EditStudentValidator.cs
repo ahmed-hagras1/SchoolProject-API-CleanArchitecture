@@ -1,5 +1,7 @@
 ﻿using FluentValidation;
+using Microsoft.Extensions.Localization;
 using SchoolProject.Core.Features.Students.Commands.Models;
+using SchoolProject.Core.Resources;
 using SchoolProject.Service.Abstracts;
 using System;
 using System.Collections.Generic;
@@ -13,15 +15,18 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
     {
         #region Fields
         private readonly IStudentService _studentService;
+        private readonly IStringLocalizer<SharedResources> _stringLocalizer;
         #endregion
 
         #region Constructor
-        public EditStudentValidator(IStudentService studentService)
+        public EditStudentValidator(IStudentService studentService, IStringLocalizer<SharedResources> stringLocalizer)
         {
+            _studentService = studentService;
+            _stringLocalizer = stringLocalizer;
+
             ApplyValidationRules();
             ApplyCustomValidations();
 
-            _studentService = studentService;
         }
         #endregion
 
@@ -29,19 +34,19 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
         public void ApplyValidationRules()
         {
             RuleFor(x => x.Id)
-                .NotEmpty().WithMessage("Student Id is required.")
-                .GreaterThan(0).WithMessage("Student Id must be a positive integer.");
+                .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
+                .GreaterThan(0).WithMessage(_stringLocalizer[SharedResourcesKeys.SelectValidOne]);
             RuleFor(x => x.Name)
-                .NotEmpty().WithMessage("Student name is required.")
-                .MaximumLength(100).WithMessage("Student name must not exceed 100 characters.");
+                .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
+                .MaximumLength(100).WithMessage(_stringLocalizer[SharedResourcesKeys.MaximumLength]);
             RuleFor(x => x.Address)
-                .NotEmpty().WithMessage("Address is required.")
-                .MaximumLength(200).WithMessage("Address must not exceed 200 characters.");
+                .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
+                .MaximumLength(200).WithMessage(_stringLocalizer[SharedResourcesKeys.MaximumLength]);
             RuleFor(x => x.Phone)
-                .NotEmpty().WithMessage("Phone number is required.");
+                .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty]);
             RuleFor(x => x.DepartmentId)
-                .NotNull().WithMessage("Department Id is required.")
-                .GreaterThan(0).WithMessage("Department Id must be a positive integer.");
+                .NotNull().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
+                .GreaterThan(0).WithMessage(_stringLocalizer[SharedResourcesKeys.SelectValidOne]);
         }
         public void ApplyCustomValidations()
         {
@@ -49,7 +54,7 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
             
             RuleFor(x => x.Name)
                 .MustAsync(async (model, key, cancellationToken) => !await _studentService.IsNameExistExcludeSelf(key,model.Id))
-                .WithMessage("This student name is already taken.");
+                .WithMessage(_stringLocalizer[SharedResourcesKeys.AlreadyExist]);
 
         }
         #endregion

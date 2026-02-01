@@ -5,8 +5,8 @@ C:\C#\SchoolProject\SchoolProject.Data\obj\Debug\net8.0\SchoolProject.Data.Gener
 C:\C#\SchoolProject\SchoolProject.Data\obj\Debug\net8.0\SchoolProject.Data.AssemblyInfoInputs.cache
 C:\C#\SchoolProject\SchoolProject.Data\obj\Debug\net8.0\SchoolProject.Data.AssemblyInfo.cs
 C:\C#\SchoolProject\SchoolProject.Data\obj\Debug\net8.0\SchoolProject.Data.csproj.CoreCompileInputs.cache
+C:\C#\SchoolProject\SchoolProject.Data\obj\Debug\net8.0\SchoolProject.Data.sourcelink.json
 C:\C#\SchoolProject\SchoolProject.Data\obj\Debug\net8.0\SchoolProject.Data.dll
 C:\C#\SchoolProject\SchoolProject.Data\obj\Debug\net8.0\refint\SchoolProject.Data.dll
 C:\C#\SchoolProject\SchoolProject.Data\obj\Debug\net8.0\SchoolProject.Data.pdb
 C:\C#\SchoolProject\SchoolProject.Data\obj\Debug\net8.0\ref\SchoolProject.Data.dll
-C:\C#\SchoolProject\SchoolProject.Data\obj\Debug\net8.0\SchoolProject.Data.sourcelink.json

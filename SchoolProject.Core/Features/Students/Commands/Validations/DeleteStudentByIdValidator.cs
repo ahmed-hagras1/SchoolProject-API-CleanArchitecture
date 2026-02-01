@@ -1,5 +1,7 @@
 ﻿using FluentValidation;
+using Microsoft.Extensions.Localization;
 using SchoolProject.Core.Features.Students.Commands.Models;
+using SchoolProject.Core.Resources;
 using SchoolProject.Service.Abstracts;
 using System;
 using System.Collections.Generic;
@@ -13,15 +15,18 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
     {
         #region Fields
         private readonly IStudentService _studentService;
+        private readonly IStringLocalizer<SharedResources> _stringLocalizer;
         #endregion
 
         #region Constructor
-        public DeleteStudentByIdValidator(IStudentService studentService)
+        public DeleteStudentByIdValidator(IStudentService studentService, IStringLocalizer<SharedResources> stringLocalizer)
         {
+            _studentService = studentService;
+            _stringLocalizer = stringLocalizer;
+
             ApplyValidationRules();
             ApplyCustomValidations();
 
-            _studentService = studentService;
         }
         #endregion
 
@@ -29,8 +34,8 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
         public void ApplyValidationRules()
         {
             RuleFor(x => x.Id)
-                .NotEmpty().WithMessage("Student Id is required.")
-                .GreaterThan(0).WithMessage("Student Id must be a positive integer.");
+                .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
+                .GreaterThan(0).WithMessage(_stringLocalizer[SharedResourcesKeys.SelectValidOne]);
         }
         public void ApplyCustomValidations()
         {

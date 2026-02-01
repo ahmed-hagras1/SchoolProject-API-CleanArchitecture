@@ -1,9 +1,11 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.Extensions.Localization;
 using SchoolProject.Core.Bases;
 using SchoolProject.Core.Features.Students.Commands.Models;
 using SchoolProject.Core.Features.Students.Queries.Models;
 using SchoolProject.Core.Features.Students.Queries.Results;
+using SchoolProject.Core.Resources;
 using SchoolProject.Data.Entities;
 using SchoolProject.Service.Abstracts;
 using System;
@@ -23,13 +25,17 @@ namespace SchoolProject.Core.Features.Students.Commands.Handlers
         #region Fields
         private readonly IStudentService _studentService;
         private readonly IMapper _mapper;
+        private readonly IStringLocalizer<SharedResources> _stringLocalizer;
         #endregion
 
         #region Constructor
-        public StudentCommandHandler(IStudentService studentService, IMapper mapper)
+        public StudentCommandHandler(IStudentService studentService,
+            IMapper mapper,
+            IStringLocalizer<SharedResources> stringLocalizer) : base(stringLocalizer)
         {
             _studentService = studentService;
             _mapper = mapper;
+            _stringLocalizer = stringLocalizer;
         }
         #endregion
 
@@ -48,7 +54,7 @@ namespace SchoolProject.Core.Features.Students.Commands.Handlers
         {
             // Check If the Id is exist or not exist.
             var student = await _studentService.GetStudentByIdAsync(request.Id);
-            if (student == null) return NotFound<string>("Student is Not found.");
+            if (student == null) return NotFound<string>();
 
             // Mapping from EditStudentCommand to Student entity
             var studentMapper = _mapper.Map<Student>(request);

@@ -1,8 +1,10 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.Extensions.Localization;
 using SchoolProject.Core.Bases;
 using SchoolProject.Core.Features.Students.Queries.Models;
 using SchoolProject.Core.Features.Students.Queries.Results;
+using SchoolProject.Core.Resources;
 using SchoolProject.Core.Wrappers;
 using SchoolProject.Data.Entities;
 using SchoolProject.Service.Abstracts;
@@ -23,13 +25,17 @@ namespace SchoolProject.Core.Features.Students.Queries.Handlers
         #region Fields
         private readonly IStudentService _studentService;
         private readonly IMapper _mapper;
+        private readonly IStringLocalizer<SharedResources> _stringLocalizer;
         #endregion
 
         #region Constructor
-        public StudentQueryHandler(IStudentService studentService, IMapper mapper)
+        public StudentQueryHandler(IStudentService studentService,
+            IMapper mapper,
+            IStringLocalizer<SharedResources> stringLocalizer) : base(stringLocalizer)
         {
             _studentService = studentService;
             _mapper = mapper;
+            _stringLocalizer = stringLocalizer;
         }
         #endregion
 
@@ -40,17 +46,17 @@ namespace SchoolProject.Core.Features.Students.Queries.Handlers
             // Convert List<Student> to List<GetStudentListResponse>
             var studentListMapper = _mapper.Map<List<GetStudentListResponse>>(studentsList);
 
-            return Success(studentListMapper);
+            return Success(studentListMapper, new {Count = studentListMapper.Count});
         }
 
         public async Task<Response<GetStudentResponse>> Handle(GetStudentByIdQuery request, CancellationToken cancellationToken)
         {
             var student = await _studentService.GetStudentByIdWithIncludeAsync(request.StudentId);
 
-            if (student == null) return NotFound<GetStudentResponse>("Student not found");
+            if (student == null) return NotFound<GetStudentResponse>(_stringLocalizer[SharedResourcesKeys.NotFound]);
 
             var studentMapper = _mapper.Map<GetStudentResponse>(student);
-            return Success(studentMapper);
+            return Success(studentMapper, new { RetrivedAt = DateTime.UtcNow, Source = "Database"});
         }
 
         //public Task<PaginatedResult<GetStudentPaginatedListResponse>> Handle(GetStudentPaginatedListQuery request, CancellationToken cancellationToken)
