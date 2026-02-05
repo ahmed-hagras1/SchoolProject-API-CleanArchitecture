@@ -43,6 +43,7 @@ namespace SchoolProject.Core.Features.Students.Commands.Handlers
         public async Task<Response<string>> Handle(AddStudentCommand request, CancellationToken cancellationToken)
         {
             // Mapping from AddStudentCommand to Student entity
+            // Use this way to map in Add operation because it will Make new student object using this data.
             var studentMapper = _mapper.Map<Student>(request);
             // add student
             var result = await _studentService.CreateStudentAsync(studentMapper);
@@ -57,7 +58,11 @@ namespace SchoolProject.Core.Features.Students.Commands.Handlers
             if (student == null) return NotFound<string>();
 
             // Mapping from EditStudentCommand to Student entity
-            var studentMapper = _mapper.Map<Student>(request);
+            // Use this way to map in Edit operation because Copy this data into this existing student object.
+            var studentMapper = _mapper.Map(request,student);
+
+            // Don't use this way to map in Edit operation because it will create a new row not update in existing row.
+            // var studentMapper = _mapper.Map<Student>(request);
             // update student
             var result = await _studentService.UpdateStudentAsync(studentMapper);
             if (result == "Success") return Success("Updated successfully");

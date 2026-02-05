@@ -19,7 +19,13 @@ public class Department
     public int DeptId { get; set; }
     [StringLength(200)]
     public string DeptName { get; set; }
+    public int? InstructorManagerId { get; set; }
     // Navigation Properties
     public virtual ICollection<Student> Students { get; set; }
     public virtual ICollection<DepartmentSubject>DepartmentSubjects { get; set; }
+    [InverseProperty(nameof(Instructor.Department))]
+    public virtual ICollection<Instructor> Instructors { get; set; }
+    [ForeignKey(nameof(InstructorManagerId))]
+    [InverseProperty(nameof(Instructor.ManagedDepartment))]
+    public virtual Instructor? InstructorManager { get; set; }
 }

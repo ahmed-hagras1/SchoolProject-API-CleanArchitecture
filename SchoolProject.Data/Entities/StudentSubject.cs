@@ -13,8 +13,9 @@ public class StudentSubject
     public int StudentId { get; set; }
     public int SubjectId { get; set; }
     // Navigation Properties
-    [ForeignKey("StudentId")]
+    [ForeignKey(nameof(StudentId))]
     public virtual Student Student { get; set; }
-    [ForeignKey("SubjectId")]
+    [ForeignKey(nameof(SubjectId))]
+    [InverseProperty(nameof(Subject.StudentSubjects))]
     public virtual Subject Subject { get; set; }
 }
