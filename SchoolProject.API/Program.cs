@@ -38,6 +38,20 @@ namespace SchoolProject.API
                 .AddCoreDependencies();
             #endregion
 
+            #region CORS Configuration
+            // 1. Add CORS services to the container
+            // We create a policy named "AllowAll"
+            builder.Services.AddCors(options =>
+            {
+                options.AddPolicy("AllowAll", policy =>
+                {
+                    policy.WithOrigins()
+                          .AllowAnyHeader() 
+                          .AllowAnyMethod();
+                });
+            });
+            #endregion
+
             // Add services to the container.
 
             builder.Services.AddControllers();
@@ -49,6 +63,11 @@ namespace SchoolProject.API
 
             var app = builder.Build();
 
+            // 2. Apply the CORS middleware
+            // VERY IMPORTANT: This must go BEFORE app.UseAuthorization() and app.MapControllers()
+            app.UseCors("AllowSpecificOrigins");
+            
+            
             // Use Custom MiddleWares
             app.UseMiddleware<ErrorHandlerMiddleware>();
 

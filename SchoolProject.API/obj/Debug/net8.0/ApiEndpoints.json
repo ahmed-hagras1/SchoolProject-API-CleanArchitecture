@@ -1,8 +1,54 @@
 [
   {
+    "ContainingType": "SchoolProject.API.Controllers.DepartmentController",
+    "Method": "GetDepartmentByIdAsync",
+    "RelativePath": "Api/V1/Department/GetById",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "Id",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "StudentPageNumber",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "StudentPageSize",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "StudentSearch",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "StudentOrderBy",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "SchoolProject.API.Controllers.DepartmentController",
+    "Method": "GetDepartmentsListAsync",
+    "RelativePath": "Api/V1/Department/List",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "SchoolProject.API.Controllers.StudentController",
     "Method": "GetStudentById",
-    "RelativePath": "api/Student/Api/V1/Student/{id}",
+    "RelativePath": "Api/V1/Student/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -18,7 +64,7 @@
   {
     "ContainingType": "SchoolProject.API.Controllers.StudentController",
     "Method": "AddStudentAsync",
-    "RelativePath": "api/Student/Api/V1/Student/Add",
+    "RelativePath": "Api/V1/Student/Add",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -34,7 +80,7 @@
   {
     "ContainingType": "SchoolProject.API.Controllers.StudentController",
     "Method": "DeleteStudentByIdAsync",
-    "RelativePath": "api/Student/Api/V1/Student/Delete/{id}",
+    "RelativePath": "Api/V1/Student/Delete/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -50,7 +96,7 @@
   {
     "ContainingType": "SchoolProject.API.Controllers.StudentController",
     "Method": "GetStudentsListAsync",
-    "RelativePath": "api/Student/Api/V1/Student/List",
+    "RelativePath": "Api/V1/Student/List",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -60,7 +106,7 @@
   {
     "ContainingType": "SchoolProject.API.Controllers.StudentController",
     "Method": "GetStudentsPaginatedAsync",
-    "RelativePath": "api/Student/Api/V1/Student/Paginated",
+    "RelativePath": "Api/V1/Student/Paginated",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -91,7 +137,7 @@
   {
     "ContainingType": "SchoolProject.API.Controllers.StudentController",
     "Method": "UpdateStudentAsync",
-    "RelativePath": "api/Student/Api/V1/Student/Update",
+    "RelativePath": "Api/V1/Student/Update",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,

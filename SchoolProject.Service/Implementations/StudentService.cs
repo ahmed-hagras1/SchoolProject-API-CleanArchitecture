@@ -83,6 +83,11 @@ namespace SchoolProject.Service.Implementations
             return "Success";
         }
 
+        public IQueryable<Student> FilterStudentsByDepartmentIdPaginatedQueryable(int departmentId, string search = null, StudentOrderingEnum orderBy = StudentOrderingEnum.StudentId)
+        {
+            return _studentRepository.FilterStudentsByDepartmentIdPaginatedQueryable(departmentId, search, orderBy);
+        }
+
 
 
 

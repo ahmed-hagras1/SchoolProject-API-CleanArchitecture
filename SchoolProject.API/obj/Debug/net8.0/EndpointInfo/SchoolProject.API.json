@@ -5,7 +5,71 @@
     "version": "1.0"
   },
   "paths": {
-    "/api/Student/Api/V1/Student/List": {
+    "/Api/V1/Department/List": {
+      "get": {
+        "tags": [
+          "Department"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Api/V1/Department/GetById": {
+      "get": {
+        "tags": [
+          "Department"
+        ],
+        "parameters": [
+          {
+            "name": "Id",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "StudentPageNumber",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "StudentPageSize",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "StudentSearch",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "StudentOrderBy",
+            "in": "query",
+            "schema": {
+              "$ref": "#/components/schemas/StudentOrderingEnum"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/Api/V1/Student/List": {
       "get": {
         "tags": [
           "Student"
@@ -17,7 +81,7 @@
         }
       }
     },
-    "/api/Student/Api/V1/Student/Paginated": {
+    "/Api/V1/Student/Paginated": {
       "get": {
         "tags": [
           "Student"
@@ -61,7 +125,7 @@
         }
       }
     },
-    "/api/Student/Api/V1/Student/{id}": {
+    "/Api/V1/Student/{id}": {
       "get": {
         "tags": [
           "Student"
@@ -84,7 +148,7 @@
         }
       }
     },
-    "/api/Student/Api/V1/Student/Add": {
+    "/Api/V1/Student/Add": {
       "post": {
         "tags": [
           "Student"
@@ -115,7 +179,7 @@
         }
       }
     },
-    "/api/Student/Api/V1/Student/Update": {
+    "/Api/V1/Student/Update": {
       "put": {
         "tags": [
           "Student"
@@ -146,7 +210,7 @@
         }
       }
     },
-    "/api/Student/Api/V1/Student/Delete/{id}": {
+    "/Api/V1/Student/Delete/{id}": {
       "delete": {
         "tags": [
           "Student"

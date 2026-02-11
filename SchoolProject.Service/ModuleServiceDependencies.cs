@@ -11,6 +11,7 @@ public static class ModuleServiceDependencies
         // Register your Services here
         // "Scoped" is usually best for Services (Created once per request)
         services.AddScoped<IStudentService, StudentService>();
+        services.AddScoped<IDepartmentService, DepartmentService>();
 
         // If you have more services later, add them here:
         // services.AddScoped<ITeacherService, TeacherService>();

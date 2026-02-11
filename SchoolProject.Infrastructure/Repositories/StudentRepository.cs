@@ -106,6 +106,39 @@ namespace SchoolProject.Infrastructure.Repositories
             return await _students.AnyAsync(x => x.StudId == studentId);
         }
 
+        public IQueryable<Student> FilterStudentsByDepartmentIdPaginatedQueryable(int departmentId, string search = null, StudentOrderingEnum orderBy = StudentOrderingEnum.StudentId)
+        {
+            var queryable = _students.AsNoTracking().Where(s => s.DeptId == departmentId).AsQueryable();
+            if (!string.IsNullOrEmpty(search))
+            {
+                queryable = queryable.Where(x => x.Name.Contains(search) || x.Address.Contains(search));
+            }
+
+            switch (orderBy)
+            {
+                case StudentOrderingEnum.None:
+                    queryable = queryable.OrderBy(x => x.StudId);
+                    break;
+                case StudentOrderingEnum.StudentId:
+                    queryable = queryable.OrderBy(x => x.StudId);
+                    break;
+                case StudentOrderingEnum.StudentName:
+                    queryable = queryable.OrderBy(x => x.Name);
+                    break;
+                case StudentOrderingEnum.StudentAddress:
+                    queryable = queryable.OrderBy(x => x.Address);
+                    break;
+                case StudentOrderingEnum.DepartmentName:
+                    queryable = queryable.OrderBy(x => x.Department.DeptName);
+                    break;
+                default:
+                    queryable = queryable.OrderBy(x => x.StudId);
+                    break;
+            }
+
+            return queryable;
+        }
+
 
 
 

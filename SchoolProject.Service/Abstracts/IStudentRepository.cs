@@ -17,6 +17,7 @@ namespace SchoolProject.Service.Abstracts
         Task<bool> IsStudentIdExist(int studentId);
         public IQueryable<Student> GetStudentsQueryable();
         public IQueryable<Student> FilterStudentsPaginatedQueryable(string search = null, StudentOrderingEnum orderBy = StudentOrderingEnum.StudentId);
+        public IQueryable<Student> FilterStudentsByDepartmentIdPaginatedQueryable(int departmentId, string search = null, StudentOrderingEnum orderBy = StudentOrderingEnum.StudentId);
 
     }
 }
