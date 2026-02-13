@@ -162,4 +162,7 @@
   <data name="Phone" xml:space="preserve">
     <value>رقم الهاتف</value>
   </data>
+  <data name="DepartmentIsNotExist" xml:space="preserve">
+    <value>هذا القسم غير موجود.</value>
+  </data>
 </root>

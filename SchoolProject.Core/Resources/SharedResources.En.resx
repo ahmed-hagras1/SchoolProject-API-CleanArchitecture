@@ -162,4 +162,7 @@
   <data name="Phone" xml:space="preserve">
     <value>Phone</value>
   </data>
+  <data name="DepartmentIsNotExist" xml:space="preserve">
+    <value>This Department Not Exist.</value>
+  </data>
 </root>

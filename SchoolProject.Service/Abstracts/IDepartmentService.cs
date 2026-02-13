@@ -11,5 +11,6 @@ namespace SchoolProject.Service.Abstracts
     {
         public Task<List<Department>> GetDepartmentsListAsync();
         public Task<Department> GetDepartmentsByIdWithIncludeAsync(int departmentId);
+        public Task<bool> IsDepartmentExist(int? departmentId);
     }
 }

@@ -20,5 +20,6 @@ namespace SchoolProject.Core.Resources
         public const string MaximumLength = "MaximumLength";
         public const string SelectValidOne = "SelectValidOne";
         public const string AlreadyExist = "AlreadyExist";
+        public const string DepartmentIsNotExist = "DepartmentIsNotExist";
     }
 }

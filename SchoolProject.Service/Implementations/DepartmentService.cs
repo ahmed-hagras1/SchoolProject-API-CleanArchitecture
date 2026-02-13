@@ -30,6 +30,8 @@ namespace SchoolProject.Service.Implementations
         {
             return await _departmentRepository.GetDepartmentsByIdWithIncludeAsync(departmentId);
         }
+
+        public Task<bool> IsDepartmentExist(int? departmentId) => _departmentRepository.IsDepartmentExist(departmentId);
         #endregion
     }
 }

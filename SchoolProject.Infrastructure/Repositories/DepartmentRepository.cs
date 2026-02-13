@@ -45,6 +45,8 @@ namespace SchoolProject.Infrastructure.Repositories
                 .AsSplitQuery()  // <--- Very Important for multiple Includes
                 .AsNoTracking()
                 .FirstOrDefaultAsync(x => x.DeptId == departmentId);
+
+        public async Task<bool> IsDepartmentExist(int? departmentId) => await _departments.AnyAsync(x => x.DeptId == departmentId);
         #endregion
     }
 }

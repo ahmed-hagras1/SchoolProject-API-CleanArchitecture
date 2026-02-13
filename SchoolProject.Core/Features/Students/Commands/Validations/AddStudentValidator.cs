@@ -16,13 +16,15 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
     {
         #region Fields
         private readonly IStudentService _studentService;
+        private readonly IDepartmentService _departmentService;
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
         #endregion
 
         #region Constructor
-        public AddStudentValidator( IStudentService studentService, IStringLocalizer<SharedResources> stringLocalizer)
+        public AddStudentValidator( IStudentService studentService, IDepartmentService departmentService, IStringLocalizer<SharedResources> stringLocalizer)
         {
             _studentService = studentService;
+            _departmentService = departmentService;
             _stringLocalizer = stringLocalizer;
 
             ApplyValidationRules();
@@ -52,6 +54,14 @@ namespace SchoolProject.Core.Features.Students.Commands.Validations
             RuleFor(x => x.Name)
                 .MustAsync(async (name, cancellationToken) => !await _studentService.IsNameExistExcludeSelf(name))
                 .WithMessage(_stringLocalizer[SharedResourcesKeys.AlreadyExist]);
+
+            // Do not execute the rules inside these brackets => {} unless DepartmentId is not null.
+            When(d => d.DepartmentId != null, () =>
+            {
+                RuleFor(x => x.DepartmentId)
+                    .MustAsync(async (deptId, cancellationToken) => await _departmentService.IsDepartmentExist(deptId))
+                    .WithMessage(_stringLocalizer[SharedResourcesKeys.DepartmentIsNotExist]);
+            });
         }
         #endregion
     }
