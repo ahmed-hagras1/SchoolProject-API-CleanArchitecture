@@ -6,7 +6,7 @@ using SchoolProject.Infrastructure.InfrastructureBases;
 using SchoolProject.Infrastructure.Repositories;
 using SchoolProject.Service.Abstracts;
 
-namespace SchoolProject.Infrastructure;
+namespace SchoolProject.Infrastructure.Dependencies;
 
 public static class ModuleInfrastructureDependencies
 {

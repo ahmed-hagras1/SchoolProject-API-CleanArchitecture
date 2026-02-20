@@ -165,4 +165,19 @@
   <data name="DepartmentIsNotExist" xml:space="preserve">
     <value>This Department Not Exist.</value>
   </data>
+  <data name="PasswordsDoNotMatch" xml:space="preserve">
+    <value>The password and confirmation password do not match.</value>
+  </data>
+  <data name="MinimumLength" xml:space="preserve">
+    <value>This field must be at least characters  Specific long.</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>Please enter a valid email address.</value>
+  </data>
+  <data name="EmailIsAlreadyExist" xml:space="preserve">
+    <value>This email is already registered.</value>
+  </data>
+  <data name="FailedToAddUser" xml:space="preserve">
+    <value>Failed to register the user. Please try again.</value>
+  </data>
 </root>
