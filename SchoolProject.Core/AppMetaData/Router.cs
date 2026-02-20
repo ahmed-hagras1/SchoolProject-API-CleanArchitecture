@@ -36,6 +36,8 @@ namespace SchoolProject.Core.AppMetaData
         {
             public const string Prefix = Rule + "ApplicationUser";
             public const string Add = Prefix + "/Add";
+            public const string GetPaginatedList = Prefix + "/GetPaginatedList";
+            public const string GetUserById = Prefix + SignleRoute;
         }
     }
 }
