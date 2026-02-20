@@ -1,5 +1,8 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using SchoolProject.Data.Entities;
+using SchoolProject.Data.Entities.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,7 +12,16 @@ using System.Threading.Tasks;
 
 namespace SchoolProject.Infrastructure.Data;
 
-public class AppDbContext : DbContext
+public class AppDbContext : IdentityDbContext<
+        User,                           // 1. TUser: Your custom user class
+        IdentityRole<int>,              // 2. TRole: The role class with an int key
+        int,                            // 3. TKey: The primary key type for all tables
+        IdentityUserClaim<int>,         // 4. TUserClaim
+        IdentityUserRole<int>,          // 5. TUserRole
+        IdentityUserLogin<int>,         // 6. TUserLogin
+        IdentityRoleClaim<int>,         // 7. TRoleClaim
+        IdentityUserToken<int>          // 8. TUserToken
+    >
 {
     public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
     {
@@ -20,6 +32,8 @@ public class AppDbContext : DbContext
     public DbSet<Subject> Subjects { get; set; }
     public DbSet<DepartmentSubject> DepartmentSubjects { get; set; }
     public DbSet<StudentSubject> StudentSubjects { get; set; }
+    public DbSet<User> Users { get; set; }
+    
     
     // Fluent API.
     protected override void OnModelCreating(ModelBuilder modelBuilder)

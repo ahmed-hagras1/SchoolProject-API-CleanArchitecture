@@ -165,4 +165,19 @@
   <data name="DepartmentIsNotExist" xml:space="preserve">
     <value>هذا القسم غير موجود.</value>
   </data>
+  <data name="PasswordsDoNotMatch" xml:space="preserve">
+    <value>كلمة المرور وتأكيد كلمة المرور غير متطابقين.</value>
+  </data>
+  <data name="MinimumLength" xml:space="preserve">
+    <value>جب ألا يقل طول هذا الحقل عن  أحرف معينه.</value>
+  </data>
+  <data name="InvalidEmail" xml:space="preserve">
+    <value>يرجى إدخال بريد إلكتروني صحيح.</value>
+  </data>
+  <data name="EmailIsAlreadyExist" xml:space="preserve">
+    <value>البريد الإلكتروني مسجل بالفعل.</value>
+  </data>
+  <data name="FailedToAddUser" xml:space="preserve">
+    <value>فشلت عملية إضافة المستخدم. يرجى المحاولة مرة أخرى.</value>
+  </data>
 </root>

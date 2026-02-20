@@ -21,5 +21,10 @@ namespace SchoolProject.Core.Resources
         public const string SelectValidOne = "SelectValidOne";
         public const string AlreadyExist = "AlreadyExist";
         public const string DepartmentIsNotExist = "DepartmentIsNotExist";
+        public const string PasswordsDoNotMatch = "PasswordsDoNotMatch";
+        public const string MinimumLength = "MinimumLength";
+        public const string InvalidEmail = "InvalidEmail";
+        public const string EmailIsAlreadyExist = "EmailIsAlreadyExist";
+        public const string FailedToAddUser = "FailedToAddUser";
     }
 }

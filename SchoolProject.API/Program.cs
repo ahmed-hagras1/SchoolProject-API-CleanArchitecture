@@ -3,8 +3,8 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using SchoolProject.API.MiddleWares;
 using SchoolProject.Core;
-using SchoolProject.Infrastructure;
 using SchoolProject.Infrastructure.Data;
+using SchoolProject.Infrastructure.Dependencies;
 using SchoolProject.Service;
 using System.Globalization;
 
@@ -35,7 +35,8 @@ namespace SchoolProject.API
             // and core dependencies.
             builder.Services.AddInfrastructureDependencies(builder.Configuration)
                 .AddServiceDependencies()
-                .AddCoreDependencies();
+                .AddCoreDependencies()
+                .AddIdentityDependencies(builder.Configuration);
             #endregion
 
             #region CORS Configuration
