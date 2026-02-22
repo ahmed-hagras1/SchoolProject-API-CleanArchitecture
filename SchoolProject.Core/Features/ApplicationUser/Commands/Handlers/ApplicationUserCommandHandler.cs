@@ -17,7 +17,8 @@ namespace SchoolProject.Core.Features.ApplicationUser.Commands.Handlers
 {
     public class ApplicationUserCommandHandler : ResponseHandler,
         IRequestHandler<AddApplicationUserCommand, Response<string>>,
-        IRequestHandler<UpdateApplicationUserCommand, Response<string>>
+        IRequestHandler<UpdateApplicationUserCommand, Response<string>>,
+        IRequestHandler<DeleteApplicationUserCommand, Response<string>>
     {
         #region Fields
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
@@ -68,6 +69,15 @@ namespace SchoolProject.Core.Features.ApplicationUser.Commands.Handlers
             if(!result.Succeeded) return BadRequest<string>(_stringLocalizer.GetString(SharedResourcesKeys.UpdateFailed));
             // Message.
             return Success<string>(_stringLocalizer[SharedResourcesKeys.Success]);
+        }
+
+        public async Task<Response<string>> Handle(DeleteApplicationUserCommand request, CancellationToken cancellationToken)
+        {
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == request.Id);
+            if (user == null) return NotFound<string>(_stringLocalizer[SharedResourcesKeys.NotFound]);
+            var result = await _userManager.DeleteAsync(user);
+            if (!result.Succeeded) return BadRequest<string>(_stringLocalizer.GetString(SharedResourcesKeys.DeleteFailed));
+            return Deleted<string>(_stringLocalizer[SharedResourcesKeys.Deleted]);
         }
         #endregion
 

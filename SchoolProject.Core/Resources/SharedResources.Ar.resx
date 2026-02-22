@@ -183,4 +183,7 @@
   <data name="UpdateFailed" xml:space="preserve">
     <value>فشلت عملية التحديث. يرجى المحاولة مرة أخرى.</value>
   </data>
+  <data name="DeleteFailed" xml:space="preserve">
+    <value>فشلت عملية الحذف. يرجى المحاولة مرة أخرى.</value>
+  </data>
 </root>
