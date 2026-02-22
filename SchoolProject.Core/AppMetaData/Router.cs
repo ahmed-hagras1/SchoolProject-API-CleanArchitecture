@@ -40,6 +40,7 @@ namespace SchoolProject.Core.AppMetaData
             public const string GetUserById = Prefix + SignleRoute;
             public const string Update = Prefix + "/Update";
             public const string Delete = Prefix + "/Delete" + SignleRoute;
+            public const string ChangePassword = Prefix + "/ChangePassword";
         }
     }
 }

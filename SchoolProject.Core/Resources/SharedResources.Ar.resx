@@ -186,4 +186,7 @@
   <data name="DeleteFailed" xml:space="preserve">
     <value>فشلت عملية الحذف. يرجى المحاولة مرة أخرى.</value>
   </data>
+  <data name="ChangePasswordFailed" xml:space="preserve">
+    <value>فشلت عملية تغيير كلمة المرور. يرجى المحاولة مرة أخرى.</value>
+  </data>
 </root>
