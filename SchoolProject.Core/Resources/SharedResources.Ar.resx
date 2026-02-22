@@ -180,4 +180,13 @@
   <data name="FailedToAddUser" xml:space="preserve">
     <value>فشلت عملية إضافة المستخدم. يرجى المحاولة مرة أخرى.</value>
   </data>
+  <data name="UpdateFailed" xml:space="preserve">
+    <value>فشلت عملية التحديث. يرجى المحاولة مرة أخرى.</value>
+  </data>
+  <data name="DeleteFailed" xml:space="preserve">
+    <value>فشلت عملية الحذف. يرجى المحاولة مرة أخرى.</value>
+  </data>
+  <data name="ChangePasswordFailed" xml:space="preserve">
+    <value>فشلت عملية تغيير كلمة المرور. يرجى المحاولة مرة أخرى.</value>
+  </data>
 </root>

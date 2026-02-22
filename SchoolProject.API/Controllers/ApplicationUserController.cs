@@ -32,5 +32,21 @@ namespace SchoolProject.API.Controllers
             //return Ok(response);
 
         }
+        [HttpPut(Router.ApplicationUserRouting.Update)]
+        public async Task<IActionResult> UpdateApplicationUser([FromBody] UpdateApplicationUserCommand command)
+        {
+            return NewResult(await Mediator.Send(command));
+        }
+        [HttpDelete(Router.ApplicationUserRouting.Delete)]
+        public async Task<IActionResult> DeleteApplicationUser([FromRoute] int id)
+        {
+            return NewResult(await Mediator.Send(new DeleteApplicationUserCommand(id)));
+        }
+        [HttpPut(Router.ApplicationUserRouting.ChangePassword)]
+        public async Task<IActionResult> ChangeUserPassword([FromBody] ChangeUserPasswordCommand command)
+        {
+            return NewResult(await Mediator.Send(command));
+
+        }
     }
 }

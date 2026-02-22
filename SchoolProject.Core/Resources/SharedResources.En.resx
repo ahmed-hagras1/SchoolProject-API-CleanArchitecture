@@ -180,4 +180,13 @@
   <data name="FailedToAddUser" xml:space="preserve">
     <value>Failed to register the user. Please try again.</value>
   </data>
+  <data name="UpdateFailed" xml:space="preserve">
+    <value>Failed to update data. Please try again.</value>
+  </data>
+  <data name="DeleteFailed" xml:space="preserve">
+    <value>Failed to delete data. Please try again.</value>
+  </data>
+  <data name="ChangePasswordFailed" xml:space="preserve">
+    <value>Failed to change the password. Please try again.</value>
+  </data>
 </root>
