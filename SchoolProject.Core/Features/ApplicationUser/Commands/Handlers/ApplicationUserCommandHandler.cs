@@ -1,6 +1,7 @@
 ﻿using AutoMapper;
 using MediatR;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
 using SchoolProject.Core.Bases;
 using SchoolProject.Core.Features.ApplicationUser.Commands.Models;
@@ -15,7 +16,8 @@ using System.Threading.Tasks;
 namespace SchoolProject.Core.Features.ApplicationUser.Commands.Handlers
 {
     public class ApplicationUserCommandHandler : ResponseHandler,
-        IRequestHandler<AddApplicationUserCommand, Response<string>>
+        IRequestHandler<AddApplicationUserCommand, Response<string>>,
+        IRequestHandler<UpdateApplicationUserCommand, Response<string>>
     {
         #region Fields
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
@@ -50,6 +52,22 @@ namespace SchoolProject.Core.Features.ApplicationUser.Commands.Handlers
             if (result.Succeeded) return Created("Added successfully");
             // else return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.FailedToAddUser]);
             else return BadRequest<string>(result.Errors.FirstOrDefault().Description);
+        }
+
+        public async Task<Response<string>> Handle(UpdateApplicationUserCommand request, CancellationToken cancellationToken)
+        {
+            // Check if user is exist.
+            var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == request.Id);
+            // Not Fount.
+            if (user == null) return NotFound<string>(_stringLocalizer[SharedResourcesKeys.NotFound]);
+            // Mapping.
+           _mapper.Map(request,user);
+            // Update.
+            var result = await _userManager.UpdateAsync(user);
+            // Check if it failed.
+            if(!result.Succeeded) return BadRequest<string>(_stringLocalizer.GetString(SharedResourcesKeys.UpdateFailed));
+            // Message.
+            return Success<string>(_stringLocalizer[SharedResourcesKeys.Success]);
         }
         #endregion
 

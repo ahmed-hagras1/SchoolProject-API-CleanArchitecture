@@ -32,5 +32,11 @@ namespace SchoolProject.API.Controllers
             //return Ok(response);
 
         }
+        [HttpPut(Router.ApplicationUserRouting.Update)]
+        public async Task<IActionResult> UpdateApplicationUser([FromBody] UpdateApplicationUserCommand command)
+        {
+            return NewResult(await Mediator.Send(command));
+        }
+
     }
 }
