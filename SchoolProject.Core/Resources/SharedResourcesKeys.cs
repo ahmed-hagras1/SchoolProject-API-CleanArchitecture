@@ -29,5 +29,7 @@ namespace SchoolProject.Core.Resources
         public const string UpdateFailed = "UpdateFailed";
         public const string DeleteFailed = "DeleteFailed";
         public const string ChangePasswordFailed = "ChangePasswordFailed";
+        public const string UserNotFound = "UserNotFound";
+        public const string InvalidPassword = "InvalidPassword";
     }
 }

@@ -1,7 +1,10 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authentication.JwtBearer;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using Microsoft.IdentityModel.Tokens;
 using SchoolProject.Data.Entities.Identity;
+using SchoolProject.Data.Helpers;
 using SchoolProject.Infrastructure.Data;
 using System;
 using System.Collections.Generic;
@@ -25,6 +28,39 @@ namespace SchoolProject.Infrastructure.Dependencies
                 options.Password.RequiredUniqueChars = 1;
             })
             .AddEntityFrameworkStores<AppDbContext>();
+
+            // Bind the JWTSettings class for Dependency Injection (IOptions)
+            var jwtSection = configuration.GetSection("JwtSettings");
+            services.Configure<JWTSettings>(jwtSection);
+
+            // Extract the settings to configure the JWT Middleware directly
+            var jwtSettings = jwtSection.Get<JWTSettings>();
+
+            // Configure Authentication & JWT Bearer validation
+            services.AddAuthentication(options =>
+            {
+                options.DefaultAuthenticateScheme = JwtBearerDefaults.AuthenticationScheme;
+                options.DefaultChallengeScheme = JwtBearerDefaults.AuthenticationScheme;
+            })
+            .AddJwtBearer(options =>
+            {
+                options.RequireHttpsMetadata = false; // Set to true in Production
+                options.SaveToken = true;
+                options.TokenValidationParameters = new TokenValidationParameters
+                {
+                    ValidateIssuerSigningKey = jwtSettings.ValidateIssuerSigningKey,
+                    IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(jwtSettings.Key)),
+
+                    ValidateIssuer = jwtSettings.ValidateIssuer,
+                    ValidIssuer = jwtSettings.Issuer,
+
+                    ValidateAudience = jwtSettings.ValidateAudience,
+                    ValidAudience = jwtSettings.Audience,
+
+                    ValidateLifetime = jwtSettings.ValidateLifetime,
+                    ClockSkew = TimeSpan.Zero // Removes the default 5-minute grace period on token expiration
+                };
+            });
 
             return services;
         }
