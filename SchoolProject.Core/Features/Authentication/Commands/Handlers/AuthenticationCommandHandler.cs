@@ -22,7 +22,9 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
 {
     public class AuthenticationCommandHandler : ResponseHandler,
         IRequestHandler<SignInCommand, Response<JWTAuthResult>>,
-        IRequestHandler<RefreshTokenCommand, Response<JWTAuthResult>>
+        IRequestHandler<RefreshTokenCommand, Response<JWTAuthResult>>,
+        IRequestHandler<LogoutCommand, Response<string>>
+
     {
         #region Fields
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
@@ -97,6 +99,27 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
             {
                 // 4. Catch any other unexpected system errors
                 return BadRequest<JWTAuthResult>("An error occurred while refreshing the token: " + ex.Message);
+            }
+        }
+
+        public async Task<Response<string>> Handle(LogoutCommand request, CancellationToken cancellationToken)
+        {
+            try
+            {
+                // 1. Call the service to revoke the token
+                var resultKey = await _authenticationService.RevokeRefreshToken(request.AccessToken);
+
+                // 2. Return the localized success message
+                return Success<string>(_stringLocalizer[resultKey]);
+            }
+            catch (SecurityTokenException ex)
+            {
+                // 3. Translate the specific security error (like "TokenIsInvalid")
+                return Unauthorized<string>(_stringLocalizer[ex.Message]);
+            }
+            catch (Exception ex)
+            {
+                return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.BadRequest] + " : " + ex.Message);
             }
         }
         #endregion

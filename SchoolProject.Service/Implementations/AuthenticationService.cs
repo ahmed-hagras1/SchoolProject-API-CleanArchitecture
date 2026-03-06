@@ -242,6 +242,28 @@ namespace SchoolProject.Service.Implementations
             // 3. Return the extracted JTI
             return Task.FromResult(jti);
         }
+
+        public async Task<string> RevokeRefreshToken(string accessToken)
+        {
+            // 1. Extract the JTI from the currently provided Access Token
+            var jti = await ValidateToken(accessToken);
+
+            // 2. Find the matching session in the database
+            var userRefreshToken = await _RefreshTokenRepository.GetTableNoTracking()
+                .FirstOrDefaultAsync(x => x.JWTId == jti);
+
+            // 3. If it doesn't exist, they are already logged out. Return success!
+            if (userRefreshToken == null)
+            {
+                return "LoggedOutSuccessfully";
+            }
+
+            // 4. Revoke the token to kill the session permanently
+            userRefreshToken.IsRevoked = true;
+            await _RefreshTokenRepository.UpdateAsync(userRefreshToken);
+
+            return "LoggedOutSuccessfully"; // We will add this key to your localization files
+        }
         #endregion
     }
 }

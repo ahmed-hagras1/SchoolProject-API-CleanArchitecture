@@ -216,4 +216,7 @@
   <data name="JtiClaimMissing" xml:space="preserve">
     <value>Invalid token: JTI claim is missing.</value>
   </data>
+  <data name="LoggedOutSuccessfully" xml:space="preserve">
+    <value>Logged out successfully.</value>
+  </data>
 </root>

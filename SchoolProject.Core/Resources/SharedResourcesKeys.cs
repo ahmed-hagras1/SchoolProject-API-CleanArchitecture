@@ -38,5 +38,6 @@ namespace SchoolProject.Core.Resources
         public const string RefreshTokenExpired = "RefreshTokenExpired";
         public const string RefreshTokenNotFound = "RefreshTokenNotFound";
         public const string TokenClaimsMissing = "TokenClaimsMissing";
+        public const string LoggedOutSuccessfully = "LoggedOutSuccessfully";
     }
 }

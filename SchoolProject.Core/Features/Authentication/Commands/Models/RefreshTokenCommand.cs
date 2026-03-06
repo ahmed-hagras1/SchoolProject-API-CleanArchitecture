@@ -11,7 +11,7 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Models
 {
     public class RefreshTokenCommand : IRequest<Response<JWTAuthResult>>
     {
-        public string? AccessToken { get; set; }
-        public string? RefreshToken { get; set; }
+        public string AccessToken { get; set; }
+        public string RefreshToken { get; set; }
     }
 }

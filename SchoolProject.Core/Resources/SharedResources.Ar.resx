@@ -216,4 +216,7 @@
   <data name="JtiClaimMissing" xml:space="preserve">
     <value>التوكن غير صالح: المُعرف الفريد (JTI) مفقود</value>
   </data>
+  <data name="LoggedOutSuccessfully" xml:space="preserve">
+    <value>تم تسجيل الخروج بنجاح.</value>
+  </data>
 </root>

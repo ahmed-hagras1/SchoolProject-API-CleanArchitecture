@@ -14,6 +14,6 @@ namespace SchoolProject.Service.Abstracts
         public Task<JWTAuthResult> GetJWTToken(User user);
         public Task<JWTAuthResult> GetRefreshToken(string accessToken, string refreshToken);
         public Task<string> ValidateToken(string accessToken);
-
+        Task<string> RevokeRefreshToken(string accessToken);
     }
 }

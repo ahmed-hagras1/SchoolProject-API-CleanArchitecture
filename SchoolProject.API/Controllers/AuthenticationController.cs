@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SchoolProject.API.Base;
 using SchoolProject.Core.Features.Authentication.Commands.Models;
@@ -29,6 +31,40 @@ namespace SchoolProject.API.Controllers
             if (response.Succeeded)
             {
                 return NewResult(response);
+            }
+
+            return BadRequest(response);
+        }
+        [HttpPost(Route.AuthenticationRouting.Logout)]
+        [Authorize] // 1. This ensures only logged-in users can access this endpoint
+        public async Task<IActionResult> Logout()
+        {
+            // 2. Automatically extract the token from the "Authorization: Bearer <token>" header
+            var accessToken = await HttpContext.GetTokenAsync("access_token");
+
+            // Fallback: If GetTokenAsync doesn't find it, extract it manually from the header
+            if (string.IsNullOrEmpty(accessToken))
+            {
+                var authHeader = Request.Headers["Authorization"].FirstOrDefault();
+                accessToken = authHeader?.Replace("Bearer ", "").Trim();
+            }
+
+            // 3. Send it to your MediatR Command Handler
+            var command = new LogoutCommand
+            {
+                AccessToken = accessToken
+            };
+
+            var response = await Mediator.Send(command);
+
+            // 4. Return the standardized response based on the status code
+            if (response.StatusCode == System.Net.HttpStatusCode.OK)
+            {
+                return Ok(response);
+            }
+            else if (response.StatusCode == System.Net.HttpStatusCode.Unauthorized)
+            {
+                return Unauthorized(response);
             }
 
             return BadRequest(response);
