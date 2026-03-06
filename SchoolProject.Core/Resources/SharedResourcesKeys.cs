@@ -29,5 +29,15 @@ namespace SchoolProject.Core.Resources
         public const string UpdateFailed = "UpdateFailed";
         public const string DeleteFailed = "DeleteFailed";
         public const string ChangePasswordFailed = "ChangePasswordFailed";
+        public const string UserNotFound = "UserNotFound";
+        public const string InvalidPassword = "InvalidPassword";
+        public const string JtiClaimMissing = "JtiClaimMissing";
+        public const string TokenIsInvalid = "TokenIsInvalid";
+        public const string AlgorithmIsInvalid = "AlgorithmIsInvalid";
+        public const string RefreshTokenRevoked = "RefreshTokenRevoked";
+        public const string RefreshTokenExpired = "RefreshTokenExpired";
+        public const string RefreshTokenNotFound = "RefreshTokenNotFound";
+        public const string TokenClaimsMissing = "TokenClaimsMissing";
+        public const string LoggedOutSuccessfully = "LoggedOutSuccessfully";
     }
 }

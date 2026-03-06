@@ -42,5 +42,14 @@ namespace SchoolProject.Core.AppMetaData
             public const string Delete = Prefix + "/Delete" + SignleRoute;
             public const string ChangePassword = Prefix + "/ChangePassword";
         }
+        public static class AuthenticationRouting
+        {
+            public const string Prefix = Rule + "Authentication";
+            public const string SignIn = Prefix + "/SignIn";
+            public const string RefreshToken = Prefix + "/RefreshToken";
+            public const string Logout = Prefix + "/Logout";
+
+
+        }
     }
 }

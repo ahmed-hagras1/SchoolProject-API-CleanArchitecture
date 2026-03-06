@@ -25,6 +25,7 @@ public static class ModuleInfrastructureDependencies
         services.AddScoped<IDepartmentRepository, DepartmentRepository>();
         services.AddScoped<ISubjectRepository, SubjectRepository>();
         services.AddScoped<IInstructorRepository, InstructorRepository>();
+        services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
 
         // Register Generic Repository
         services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));

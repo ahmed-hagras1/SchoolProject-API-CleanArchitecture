@@ -33,6 +33,7 @@ public class AppDbContext : IdentityDbContext<
     public DbSet<DepartmentSubject> DepartmentSubjects { get; set; }
     public DbSet<StudentSubject> StudentSubjects { get; set; }
     public DbSet<User> Users { get; set; }
+    public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
     
     
     // Fluent API.

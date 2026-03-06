@@ -97,6 +97,8 @@ namespace SchoolProject.API
 
             app.UseHttpsRedirection();
 
+
+            app.UseAuthentication();
             app.UseAuthorization();
 
 

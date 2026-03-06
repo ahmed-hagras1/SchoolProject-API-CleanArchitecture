@@ -189,4 +189,34 @@
   <data name="ChangePasswordFailed" xml:space="preserve">
     <value>Failed to change the password. Please try again.</value>
   </data>
+  <data name="UserNotFound" xml:space="preserve">
+    <value>The user could not be found.</value>
+  </data>
+  <data name="InvalidPassword" xml:space="preserve">
+    <value>The password is incorrect.</value>
+  </data>
+  <data name="TokenClaimsMissing" xml:space="preserve">
+    <value>Invalid token: Required claims are missing.</value>
+  </data>
+  <data name="RefreshTokenNotFound" xml:space="preserve">
+    <value>Refresh token does not exist.</value>
+  </data>
+  <data name="RefreshTokenExpired" xml:space="preserve">
+    <value>Refresh token is expired. It has been revoked. Please log in again.</value>
+  </data>
+  <data name="RefreshTokenRevoked" xml:space="preserve">
+    <value>Refresh token is already used or revoked.</value>
+  </data>
+  <data name="AlgorithmIsInvalid" xml:space="preserve">
+    <value>Invalid token algorithm.</value>
+  </data>
+  <data name="TokenIsInvalid" xml:space="preserve">
+    <value>Invalid or tampered token.</value>
+  </data>
+  <data name="JtiClaimMissing" xml:space="preserve">
+    <value>Invalid token: JTI claim is missing.</value>
+  </data>
+  <data name="LoggedOutSuccessfully" xml:space="preserve">
+    <value>Logged out successfully.</value>
+  </data>
 </root>
