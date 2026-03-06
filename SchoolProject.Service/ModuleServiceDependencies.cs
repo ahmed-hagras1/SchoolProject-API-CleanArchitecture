@@ -1,5 +1,6 @@
 ﻿using Microsoft.Extensions.DependencyInjection;
 using SchoolProject.Service.Abstracts;
+using SchoolProject.Service.BackgroundServices;
 using SchoolProject.Service.Implementations;
 
 namespace SchoolProject.Service;
@@ -13,6 +14,9 @@ public static class ModuleServiceDependencies
         services.AddScoped<IStudentService, StudentService>();
         services.AddScoped<IDepartmentService, DepartmentService>();
         services.AddScoped<IAuthenticationService, AuthenticationService>();
+
+        // Register the RefreshTokenCleanupService as a Hosted Service (Background Service)
+        services.AddHostedService<RefreshTokenCleanupService>();
 
         // If you have more services later, add them here:
         // services.AddScoped<ITeacherService, TeacherService>();

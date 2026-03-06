@@ -7,6 +7,7 @@ using SchoolProject.Data.Entities.Identity;
 using SchoolProject.Data.Helpers;
 using SchoolProject.Infrastructure.Data;
 using System;
+using System.Collections.Concurrent;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -61,6 +62,8 @@ namespace SchoolProject.Infrastructure.Dependencies
                     ClockSkew = TimeSpan.Zero // Removes the default 5-minute grace period on token expiration
                 };
             });
+
+            services.AddSingleton<ConcurrentDictionary<string, RefreshToken>>();
 
             return services;
         }

@@ -195,4 +195,25 @@
   <data name="InvalidPassword" xml:space="preserve">
     <value>كلمة المرور غير صحيحة.</value>
   </data>
+  <data name="TokenClaimsMissing" xml:space="preserve">
+    <value>التوكن غير صالح: البيانات المطلوبة مفقودة.</value>
+  </data>
+  <data name="RefreshTokenNotFound" xml:space="preserve">
+    <value>رمز التجديد (Refresh Token) غير موجود.</value>
+  </data>
+  <data name="RefreshTokenExpired" xml:space="preserve">
+    <value>انتهت صلاحية رمز التجديد وتم إبطاله. يرجى تسجيل الدخول مرة أخرى.</value>
+  </data>
+  <data name="RefreshTokenRevoked" xml:space="preserve">
+    <value>رمز التجديد مستخدم بالفعل أو تم إبطاله</value>
+  </data>
+  <data name="AlgorithmIsInvalid" xml:space="preserve">
+    <value>خوارزمية التشفير الخاصة بالتوكن غير صالحة</value>
+  </data>
+  <data name="TokenIsInvalid" xml:space="preserve">
+    <value>التوكن غير صالح أو تم التلاعب به.</value>
+  </data>
+  <data name="JtiClaimMissing" xml:space="preserve">
+    <value>التوكن غير صالح: المُعرف الفريد (JTI) مفقود</value>
+  </data>
 </root>
