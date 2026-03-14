@@ -40,7 +40,7 @@ namespace SchoolProject.Service.Implementations
         public async Task<JWTAuthResult> GetJWTToken(User user)
         {
             // Generate the JWT token and the access token string, and then save the Jti claim in the database along with the refresh token, so we can use it to validate the refresh token later. 
-            var (jwtToken, accessToken) = GenerateJWTToken(user);
+            var (jwtToken, accessToken) = await GenerateJWTToken(user);
 
             var refreshTokenString = GenerateRefreshToken();
 
@@ -130,7 +130,7 @@ namespace SchoolProject.Service.Implementations
         }
 
         // Use Tuple to return both the JWT token object and the access token string, so we can use the JWT token object to get the Jti claim and save it in the database, and use the access token string to send it to the client.
-        private (JwtSecurityToken,string) GenerateJWTToken(User user)
+        private async Task<(JwtSecurityToken,string)> GenerateJWTToken(User user)
         {
             // List of claims that will be included in the token, and these claims will be used to identify the user and his roles, and other information that you want to include in the token.
             // This is built-in Claims.
@@ -142,14 +142,22 @@ namespace SchoolProject.Service.Implementations
             //};
 
             // This is custom Claims, and you can make any claim you want, and you can use it in the future to identify the user and his roles, and other information that you want to include in the token.
+
+            // eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6IkFobWVkIiwiRW1haWwiOiJhaG1lZEBnbWFpbC5jb20iLCJQaG9uZU51bWJlciI6IjEyMzQiLCJqdGkiOiIwMDU3ZDQ1Yi0xNTY0LTQ5OTUtYmRhZi01MzgyYTU0NDJhODkiLCJleHAiOjE3NzM0NDkyMTcsImlzcyI6IlNjaG9vbFByb2plY3RBcGkiLCJhdWQiOiJTY2hvb2xQcm9qZWN0Q2xpZW50In0.spWzS5ZFsKNfppg9qwigRlBNEBrcGm4PNDe5W-QIiE4
             var claims = new List<Claim>
             {
                 new Claim(nameof(UserClaimModel.UserName), user.UserName ?? string.Empty),
                 new Claim(nameof(UserClaimModel.Email), user.Email ?? string.Empty),
                 new Claim(nameof(UserClaimModel.PhoneNumber), user.PhoneNumber ?? string.Empty),
-
+                    
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
+
+            var userRoles = await _userManager.GetRolesAsync(user);
+            foreach (var role in userRoles)
+            {
+                claims.Add(new Claim(ClaimTypes.Role, role));
+            }
 
             // Create the security key from your JWT settings
             var authSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_jwtSettings.Key));

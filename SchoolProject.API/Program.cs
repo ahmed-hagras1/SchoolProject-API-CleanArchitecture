@@ -1,10 +1,13 @@
 ﻿
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using SchoolProject.API.MiddleWares;
 using SchoolProject.Core;
+using SchoolProject.Data.Entities.Identity;
 using SchoolProject.Infrastructure.Data;
 using SchoolProject.Infrastructure.Dependencies;
+using SchoolProject.Infrastructure.Seeder;
 using SchoolProject.Service;
 using System.Globalization;
 
@@ -12,7 +15,7 @@ namespace SchoolProject.API
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public static async Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
 
@@ -63,6 +66,21 @@ namespace SchoolProject.API
 
 
             var app = builder.Build();
+
+            // ==========================================
+            // 🟢 SEED DATABASE DATA
+            // ==========================================
+            using (var scope = app.Services.CreateScope())
+            {
+                var userManager = scope.ServiceProvider.GetRequiredService<UserManager<User>>();
+                var roleManager = scope.ServiceProvider.GetRequiredService<RoleManager<Role>>(); // Or IdentityRole<int> depending on your exact setup
+
+                // 1. Seed Roles First!
+                await RoleSeeder.SeedAsync(roleManager);
+
+                // 2. Seed Default User Second!
+                await UserSeeder.SeedAsync(userManager);
+            }
 
             // 2. Apply the CORS middleware
             // VERY IMPORTANT: This must go BEFORE app.UseAuthorization() and app.MapControllers()

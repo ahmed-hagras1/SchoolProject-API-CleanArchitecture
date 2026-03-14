@@ -19,7 +19,7 @@ namespace SchoolProject.Infrastructure.Dependencies
     {
         public static IServiceCollection AddIdentityDependencies(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddIdentity<User, IdentityRole<int>>(options =>
+            services.AddIdentity<User, Role>(options =>
             {
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true;
@@ -27,8 +27,10 @@ namespace SchoolProject.Infrastructure.Dependencies
                 options.Password.RequireUppercase = true;
                 options.Password.RequiredLength = 6;
                 options.Password.RequiredUniqueChars = 1;
+
             })
-            .AddEntityFrameworkStores<AppDbContext>();
+            .AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders();
 
             // Bind the JWTSettings class for Dependency Injection (IOptions)
             var jwtSection = configuration.GetSection("JwtSettings");

@@ -51,5 +51,11 @@ namespace SchoolProject.Core.AppMetaData
 
 
         }
+        public static class AuthorizationRouting
+        {
+            public const string Prefix = Rule + "Authorization";
+            public const string AddNewRole = Prefix + "/AddNewRole";
+
+        }
     }
 }

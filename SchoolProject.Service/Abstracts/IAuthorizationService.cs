@@ -1,0 +1,15 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SchoolProject.Service.Abstracts
+{
+    public interface IAuthorizationService
+    {
+        Task<string> AddRoleAsync(string roleName);
+        //Task<IdentityResult> AssignRoleToUserAsync(string userName, string roleName);
+        Task<bool> IsRoleExist(string roleName);
+    }
+}

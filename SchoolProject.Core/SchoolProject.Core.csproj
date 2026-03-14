@@ -25,6 +25,9 @@
     <Folder Include="Features\Authentication\Queries\Handlers\" />
     <Folder Include="Features\Authentication\Queries\Models\" />
     <Folder Include="Features\Authentication\Queries\Results\" />
+    <Folder Include="Features\Authorization\Queries\Handlers\" />
+    <Folder Include="Features\Authorization\Queries\Models\" />
+    <Folder Include="Features\Authorization\Queries\Results\" />
     <Folder Include="Features\Departments\Commands\Handlers\" />
     <Folder Include="Features\Departments\Commands\Models\" />
     <Folder Include="Features\Departments\Commands\Validations\" />

@@ -53,7 +53,20 @@ namespace SchoolProject.Core.Features.ApplicationUser.Commands.Handlers
             // Mapping from AddApplicationUserCommand to User entity, and then add user using UserManager.
             var applicationUserMapper = _mapper.Map<User>(request);
             var result = await _userManager.CreateAsync(applicationUserMapper, request.Password);
-            if (result.Succeeded) return Created("Added successfully");
+            if (result.Succeeded)
+            {
+                // If you want to assign a specific role to the user, you can do it here. For example, if you want to assign the "User" role to every new user, you can uncomment the following line and make sure that the "User" role exists in your system.
+                // await _userManager.AddToRoleAsync(applicationUserMapper, request.Role);
+
+                // If there is no users in the database, make the first user an admin, otherwise make it a normal user.
+                //if (_userManager.Users.Any())
+                //    await _userManager.AddToRoleAsync(applicationUserMapper, "User");
+                //else
+                //    await _userManager.AddToRoleAsync(applicationUserMapper, "Admin");
+
+
+                return Created("Added successfully");
+            }
             // else return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.FailedToAddUser]);
             else return BadRequest<string>(result.Errors.FirstOrDefault().Description);
         }
