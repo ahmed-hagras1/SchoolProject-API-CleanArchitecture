@@ -55,7 +55,7 @@ namespace SchoolProject.Core.AppMetaData
         {
             public const string Prefix = Rule + "Authorization";
             public const string AddNewRole = Prefix + "/AddNewRole";
-
+            public const string EditRole = Prefix + "/EditRole";
         }
     }
 }

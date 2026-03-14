@@ -11,5 +11,6 @@ namespace SchoolProject.Service.Abstracts
         Task<string> AddRoleAsync(string roleName);
         //Task<IdentityResult> AssignRoleToUserAsync(string userName, string roleName);
         Task<bool> IsRoleExist(string roleName);
+        Task<string> EditRoleAsync(int id, string roleName);
     }
 }

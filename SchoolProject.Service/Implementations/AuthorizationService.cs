@@ -32,6 +32,33 @@ namespace SchoolProject.Service.Implementations
             else
                 return null;
         }
+
+        public async Task<string> EditRoleAsync(int id, string roleName)
+        {
+            // 1. Use the built-in async method instead of FirstOrDefault
+            var role = await _roleManager.FindByIdAsync(id.ToString());
+
+            // 2. If the role doesn't exist, return null early
+            if (role == null)
+            {
+                return null;
+            }
+
+            // 3. Update the name
+            role.Name = roleName;
+
+            // 4. Await the update properly (NEVER use .Result)
+            var result = await _roleManager.UpdateAsync(role);
+
+            // 5. Return the string directly (no Task.FromResult needed)
+            if (result.Succeeded)
+            {
+                return role.Name;
+            }
+
+            return null;
+        }
+
         public async Task<bool> IsRoleExist(string roleName) => await _roleManager.RoleExistsAsync(roleName);
         #endregion
     }

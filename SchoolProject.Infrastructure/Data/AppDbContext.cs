@@ -32,8 +32,6 @@ public class AppDbContext : IdentityDbContext<
     public DbSet<Subject> Subjects { get; set; }
     public DbSet<DepartmentSubject> DepartmentSubjects { get; set; }
     public DbSet<StudentSubject> StudentSubjects { get; set; }
-    public DbSet<User> Users { get; set; }
-    public DbSet<Role> Roles { get; set; }
     public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
     
     

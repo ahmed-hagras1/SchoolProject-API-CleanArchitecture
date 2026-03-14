@@ -27,5 +27,13 @@ namespace SchoolProject.API.Controllers
             // Let your base controller handle the HTTP status codes automatically!
             return NewResult(response);
         }
+        [HttpPut(Router.AuthorizationRouting.EditRole)]
+        public async Task<IActionResult> EditRole([FromForm] EditRoleCommand command)
+        {
+            var response = await Mediator.Send(command);
+
+            // Let your base controller handle the HTTP status codes automatically!
+            return NewResult(response);
+        }
     }
 }
