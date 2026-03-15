@@ -35,5 +35,13 @@ namespace SchoolProject.API.Controllers
             // Let your base controller handle the HTTP status codes automatically!
             return NewResult(response);
         }
+        [HttpDelete(Router.AuthorizationRouting.DeleteRole)]
+        public async Task<IActionResult> DeleteRole([FromRoute] int id)
+        {
+            var response = await Mediator.Send(new DeleteRoleCommand(id));
+
+            // Let your base controller handle the HTTP status codes automatically!
+            return NewResult(response);
+        }
     }
 }

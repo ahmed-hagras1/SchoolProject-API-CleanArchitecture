@@ -17,7 +17,8 @@ namespace SchoolProject.Core.Features.Authorization.Commands.Handlers
 {
     public class RoleCommandHandler : ResponseHandler,
         IRequestHandler<AddRoleCommand, Response<string>>,
-        IRequestHandler<EditRoleCommand, Response<string>>
+        IRequestHandler<EditRoleCommand, Response<string>>,
+        IRequestHandler<DeleteRoleCommand, Response<string>>
     {
         #region Fields
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
@@ -45,6 +46,21 @@ namespace SchoolProject.Core.Features.Authorization.Commands.Handlers
         {
             var result = await _authorizationService.EditRoleAsync(request.Id, request.RoleName);
             if (result != null)
+                return Success<string>(result);
+            else
+                return BadRequest<string>();
+        }
+
+        public async Task<Response<string>> Handle(DeleteRoleCommand request, CancellationToken cancellationToken)
+        {
+            var result = await _authorizationService.DeleteRoleAsync(request.Id);
+            if (result == "NotFound")
+                return NotFound<string>(_stringLocalizer[SharedResourcesKeys.NotFound]);
+            else if (result == "RoleAssignedToUsers")
+                return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.RoleAssignedToUsers]);
+            else if (result == "CannotDeleteSystemRole")
+                return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.CannotDeleteSystemRole]);
+            else if(result == "Success")
                 return Success<string>(result);
             else
                 return BadRequest<string>();

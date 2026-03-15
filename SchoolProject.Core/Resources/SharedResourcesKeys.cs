@@ -39,5 +39,7 @@ namespace SchoolProject.Core.Resources
         public const string RefreshTokenNotFound = "RefreshTokenNotFound";
         public const string TokenClaimsMissing = "TokenClaimsMissing";
         public const string LoggedOutSuccessfully = "LoggedOutSuccessfully";
+        public const string CannotDeleteSystemRole = "CannotDeleteSystemRole";
+        public const string RoleAssignedToUsers = "RoleAssignedToUsers";
     }
 }

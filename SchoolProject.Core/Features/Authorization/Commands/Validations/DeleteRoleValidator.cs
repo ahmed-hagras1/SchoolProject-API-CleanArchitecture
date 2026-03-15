@@ -11,7 +11,7 @@ using System.Threading.Tasks;
 
 namespace SchoolProject.Core.Features.Authorization.Commands.Validations
 {
-    public class EditRoleValidator : AbstractValidator<EditRoleCommand>
+    public class DeleteRoleValidator : AbstractValidator<DeleteRoleCommand>
     {
         #region Fields
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
@@ -19,7 +19,7 @@ namespace SchoolProject.Core.Features.Authorization.Commands.Validations
         #endregion
 
         #region Constructor
-        public EditRoleValidator(IStringLocalizer<SharedResources> stringLocalizer, IAuthorizationService authorizationService)
+        public DeleteRoleValidator(IStringLocalizer<SharedResources> stringLocalizer, IAuthorizationService authorizationService)
         {
             _stringLocalizer = stringLocalizer;
             _authorizationService = authorizationService;
@@ -38,19 +38,12 @@ namespace SchoolProject.Core.Features.Authorization.Commands.Validations
             RuleFor(x => x.Id)
                  .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
                  .NotNull().WithMessage(_stringLocalizer[SharedResourcesKeys.Required]);
-
-            RuleFor(x => x.RoleName)
-                .NotEmpty().WithMessage(_stringLocalizer[SharedResourcesKeys.NotEmpty])
-                            .NotNull().WithMessage(_stringLocalizer[SharedResourcesKeys.Required]);
         }
         public void ApplyCustomValidations()
         {
-
-
-            RuleFor(x => x.RoleName)
-                            .MustAsync(async (roleName, cancellationToken) => !await _authorizationService.IsRoleExist(roleName)).WithMessage(_stringLocalizer[SharedResourcesKeys.AlreadyExist]);
-                            
+           
         }
         #endregion
     }
+
 }
