@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SchoolProject.API.Base;
 using SchoolProject.Core.Features.Authorization.Commands.Models;
+using SchoolProject.Core.Features.Authorization.Queries.Models;
 using Router = SchoolProject.Core.AppMetaData.Router;
 
 namespace SchoolProject.API.Controllers
@@ -42,6 +43,18 @@ namespace SchoolProject.API.Controllers
 
             // Let your base controller handle the HTTP status codes automatically!
             return NewResult(response);
+        }
+        [HttpGet(Router.AuthorizationRouting.RoleList)]
+        public async Task<IActionResult> GetRoleList()
+        {
+            // Let your base controller handle the HTTP status codes automatically!
+            return NewResult(await Mediator.Send(new GetRolesListQuery()));
+        }
+        [HttpGet(Router.AuthorizationRouting.GetRoleById)]
+        public async Task<IActionResult> GetRoleById([FromRoute]int id)
+        {
+            // Let your base controller handle the HTTP status codes automatically!
+            return NewResult(await Mediator.Send(new GetRoleByIdQuery(id)));
         }
     }
 }

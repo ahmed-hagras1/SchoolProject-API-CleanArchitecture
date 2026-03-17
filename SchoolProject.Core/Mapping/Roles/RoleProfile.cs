@@ -7,17 +7,15 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolProject.Core.Mapping.Students
+namespace SchoolProject.Core.Mapping.Roles
 {
     public partial class RoleProfile : Profile
     {
         public RoleProfile()
         {
-            // Students Mapping.
-            GetStudentListMapping();
-            GetStudentByIdMapping();
-            AddStudentCommandMapping();
-            EditStudentCommandMapping();
+            // Roles Mapping.
+            GetRolesListMapping();
+            GetRoleByIdMapping();
         }
     }
 }
