@@ -41,5 +41,6 @@ namespace SchoolProject.Core.Resources
         public const string LoggedOutSuccessfully = "LoggedOutSuccessfully";
         public const string CannotDeleteSystemRole = "CannotDeleteSystemRole";
         public const string RoleAssignedToUsers = "RoleAssignedToUsers";
+        public const string SystemError = "SystemError";
     }
 }

@@ -60,6 +60,7 @@ namespace SchoolProject.Core.AppMetaData
             public const string RoleList = Prefix + "/RoleList";
             public const string GetRoleById = Prefix + "/GetRoleById" + SignleRoute;
             public const string ManageUserRoles = Prefix + "/ManageUserRoles" + SignleRoute;
+            public const string UpdateUserRoles = Prefix + "/UpdateUserRoles";
         }
     }
 }

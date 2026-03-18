@@ -225,4 +225,7 @@
   <data name="CannotDeleteSystemRole" xml:space="preserve">
     <value>لا يمكن حذف أدوار النظام الأساسية.</value>
   </data>
+  <data name="SystemError" xml:space="preserve">
+    <value>حدث خطأ غير متوقع في النظام. يرجى المحاولة مرة أخرى لاحقاً.</value>
+  </data>
 </root>

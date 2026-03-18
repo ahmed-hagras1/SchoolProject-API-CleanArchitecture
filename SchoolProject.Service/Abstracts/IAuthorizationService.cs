@@ -19,5 +19,6 @@ namespace SchoolProject.Service.Abstracts
         Task<List<Role>> GetRolesAsync();
         Task<Role> GetRoleById(int id);
         Task<ManageUserRolesResultDTO> GetManageUserRolesAsync(User user);
+        Task<string> UpdateUserRolesAsync(ManageUserRolesResultDTO request);
     }
 }

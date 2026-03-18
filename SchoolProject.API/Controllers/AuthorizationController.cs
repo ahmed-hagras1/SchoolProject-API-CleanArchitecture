@@ -56,12 +56,16 @@ namespace SchoolProject.API.Controllers
             // Let your base controller handle the HTTP status codes automatically!
             return NewResult(await Mediator.Send(new GetRoleByIdQuery(id)));
         }
-
         [HttpGet(Router.AuthorizationRouting.ManageUserRoles)]
         public async Task<IActionResult> ManageUserRoles([FromRoute] int id)
         {
             // Let your base controller handle the HTTP status codes automatically!
             return NewResult(await Mediator.Send(new ManageUserRolesQuery(id)));
+        }
+        [HttpPut(Router.AuthorizationRouting.UpdateUserRoles)]
+        public async Task<IActionResult> UpdateUserRoles([FromBody] UpdateUserRolesCommand command)
+        {
+            return NewResult(await Mediator.Send(command));
         }
     }
 }

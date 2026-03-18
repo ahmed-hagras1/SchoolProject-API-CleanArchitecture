@@ -225,4 +225,7 @@
   <data name="CannotDeleteSystemRole" xml:space="preserve">
     <value>Core system roles cannot be deleted.</value>
   </data>
+  <data name="SystemError" xml:space="preserve">
+    <value>An unexpected system error occurred. Please try again later.</value>
+  </data>
 </root>

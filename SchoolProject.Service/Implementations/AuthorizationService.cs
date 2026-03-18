@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using System.Transactions;
 
 namespace SchoolProject.Service.Implementations
 {
@@ -134,6 +135,63 @@ namespace SchoolProject.Service.Implementations
                 });
             }
             return response;
+        }
+
+        public async Task<string> UpdateUserRolesAsync(ManageUserRolesResultDTO request)
+        {
+            // 1. Find the user
+            var user = await _userManager.FindByIdAsync(request.UserId.ToString());
+            if (user == null)
+            {
+                return "UserIsNull";
+            }
+
+            // 2. Get the user's current roles from the database
+            var currentRoles = await _userManager.GetRolesAsync(user);
+
+            // 3. Get the new roles the user selected from the request (where HasRole is true)
+            var selectedRoles = request.Roles.Where(x => x.HasRole).Select(x => x.Name).ToList();
+
+            // 4. Calculate the "Diff" (What to add and what to remove)
+            var rolesToAdd = selectedRoles.Except(currentRoles);    // Exists in selected, but not in current
+            var rolesToRemove = currentRoles.Except(selectedRoles); // Exists in current, but not in selected
+
+
+            using (var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                try
+                {
+                    // 2. Try to remove roles
+                    if (rolesToRemove.Any())
+                    {
+                        var removeResult = await _userManager.RemoveFromRolesAsync(user, rolesToRemove);
+                        if (!removeResult.Succeeded)
+                            return "FailedToRemoveOldRoles"; // Rolls back automatically
+                    }
+                    
+
+                    // 3. Try to add roles
+                    if (rolesToAdd.Any())
+                    {
+                        var addResult = await _userManager.AddToRolesAsync(user, rolesToAdd);
+                        if (!addResult.Succeeded)
+                            return "FailedToAddNewRoles"; // Rolls back automatically
+                    }
+
+                    // 4. Everything worked! Commit to the database.
+                    transaction.Complete();
+                    return "Success";
+                }
+                catch (Exception ex)
+                {
+                    // An unexpected error happened (e.g., database connection lost).
+                    // The code exited before transaction.Complete(), so the rollback already happened!
+
+                    // TODO: Log the exception (ex.Message) here if you have a logger like Serilog
+
+                    return "SystemError"; // Return a clean error string for your Handler to catch
+                }
+            }
         }
         #endregion
     }

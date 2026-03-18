@@ -71,10 +71,7 @@ namespace SchoolProject.Infrastructure.InfrastructureBases
         }
         public virtual async Task DeleteRangeAsync(ICollection<T> entities)
         {
-            foreach (var entity in entities)
-            {
-                _dbContext.Entry(entity).State = EntityState.Deleted;
-            }
+            _dbContext.Set<T>().RemoveRange(entities);
             await _dbContext.SaveChangesAsync();
         }
 
@@ -82,28 +79,20 @@ namespace SchoolProject.Infrastructure.InfrastructureBases
         {
             await _dbContext.SaveChangesAsync();
         }
+        public async Task<IDbContextTransaction> BeginTransactionAsync()
+        {
+            return await _dbContext.Database.BeginTransactionAsync();
+        }
 
+        public async Task CommitAsync()
+        {
+            await _dbContext.Database.CommitTransactionAsync();
+        }
 
-
-        //public IDbContextTransaction BeginTransaction()
-        //{
-
-
-        //    return _dbContext.Database.BeginTransaction();
-        //}
-
-        //public void Commit()
-        //{
-        //    _dbContext.Database.CommitTransaction();
-
-        //}
-
-        //public void RollBack()
-        //{
-        //    _dbContext.Database.RollbackTransaction();
-
-        //}
-
+        public async Task RollBackAsync()
+        {
+            await _dbContext.Database.RollbackTransactionAsync();
+        }
         public IQueryable<T> GetTableAsTracking()
         {
             return _dbContext.Set<T>().AsQueryable();
