@@ -1,4 +1,5 @@
-﻿using SchoolProject.Data.Entities.Identity;
+﻿using SchoolProject.Data.DTOs;
+using SchoolProject.Data.Entities.Identity;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -17,5 +18,6 @@ namespace SchoolProject.Service.Abstracts
         Task<string> DeleteRoleAsync(int id);
         Task<List<Role>> GetRolesAsync();
         Task<Role> GetRoleById(int id);
+        Task<ManageUserRolesResultDTO> GetManageUserRolesAsync(User user);
     }
 }

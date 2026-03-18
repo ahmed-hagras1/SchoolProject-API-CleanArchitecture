@@ -1,10 +1,13 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
 using SchoolProject.Core.Bases;
 using SchoolProject.Core.Features.Authorization.Queries.Models;
 using SchoolProject.Core.Features.Authorization.Queries.Results;
 using SchoolProject.Core.Resources;
+using SchoolProject.Data.DTOs;
+using SchoolProject.Data.Entities.Identity;
 using SchoolProject.Service.Abstracts;
 using System;
 using System.Collections.Generic;
@@ -16,21 +19,25 @@ namespace SchoolProject.Core.Features.Authorization.Queries.Handlers
 {
     public class RoleQueryHandler : ResponseHandler,
         IRequestHandler<GetRolesListQuery, Response<List<GetRolesListResult>>>,
-        IRequestHandler<GetRoleByIdQuery, Response<GetRoleResult>>
+        IRequestHandler<GetRoleByIdQuery, Response<GetRoleResult>>,
+        IRequestHandler<ManageUserRolesQuery, Response<ManageUserRolesResultDTO>>
     {
         #region Fields
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
         private readonly IAuthorizationService _authorizationService;
         private readonly IMapper _mapper;
+        private readonly UserManager<User> _userManager;
         #endregion
         #region Constructor
         public RoleQueryHandler(IStringLocalizer<SharedResources> stringLocalizer,
                                   IAuthorizationService authorizationService,
-                                  IMapper mapper) : base(stringLocalizer)
+                                  IMapper mapper,
+                                  UserManager<User> userManager) : base(stringLocalizer)
         {
             _stringLocalizer = stringLocalizer;
             _authorizationService = authorizationService;
             _mapper = mapper;
+            _userManager = userManager;
         }
         #endregion
         #region Handle Functions
@@ -50,6 +57,15 @@ namespace SchoolProject.Core.Features.Authorization.Queries.Handlers
 
             var result = _mapper.Map<GetRoleResult>(role);
 
+            return Success(result);
+        }
+        public async Task<Response<ManageUserRolesResultDTO>> Handle(ManageUserRolesQuery request, CancellationToken cancellationToken)
+        {
+            var user = await _userManager.FindByIdAsync(request.UserId.ToString());
+            if (user == null)
+                return NotFound<ManageUserRolesResultDTO>(_stringLocalizer[SharedResourcesKeys.NotFound]);
+
+            var result = await _authorizationService.GetManageUserRolesAsync(user);
             return Success(result);
         }
         #endregion

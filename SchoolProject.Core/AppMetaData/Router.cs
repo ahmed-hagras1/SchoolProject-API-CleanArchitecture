@@ -59,6 +59,7 @@ namespace SchoolProject.Core.AppMetaData
             public const string DeleteRole = Prefix + "/DeleteRole" + SignleRoute;
             public const string RoleList = Prefix + "/RoleList";
             public const string GetRoleById = Prefix + "/GetRoleById" + SignleRoute;
+            public const string ManageUserRoles = Prefix + "/ManageUserRoles" + SignleRoute;
         }
     }
 }

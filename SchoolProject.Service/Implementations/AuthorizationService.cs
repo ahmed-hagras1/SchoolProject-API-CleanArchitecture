@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using SchoolProject.Data.DTOs;
 using SchoolProject.Data.Entities.Identity;
 using SchoolProject.Service.Abstracts;
 using System;
@@ -107,6 +108,32 @@ namespace SchoolProject.Service.Implementations
         {
             var role = await _roleManager.FindByIdAsync(roleId.ToString());
             return role != null;
+        }
+        public async Task<ManageUserRolesResultDTO> GetManageUserRolesAsync(User user)
+        {
+            // 1. Initialize the DTO and set the UserId
+            var response = new ManageUserRolesResultDTO
+            {
+                UserId = user.Id,
+                Roles = new List<RoleResult>() // Initialize the list so we don't get a NullReferenceException
+            };
+
+            // 2. Get All Roles from the database
+            var roles = await _roleManager.Roles.ToListAsync();
+
+            // 3. Get the roles assigned to this specific user (This returns a List of strings: the role names)
+            var userRoles = await _userManager.GetRolesAsync(user);
+
+            foreach (var role in roles)
+            {
+                response.Roles.Add(new RoleResult
+                {
+                    Id = role.Id,
+                    Name = role.Name,
+                    HasRole = userRoles.Contains(role.Name) // Check if the user's roles contain this role's name
+                });
+            }
+            return response;
         }
         #endregion
     }
