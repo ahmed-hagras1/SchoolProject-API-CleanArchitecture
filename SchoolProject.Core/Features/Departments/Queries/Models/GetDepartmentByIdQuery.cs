@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using SchoolProject.Core.Bases;
 using SchoolProject.Core.Features.Departments.Queries.Results;
-using SchoolProject.Data.Helpers;
+using SchoolProject.Data.Enums;
 using System;
 using System.Collections.Generic;
 using System.Linq;

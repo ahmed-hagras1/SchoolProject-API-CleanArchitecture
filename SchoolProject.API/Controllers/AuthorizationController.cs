@@ -67,5 +67,11 @@ namespace SchoolProject.API.Controllers
         {
             return NewResult(await Mediator.Send(command));
         }
+        [HttpGet(Router.AuthorizationRouting.ManageUserClaims)]
+        public async Task<IActionResult> ManageUserClaims([FromRoute] int id)
+        {
+            // Let your base controller handle the HTTP status codes automatically!
+            return NewResult(await Mediator.Send(new ManageUserClaimsQuery(id)));
+        }
     }
 }

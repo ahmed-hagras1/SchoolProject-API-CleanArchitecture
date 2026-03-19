@@ -4,7 +4,6 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.Extensions.Localization;
 using SchoolProject.Core.Bases;
 using SchoolProject.Core.Features.Authorization.Queries.Models;
-using SchoolProject.Core.Features.Authorization.Queries.Results;
 using SchoolProject.Core.Resources;
 using SchoolProject.Data.Entities.Identity;
 using SchoolProject.Data.Results;
@@ -17,10 +16,8 @@ using System.Threading.Tasks;
 
 namespace SchoolProject.Core.Features.Authorization.Queries.Handlers
 {
-    public class RoleQueryHandler : ResponseHandler,
-        IRequestHandler<GetRolesListQuery, Response<List<GetRolesListResult>>>,
-        IRequestHandler<GetRoleByIdQuery, Response<GetRoleResult>>,
-        IRequestHandler<ManageUserRolesQuery, Response<ManageUserRolesResult>>
+    public class ClaimsQueryHandler : ResponseHandler,
+        IRequestHandler<ManageUserClaimsQuery,Response<ManageUserClaimsResult>>
     {
         #region Fields
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
@@ -29,7 +26,7 @@ namespace SchoolProject.Core.Features.Authorization.Queries.Handlers
         private readonly UserManager<User> _userManager;
         #endregion
         #region Constructor
-        public RoleQueryHandler(IStringLocalizer<SharedResources> stringLocalizer,
+        public ClaimsQueryHandler(IStringLocalizer<SharedResources> stringLocalizer,
                                   IAuthorizationService authorizationService,
                                   IMapper mapper,
                                   UserManager<User> userManager) : base(stringLocalizer)
@@ -41,31 +38,20 @@ namespace SchoolProject.Core.Features.Authorization.Queries.Handlers
         }
         #endregion
         #region Handle Functions
-        public async Task<Response<List<GetRolesListResult>>> Handle(GetRolesListQuery request, CancellationToken cancellationToken)
+        public async Task<Response<ManageUserClaimsResult>> Handle(ManageUserClaimsQuery request, CancellationToken cancellationToken)
         {
-            var roles = await _authorizationService.GetRolesAsync();
-            var result = _mapper.Map<List<GetRolesListResult>>(roles);
-
-            return Success(result);
-        }
-
-        public async Task<Response<GetRoleResult>> Handle(GetRoleByIdQuery request, CancellationToken cancellationToken)
-        {
-            var role = await _authorizationService.GetRoleById(request.Id);
-            if (role == null)
-                return NotFound<GetRoleResult>(_stringLocalizer[SharedResourcesKeys.NotFound]);
-
-            var result = _mapper.Map<GetRoleResult>(role);
-
-            return Success(result);
-        }
-        public async Task<Response<ManageUserRolesResult>> Handle(ManageUserRolesQuery request, CancellationToken cancellationToken)
-        {
+            // 1. Check if the user actually exists
             var user = await _userManager.FindByIdAsync(request.UserId.ToString());
-            if (user == null)
-                return NotFound<ManageUserRolesResult>(_stringLocalizer[SharedResourcesKeys.NotFound]);
 
-            var result = await _authorizationService.GetManageUserRolesAsync(user);
+            if (user == null)
+            {
+                return NotFound<ManageUserClaimsResult>(_stringLocalizer[SharedResourcesKeys.NotFound]);
+            }
+
+            // 2. Pass the user to the service to calculate their claims
+            var result = await _authorizationService.GetManageUserClaimsDataAsync(user);
+
+            // 3. Return the populated DTO back to the API
             return Success(result);
         }
         #endregion

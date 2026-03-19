@@ -4,9 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolProject.Data.DTOs
+namespace SchoolProject.Data.Results
 {
-    public class ManageUserRolesResultDTO
+    public class ManageUserRolesResult
     {
         public int UserId { get; set; }
         public List<RoleResult> Roles { get; set; }

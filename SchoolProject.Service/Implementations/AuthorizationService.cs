@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
-using SchoolProject.Data.DTOs;
 using SchoolProject.Data.Entities.Identity;
+using SchoolProject.Data.Helpers;
+using SchoolProject.Data.Results;
 using SchoolProject.Service.Abstracts;
 using System;
 using System.Collections.Generic;
@@ -110,10 +111,10 @@ namespace SchoolProject.Service.Implementations
             var role = await _roleManager.FindByIdAsync(roleId.ToString());
             return role != null;
         }
-        public async Task<ManageUserRolesResultDTO> GetManageUserRolesAsync(User user)
+        public async Task<ManageUserRolesResult> GetManageUserRolesAsync(User user)
         {
             // 1. Initialize the DTO and set the UserId
-            var response = new ManageUserRolesResultDTO
+            var response = new ManageUserRolesResult
             {
                 UserId = user.Id,
                 Roles = new List<RoleResult>() // Initialize the list so we don't get a NullReferenceException
@@ -137,7 +138,7 @@ namespace SchoolProject.Service.Implementations
             return response;
         }
 
-        public async Task<string> UpdateUserRolesAsync(ManageUserRolesResultDTO request)
+        public async Task<string> UpdateUserRolesAsync(ManageUserRolesResult request)
         {
             // 1. Find the user
             var user = await _userManager.FindByIdAsync(request.UserId.ToString());
@@ -192,6 +193,34 @@ namespace SchoolProject.Service.Implementations
                     return "SystemError"; // Return a clean error string for your Handler to catch
                 }
             }
+        }
+
+        public async Task<ManageUserClaimsResult> GetManageUserClaimsDataAsync(User user)
+        {
+            // 1. Initialize the Result object
+            var response = new ManageUserClaimsResult
+            {
+                UserId = user.Id,
+                UserClaims = new List<UserClaim>()
+            };
+
+            // 2. Get the user's currently assigned claims from the database
+            var userClaims = await _userManager.GetClaimsAsync(user);
+
+            // 3. Loop through the universal ClaimsStore list
+            foreach (var claim in ClaimsStore.Claims)
+            {
+                var userClaim = new UserClaim
+                {
+                    Type = claim.Type, // e.g., "Create Student"
+                                       // Check if the user has this exact claim type assigned to them
+                    Value = userClaims.Any(x => x.Type == claim.Type)
+                };
+
+                response.UserClaims.Add(userClaim);
+            }
+
+            return response;
         }
         #endregion
     }

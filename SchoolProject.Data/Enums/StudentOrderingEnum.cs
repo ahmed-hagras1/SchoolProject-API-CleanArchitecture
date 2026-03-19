@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace SchoolProject.Data.Helpers
+namespace SchoolProject.Data.Enums
 {
     public enum StudentOrderingEnum
     {
