@@ -73,5 +73,10 @@ namespace SchoolProject.API.Controllers
             // Let your base controller handle the HTTP status codes automatically!
             return NewResult(await Mediator.Send(new ManageUserClaimsQuery(id)));
         }
+        [HttpPut(Router.AuthorizationRouting.UpdateUserClaims)]
+        public async Task<IActionResult> UpdateUserRoles([FromBody] UpdateUserClaimsCommand command)
+        {
+            return NewResult(await Mediator.Send(command));
+        }
     }
 }

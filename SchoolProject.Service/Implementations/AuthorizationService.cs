@@ -2,11 +2,13 @@
 using Microsoft.EntityFrameworkCore;
 using SchoolProject.Data.Entities.Identity;
 using SchoolProject.Data.Helpers;
+using SchoolProject.Data.Requests;
 using SchoolProject.Data.Results;
 using SchoolProject.Service.Abstracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Transactions;
@@ -221,6 +223,69 @@ namespace SchoolProject.Service.Implementations
             }
 
             return response;
+        }
+
+        public async Task<string> UpdateUserClaimsAsync(UpdateUserClaimsRequest request)
+        {
+            // 1. Find the user
+            var user = await _userManager.FindByIdAsync(request.UserId.ToString());
+            if (user == null)
+            {
+                return "UserIsNull";
+            }
+
+            // 2. Get the user's current claims from the database (These are actual Claim objects)
+            var currentClaims = await _userManager.GetClaimsAsync(user);
+
+            // 3. Get the NEW claim TYPES the user selected (where Value/HasClaim is true)
+            var selectedClaimTypes = request.UserClaims.Where(x => x.Value).Select(x => x.Type).ToList();
+
+            // Get the CURRENT claim TYPES as a list of strings so we can compare them
+            var currentClaimTypes = currentClaims.Select(x => x.Type).ToList();
+
+            // 4. Calculate the "Diff" (What to add and what to remove)
+            var claimTypesToAdd = selectedClaimTypes.Except(currentClaimTypes).ToList();
+            var claimTypesToRemove = currentClaimTypes.Except(selectedClaimTypes).ToList();
+
+            // 5. Convert the string types back into actual Claim objects for Entity Framework
+            // For removal: Find the exact existing claim objects that match the types we want to remove
+            var claimsToRemove = currentClaims.Where(x => claimTypesToRemove.Contains(x.Type)).ToList();
+
+            // For addition: Create brand new claim objects. 
+            // (We set the value to "true" to represent they have the permission)
+            var claimsToAdd = claimTypesToAdd.Select(x => new Claim(x, "true")).ToList();
+
+            // 6. Apply the changes safely within a Transaction
+            using (var transaction = new TransactionScope(TransactionScopeAsyncFlowOption.Enabled))
+            {
+                try
+                {
+                    // Remove old claims
+                    if (claimsToRemove.Any())
+                    {
+                        var removeResult = await _userManager.RemoveClaimsAsync(user, claimsToRemove);
+                        if (!removeResult.Succeeded)
+                            return "FailedToRemoveOldClaims"; // Rolls back automatically
+                    }
+
+                    // Add new claims
+                    if (claimsToAdd.Any())
+                    {
+                        var addResult = await _userManager.AddClaimsAsync(user, claimsToAdd);
+                        if (!addResult.Succeeded)
+                            return "FailedToAddNewClaims"; // Rolls back automatically
+                    }
+
+                    // Commit to the database
+                    transaction.Complete();
+                    return "Success";
+                }
+                catch (Exception ex)
+                {
+                    // TODO: Log the exception (ex.Message)
+                    return "SystemError";
+                }
+            }
         }
         #endregion
     }

@@ -1,4 +1,5 @@
 ﻿using SchoolProject.Data.Entities.Identity;
+using SchoolProject.Data.Requests;
 using SchoolProject.Data.Results;
 using System;
 using System.Collections.Generic;
@@ -21,5 +22,6 @@ namespace SchoolProject.Service.Abstracts
         Task<ManageUserRolesResult> GetManageUserRolesAsync(User user);
         Task<string> UpdateUserRolesAsync(ManageUserRolesResult request);
         Task<ManageUserClaimsResult> GetManageUserClaimsDataAsync(User user);
+        Task<string> UpdateUserClaimsAsync(UpdateUserClaimsRequest request);
     }
 }

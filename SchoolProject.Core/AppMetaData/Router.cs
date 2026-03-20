@@ -65,6 +65,7 @@ namespace SchoolProject.Core.AppMetaData
             public const string UpdateUserRoles = Roles + "/UpdateUserRoles";
 
             public const string ManageUserClaims = Claims + "/ManageUserClaims" + SignleRoute;
+            public const string UpdateUserClaims = Claims + "/UpdateUserClaims";
         }
     }
 }
