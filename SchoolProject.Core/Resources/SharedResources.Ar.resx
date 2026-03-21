@@ -219,4 +219,13 @@
   <data name="LoggedOutSuccessfully" xml:space="preserve">
     <value>تم تسجيل الخروج بنجاح.</value>
   </data>
+  <data name="RoleAssignedToUsers" xml:space="preserve">
+    <value>لا يمكن حذف هذا الدور لوجود مستخدمين مرتبطين به حالياً.</value>
+  </data>
+  <data name="CannotDeleteSystemRole" xml:space="preserve">
+    <value>لا يمكن حذف أدوار النظام الأساسية.</value>
+  </data>
+  <data name="SystemError" xml:space="preserve">
+    <value>حدث خطأ غير متوقع في النظام. يرجى المحاولة مرة أخرى لاحقاً.</value>
+  </data>
 </root>

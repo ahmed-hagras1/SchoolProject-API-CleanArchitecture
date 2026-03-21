@@ -14,7 +14,7 @@ namespace SchoolProject.Infrastructure.Data;
 
 public class AppDbContext : IdentityDbContext<
         User,                           // 1. TUser: Your custom user class
-        IdentityRole<int>,              // 2. TRole: The role class with an int key
+        Role,                           // 2. TRole: The role class with an int key
         int,                            // 3. TKey: The primary key type for all tables
         IdentityUserClaim<int>,         // 4. TUserClaim
         IdentityUserRole<int>,          // 5. TUserRole
@@ -32,7 +32,6 @@ public class AppDbContext : IdentityDbContext<
     public DbSet<Subject> Subjects { get; set; }
     public DbSet<DepartmentSubject> DepartmentSubjects { get; set; }
     public DbSet<StudentSubject> StudentSubjects { get; set; }
-    public DbSet<User> Users { get; set; }
     public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
     
     

@@ -37,16 +37,19 @@ namespace SchoolProject.API.Controllers
         {
             return NewResult(await Mediator.Send(new GetStudentByIdQuery(id)));
         }
+        [Authorize(Policy = "CreateStudent")]
         [HttpPost(Router.StudentRouting.Add)]
         public async Task<IActionResult> AddStudentAsync([FromBody] AddStudentCommand addStudentCommand)
         {
             return NewResult(await Mediator.Send(addStudentCommand));
         }
+        [Authorize(Policy = "EditStudent")]
         [HttpPut(Router.StudentRouting.Update)]
         public async Task<IActionResult> UpdateStudentAsync([FromBody] EditStudentCommand updateStudentCommand)
         {
             return NewResult(await Mediator.Send(updateStudentCommand));
         }
+        [Authorize(Policy = "DeleteStudent")]
         [HttpDelete(Router.StudentRouting.Delete)]
         public async Task<IActionResult> DeleteStudentByIdAsync([FromRoute] int id)
         {

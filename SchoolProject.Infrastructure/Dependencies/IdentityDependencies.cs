@@ -19,7 +19,7 @@ namespace SchoolProject.Infrastructure.Dependencies
     {
         public static IServiceCollection AddIdentityDependencies(this IServiceCollection services, IConfiguration configuration)
         {
-            services.AddIdentity<User, IdentityRole<int>>(options =>
+            services.AddIdentity<User, Role>(options =>
             {
                 options.Password.RequireDigit = true;
                 options.Password.RequireLowercase = true;
@@ -27,8 +27,10 @@ namespace SchoolProject.Infrastructure.Dependencies
                 options.Password.RequireUppercase = true;
                 options.Password.RequiredLength = 6;
                 options.Password.RequiredUniqueChars = 1;
+
             })
-            .AddEntityFrameworkStores<AppDbContext>();
+            .AddEntityFrameworkStores<AppDbContext>()
+            .AddDefaultTokenProviders();
 
             // Bind the JWTSettings class for Dependency Injection (IOptions)
             var jwtSection = configuration.GetSection("JwtSettings");
@@ -64,6 +66,24 @@ namespace SchoolProject.Infrastructure.Dependencies
             });
 
             services.AddSingleton<ConcurrentDictionary<string, RefreshToken>>();
+
+            services.AddAuthorization(option =>
+            {
+                option.AddPolicy("CreateStudent", policy =>
+                {
+                    policy.RequireClaim("Create Student", "true");
+                });
+
+                option.AddPolicy("EditStudent", policy =>
+                {
+                    policy.RequireClaim("Edit Student", "true");
+                });
+
+                option.AddPolicy("DeleteStudent", policy =>
+                {
+                    policy.RequireClaim("Delete Student", "true");
+                });
+            });
 
             return services;
         }

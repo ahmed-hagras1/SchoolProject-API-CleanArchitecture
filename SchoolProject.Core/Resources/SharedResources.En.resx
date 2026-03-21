@@ -219,4 +219,13 @@
   <data name="LoggedOutSuccessfully" xml:space="preserve">
     <value>Logged out successfully.</value>
   </data>
+  <data name="RoleAssignedToUsers" xml:space="preserve">
+    <value>This role cannot be deleted because it is currently assigned to one or more users.</value>
+  </data>
+  <data name="CannotDeleteSystemRole" xml:space="preserve">
+    <value>Core system roles cannot be deleted.</value>
+  </data>
+  <data name="SystemError" xml:space="preserve">
+    <value>An unexpected system error occurred. Please try again later.</value>
+  </data>
 </root>

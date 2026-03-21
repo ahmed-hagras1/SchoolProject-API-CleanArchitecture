@@ -1,4 +1,6 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.DependencyInjection;
+using SchoolProject.Data.Entities.Identity;
 using SchoolProject.Service.Abstracts;
 using SchoolProject.Service.BackgroundServices;
 using SchoolProject.Service.Implementations;
@@ -14,6 +16,7 @@ public static class ModuleServiceDependencies
         services.AddScoped<IStudentService, StudentService>();
         services.AddScoped<IDepartmentService, DepartmentService>();
         services.AddScoped<IAuthenticationService, AuthenticationService>();
+        services.AddScoped<IAuthorizationService, AuthorizationService>();
 
         // Register the RefreshTokenCleanupService as a Hosted Service (Background Service)
         services.AddHostedService<RefreshTokenCleanupService>();

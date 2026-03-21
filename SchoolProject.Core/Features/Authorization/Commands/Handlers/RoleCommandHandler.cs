@@ -1,0 +1,96 @@
+﻿using MediatR;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.Extensions.Localization;
+using SchoolProject.Core.Bases;
+using SchoolProject.Core.Features.Authentication.Commands.Models;
+using SchoolProject.Core.Features.Authorization.Commands.Models;
+using SchoolProject.Core.Resources;
+using SchoolProject.Data.Helpers;
+using SchoolProject.Service.Abstracts;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace SchoolProject.Core.Features.Authorization.Commands.Handlers
+{
+    public class RoleCommandHandler : ResponseHandler,
+        IRequestHandler<AddRoleCommand, Response<string>>,
+        IRequestHandler<EditRoleCommand, Response<string>>,
+        IRequestHandler<DeleteRoleCommand, Response<string>>,
+        IRequestHandler<UpdateUserRolesCommand, Response<string>>
+    {
+        #region Fields
+        private readonly IStringLocalizer<SharedResources> _stringLocalizer;
+        private readonly IAuthorizationService _authorizationService;
+        #endregion
+        #region Constructor
+        public RoleCommandHandler(IStringLocalizer<SharedResources> stringLocalizer,
+                                  IAuthorizationService authorizationService) : base(stringLocalizer)
+        {
+            _stringLocalizer = stringLocalizer;
+            _authorizationService = authorizationService;
+        }
+        #endregion
+        #region Handle Functions
+        public async Task<Response<string>> Handle(AddRoleCommand request, CancellationToken cancellationToken)
+        {
+            var result = await _authorizationService.AddRoleAsync(request.RoleName);
+            if (result != null)
+                return Success<string>(result);
+            else
+                return BadRequest<string>();
+        }
+
+        public async Task<Response<string>> Handle(EditRoleCommand request, CancellationToken cancellationToken)
+        {
+            var result = await _authorizationService.EditRoleAsync(request.Id, request.RoleName);
+            if (result != null)
+                return Success<string>(result);
+            else
+                return BadRequest<string>();
+        }
+
+        public async Task<Response<string>> Handle(DeleteRoleCommand request, CancellationToken cancellationToken)
+        {
+            var result = await _authorizationService.DeleteRoleAsync(request.Id);
+            if (result == "NotFound")
+                return NotFound<string>(_stringLocalizer[SharedResourcesKeys.NotFound]);
+            else if (result == "RoleAssignedToUsers")
+                return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.RoleAssignedToUsers]);
+            else if (result == "CannotDeleteSystemRole")
+                return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.CannotDeleteSystemRole]);
+            else if(result == "Success")
+                return Success<string>(result);
+            else
+                return BadRequest<string>();
+        }
+
+        public async Task<Response<string>> Handle(UpdateUserRolesCommand request, CancellationToken cancellationToken)
+        {
+            // Pass the request directly to the service
+            var result = await _authorizationService.UpdateUserRolesAsync(request);
+
+            switch (result)
+            {
+                case "UserIsNull":
+                    return NotFound<string>(_stringLocalizer[SharedResourcesKeys.NotFound]);
+
+                case "Success":
+                    return Success<string>(_stringLocalizer[SharedResourcesKeys.Success]);
+
+                case "FailedToRemoveOldRoles":
+                case "FailedToAddNewRoles":
+                    return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.UpdateFailed]);
+
+                case "SystemError":
+                    // Catch the new error from the database rollback!
+                    return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.SystemError]);
+                default:
+                    return BadRequest<string>(result);
+            }
+        }
+        #endregion
+    }
+}
