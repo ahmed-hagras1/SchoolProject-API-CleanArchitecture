@@ -67,6 +67,24 @@ namespace SchoolProject.Infrastructure.Dependencies
 
             services.AddSingleton<ConcurrentDictionary<string, RefreshToken>>();
 
+            services.AddAuthorization(option =>
+            {
+                option.AddPolicy("CreateStudent", policy =>
+                {
+                    policy.RequireClaim("Create Student", "true");
+                });
+
+                option.AddPolicy("EditStudent", policy =>
+                {
+                    policy.RequireClaim("Edit Student", "true");
+                });
+
+                option.AddPolicy("DeleteStudent", policy =>
+                {
+                    policy.RequireClaim("Delete Student", "true");
+                });
+            });
+
             return services;
         }
     }

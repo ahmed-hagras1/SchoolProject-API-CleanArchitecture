@@ -143,7 +143,10 @@ namespace SchoolProject.Service.Implementations
 
             // This is custom Claims, and you can make any claim you want, and you can use it in the future to identify the user and his roles, and other information that you want to include in the token.
 
-            // eyJhbGciOiJodHRwOi8vd3d3LnczLm9yZy8yMDAxLzA0L3htbGRzaWctbW9yZSNobWFjLXNoYTI1NiIsInR5cCI6IkpXVCJ9.eyJVc2VyTmFtZSI6IkFobWVkIiwiRW1haWwiOiJhaG1lZEBnbWFpbC5jb20iLCJQaG9uZU51bWJlciI6IjEyMzQiLCJqdGkiOiIwMDU3ZDQ1Yi0xNTY0LTQ5OTUtYmRhZi01MzgyYTU0NDJhODkiLCJleHAiOjE3NzM0NDkyMTcsImlzcyI6IlNjaG9vbFByb2plY3RBcGkiLCJhdWQiOiJTY2hvb2xQcm9qZWN0Q2xpZW50In0.spWzS5ZFsKNfppg9qwigRlBNEBrcGm4PNDe5W-QIiE4
+            // Get their custom claims from the database (The ones we saved earlier!)
+            var userCustomClaims = await _userManager.GetClaimsAsync(user);
+
+            
             var claims = new List<Claim>
             {
                 new Claim(nameof(UserClaimModel.UserName), user.UserName ?? string.Empty),
@@ -152,6 +155,9 @@ namespace SchoolProject.Service.Implementations
                     
                 new Claim(JwtRegisteredClaimNames.Jti, Guid.NewGuid().ToString())
             };
+
+            // ADD the custom claims to the token payload!
+            claims.AddRange(userCustomClaims);
 
             var userRoles = await _userManager.GetRolesAsync(user);
             foreach (var role in userRoles)
