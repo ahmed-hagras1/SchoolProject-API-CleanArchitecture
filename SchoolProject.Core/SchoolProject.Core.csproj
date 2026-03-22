@@ -28,6 +28,8 @@
     <Folder Include="Features\Departments\Commands\Handlers\" />
     <Folder Include="Features\Departments\Commands\Models\" />
     <Folder Include="Features\Departments\Commands\Validations\" />
+    <Folder Include="Features\Email\Queries\Models\" />
+    <Folder Include="Features\Email\Queries\Results\" />
     <Folder Include="Mapping\Departments\CommandMapping\" />
     <Folder Include="Mapping\Roles\CommandMapping\" />
   </ItemGroup>

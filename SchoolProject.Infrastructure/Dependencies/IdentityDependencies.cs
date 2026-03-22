@@ -85,6 +85,9 @@ namespace SchoolProject.Infrastructure.Dependencies
                 });
             });
 
+            // Bind the EmailSettings class for Dependency Injection
+            services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
+
             return services;
         }
     }

@@ -67,5 +67,10 @@ namespace SchoolProject.Core.AppMetaData
             public const string ManageUserClaims = Claims + "/ManageUserClaims" + SignleRoute;
             public const string UpdateUserClaims = Claims + "/UpdateUserClaims";
         }
+        public static class EmailRouting
+        {
+            public const string Prefix = Rule + "Email";
+            public const string SendEmail = Prefix + "/SendEmail";
+        }
     }
 }
