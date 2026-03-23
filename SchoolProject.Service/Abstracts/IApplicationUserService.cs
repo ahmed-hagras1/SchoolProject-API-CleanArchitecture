@@ -7,8 +7,8 @@ using System.Threading.Tasks;
 
 namespace SchoolProject.Service.Abstracts
 {
-    public interface IEmailService
+    public interface IApplicationUserService
     {
-        Task<string> SendEmailAsync(string email, string message);
+        Task <string> AddApplicationUserAsync(User user, string password);
     }
 }

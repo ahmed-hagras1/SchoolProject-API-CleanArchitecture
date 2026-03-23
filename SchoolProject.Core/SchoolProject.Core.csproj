@@ -22,8 +22,6 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Features\Authentication\Queries\Handlers\" />
-    <Folder Include="Features\Authentication\Queries\Models\" />
     <Folder Include="Features\Authentication\Queries\Results\" />
     <Folder Include="Features\Departments\Commands\Handlers\" />
     <Folder Include="Features\Departments\Commands\Models\" />

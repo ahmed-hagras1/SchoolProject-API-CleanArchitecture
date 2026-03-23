@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SchoolProject.API.Base;
 using SchoolProject.Core.Features.Authentication.Commands.Models;
+using SchoolProject.Core.Features.Authentication.Queries.Models;
 using Route = SchoolProject.Core.AppMetaData.Router;
 
 namespace SchoolProject.API.Controllers
@@ -68,6 +69,13 @@ namespace SchoolProject.API.Controllers
             }
 
             return BadRequest(response);
+        }
+        [HttpGet(Route.AuthenticationRouting.ConfirmEmail)]
+        // لا تضع [Authorize] هنا، لأن المستخدم لم يقم بتسجيل الدخول بعد!
+        public async Task<IActionResult> ConfirmEmail([FromQuery] ConfirmEmailQuery query)
+        {
+            var response = await Mediator.Send(query);
+            return NewResult(response);
         }
     }
 }

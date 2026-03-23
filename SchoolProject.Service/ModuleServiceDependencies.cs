@@ -18,6 +18,7 @@ public static class ModuleServiceDependencies
         services.AddScoped<IAuthenticationService, AuthenticationService>();
         services.AddScoped<IAuthorizationService, AuthorizationService>();
         services.AddScoped<IEmailService, EmailService>();
+        services.AddScoped<IApplicationUserService, ApplicationUserService>();
 
         // Register the RefreshTokenCleanupService as a Hosted Service (Background Service)
         services.AddHostedService<RefreshTokenCleanupService>();

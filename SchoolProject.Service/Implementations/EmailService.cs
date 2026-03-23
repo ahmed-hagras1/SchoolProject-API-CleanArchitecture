@@ -1,7 +1,11 @@
 ﻿using MailKit.Net.Smtp;
 using MailKit.Security;
+using Microsoft.AspNetCore.Http;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Options;
 using MimeKit;
+using SchoolProject.Data.Entities.Identity;
 using SchoolProject.Data.Helpers;
 using SchoolProject.Service.Abstracts;
 using System;
@@ -14,15 +18,20 @@ namespace SchoolProject.Service.Implementations
 {
     public class EmailService : IEmailService
     {
+        #region Fields
         private readonly EmailSettings _emailSettings;
+        #endregion
 
+        #region Constractor
         // 1. Inject the settings into the Constructor
         public EmailService(IOptions<EmailSettings> emailSettings)
         {
             _emailSettings = emailSettings.Value;
         }
+        #endregion
 
-        public async Task<string> SendEmail(string email, string message)
+        #region Methods
+        public async Task<string> SendEmailAsync(string email, string message)
         {
             try
             {
@@ -53,5 +62,6 @@ namespace SchoolProject.Service.Implementations
                 return "Failed";
             }
         }
+        #endregion
     }
 }

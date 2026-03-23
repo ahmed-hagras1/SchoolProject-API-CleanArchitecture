@@ -1,12 +1,16 @@
 ﻿using AutoMapper;
 using MediatR;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Localization;
+using SchoolProject.Core.AppMetaData;
 using SchoolProject.Core.Bases;
 using SchoolProject.Core.Features.ApplicationUser.Commands.Models;
 using SchoolProject.Core.Resources;
 using SchoolProject.Data.Entities.Identity;
+using SchoolProject.Service.Abstracts;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -25,14 +29,25 @@ namespace SchoolProject.Core.Features.ApplicationUser.Commands.Handlers
         private readonly IStringLocalizer<SharedResources> _stringLocalizer;
         private readonly IMapper _mapper;
         private readonly UserManager<User> _userManager;
+        private readonly IHttpContextAccessor _httpContextAccessor;
+        private readonly IEmailService _emailService;
+        private readonly IApplicationUserService _applicationUserService;
         #endregion
 
         #region Constructor
-        public ApplicationUserCommandHandler(IMapper mapper,IStringLocalizer<SharedResources> stringLocalizer, UserManager<User> userManager) : base(stringLocalizer)
+        public ApplicationUserCommandHandler(IMapper mapper,
+            IStringLocalizer<SharedResources> stringLocalizer,
+            UserManager<User> userManager,
+            IHttpContextAccessor httpContextAccessor,
+            IEmailService emailService,
+            IApplicationUserService applicationUserService) : base(stringLocalizer)
         {
             _mapper = mapper;
             _stringLocalizer = stringLocalizer;
             _userManager = userManager;
+            _httpContextAccessor = httpContextAccessor;
+            _emailService = emailService;
+            _applicationUserService = applicationUserService;
         }
 
 
@@ -41,36 +56,33 @@ namespace SchoolProject.Core.Features.ApplicationUser.Commands.Handlers
         #region Handle Method
         public async Task<Response<string>> Handle(AddApplicationUserCommand request, CancellationToken cancellationToken)
         {
-            // Check If the Email is exist or not exist.
+            // 1. Validations (Keep these here, it's good practice to validate before calling the service)
             var user = await _userManager.FindByEmailAsync(request.Email);
-            // Do not execute the rules inside these brackets => {} unless Email is not null.
             if (user != null) return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.EmailIsAlreadyExist]);
 
-            // Note => You can make other validations like check if the phone number, or UserName is exist or not exist, but I will not make it because I will make it in the future when I will make Edit operation for user.
             var userByUserName = await _userManager.FindByNameAsync(request.UserName);
             if (userByUserName != null) return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.AlreadyExist]);
 
-            // Mapping from AddApplicationUserCommand to User entity, and then add user using UserManager.
+            // 2. Mapping
             var applicationUserMapper = _mapper.Map<User>(request);
-            var result = await _userManager.CreateAsync(applicationUserMapper, request.Password);
-            if (result.Succeeded)
+
+            // 3. Call the Orchestrator Service! (This does all the database, token, and email work)
+            var result = await _applicationUserService.AddApplicationUserAsync(applicationUserMapper, request.Password);
+
+            // 4. Handle the results based on what the service returns
+            if (result == "Success")
             {
-                // If you want to assign a specific role to the user, you can do it here. For example, if you want to assign the "User" role to every new user, you can uncomment the following line and make sure that the "User" role exists in your system.
-                // await _userManager.AddToRoleAsync(applicationUserMapper, request.Role);
-
-                // If there is no users in the database, make the first user an admin, otherwise make it a normal user.
-                //if (_userManager.Users.Any())
-                //    await _userManager.AddToRoleAsync(applicationUserMapper, "User");
-                //else
-                //    await _userManager.AddToRoleAsync(applicationUserMapper, "Admin");
-
-
-                return Created("Added successfully");
+                return Created("Added successfully. Please check your email to confirm your account.");
             }
-            // else return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.FailedToAddUser]);
-            else return BadRequest<string>(result.Errors.FirstOrDefault().Description);
+            else if (result == "FailedToSendEmail") // The specific error we created in the service
+            {
+                return BadRequest<string>("User was created but failed to send confirmation email. Please try registering again later.");
+            }
+            else
+            {
+                return BadRequest<string>("Failed to add user.");
+            }
         }
-
         public async Task<Response<string>> Handle(UpdateApplicationUserCommand request, CancellationToken cancellationToken)
         {
             // Check if user is exist.

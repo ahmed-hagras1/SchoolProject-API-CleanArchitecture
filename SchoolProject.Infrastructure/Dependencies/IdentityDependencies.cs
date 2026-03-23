@@ -19,6 +19,8 @@ namespace SchoolProject.Infrastructure.Dependencies
     {
         public static IServiceCollection AddIdentityDependencies(this IServiceCollection services, IConfiguration configuration)
         {
+            
+
             services.AddIdentity<User, Role>(options =>
             {
                 options.Password.RequireDigit = true;
@@ -28,6 +30,8 @@ namespace SchoolProject.Infrastructure.Dependencies
                 options.Password.RequiredLength = 6;
                 options.Password.RequiredUniqueChars = 1;
 
+                options.SignIn.RequireConfirmedEmail = true;
+                options.User.RequireUniqueEmail = true;
             })
             .AddEntityFrameworkStores<AppDbContext>()
             .AddDefaultTokenProviders();
@@ -62,6 +66,7 @@ namespace SchoolProject.Infrastructure.Dependencies
 
                     ValidateLifetime = jwtSettings.ValidateLifetime,
                     ClockSkew = TimeSpan.Zero // Removes the default 5-minute grace period on token expiration
+
                 };
             });
 
@@ -87,6 +92,8 @@ namespace SchoolProject.Infrastructure.Dependencies
 
             // Bind the EmailSettings class for Dependency Injection
             services.Configure<EmailSettings>(configuration.GetSection("EmailSettings"));
+
+            services.AddHttpContextAccessor();
 
             return services;
         }

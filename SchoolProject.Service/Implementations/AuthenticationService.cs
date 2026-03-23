@@ -14,6 +14,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace SchoolProject.Service.Implementations
 {
@@ -277,6 +278,33 @@ namespace SchoolProject.Service.Implementations
             await _RefreshTokenRepository.UpdateAsync(userRefreshToken);
 
             return "LoggedOutSuccessfully"; // We will add this key to your localization files
+        }
+
+        public async Task<string> ConfirmEmailAsync(int userId, string code)
+        {
+            // 1. Check if user exists
+            var user = await _userManager.FindByIdAsync(userId.ToString());
+            if (user == null)
+                return "UserNotFound";
+
+            try
+            {
+                // 2. Decode the code back to its original format
+                var decodedCode = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
+
+                // 3. Confirm the email
+                var result = await _userManager.ConfirmEmailAsync(user, decodedCode);
+
+                if (result.Succeeded)
+                    return "Success";
+
+                return "ErrorConfirming";
+            }
+            catch (Exception)
+            {
+                // Catch invalid Base64 strings safely
+                return "ErrorConfirming";
+            }
         }
         #endregion
     }

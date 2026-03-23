@@ -57,6 +57,10 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
 
             if (!result.Succeeded) return BadRequest<JWTAuthResult>(_stringLocalizer[SharedResourcesKeys.InvalidPassword]);
 
+            // Check if email is confirmed.
+
+            if(!user.EmailConfirmed ) return BadRequest<JWTAuthResult>(_stringLocalizer[SharedResourcesKeys.EmailNotConfirmed]);
+
             // If the user exists and the password is correct, return token.
             // Generate Token.
             var jwtResult = await _authenticationService.GetJWTToken(user);

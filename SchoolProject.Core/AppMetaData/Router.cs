@@ -13,6 +13,7 @@ namespace SchoolProject.Core.AppMetaData
         public const string root = "Api";
         public const string version = "V1";
         public const string Rule = root + "/" + version + "/";
+        // Api/V1/Authentication/ConfirmEmail
 
         public static class StudentRouting
         {
@@ -48,6 +49,7 @@ namespace SchoolProject.Core.AppMetaData
             public const string SignIn = Prefix + "/SignIn";
             public const string RefreshToken = Prefix + "/RefreshToken";
             public const string Logout = Prefix + "/Logout";
+            public const string ConfirmEmail = Prefix + "/ConfirmEmail";
 
 
         }
