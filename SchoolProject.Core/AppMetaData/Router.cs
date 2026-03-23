@@ -50,6 +50,7 @@ namespace SchoolProject.Core.AppMetaData
             public const string RefreshToken = Prefix + "/RefreshToken";
             public const string Logout = Prefix + "/Logout";
             public const string ConfirmEmail = Prefix + "/ConfirmEmail";
+            public const string ResendConfirmEmail = Prefix + "/ResendConfirmEmail";
 
 
         }

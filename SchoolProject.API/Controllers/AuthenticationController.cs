@@ -77,5 +77,12 @@ namespace SchoolProject.API.Controllers
             var response = await Mediator.Send(query);
             return NewResult(response);
         }
+        [HttpPost(Route.AuthenticationRouting.ResendConfirmEmail)]
+        // لا نضع Authorize هنا لأن المستخدم لا يمتلك Token بعد
+        public async Task<IActionResult> ResendConfirmEmail([FromBody] ResendConfirmEmailCommand command)
+        {
+            var response = await Mediator.Send(command);
+            return NewResult(response);
+        }
     }
 }

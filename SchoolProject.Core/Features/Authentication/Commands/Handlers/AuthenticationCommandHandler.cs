@@ -11,6 +11,7 @@ using SchoolProject.Core.Resources;
 using SchoolProject.Data.Entities.Identity;
 using SchoolProject.Data.Helpers;
 using SchoolProject.Service.Abstracts;
+using SchoolProject.Service.Implementations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,8 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
     public class AuthenticationCommandHandler : ResponseHandler,
         IRequestHandler<SignInCommand, Response<JWTAuthResult>>,
         IRequestHandler<RefreshTokenCommand, Response<JWTAuthResult>>,
-        IRequestHandler<LogoutCommand, Response<string>>
+        IRequestHandler<LogoutCommand, Response<string>>,
+        IRequestHandler<ResendConfirmEmailCommand, Response<string>>
 
     {
         #region Fields
@@ -31,18 +33,21 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IAuthenticationService _authenticationService;
+        private readonly IApplicationUserService _applicationUserService;
         #endregion
 
         #region Constructor
         public AuthenticationCommandHandler(IStringLocalizer<SharedResources> stringLocalizer,
             UserManager<User> userManager,
             SignInManager<User> signInManager,
-            IAuthenticationService authenticationService) : base(stringLocalizer)
+            IAuthenticationService authenticationService,
+            IApplicationUserService applicationUserService) : base(stringLocalizer)
         {
             _stringLocalizer = stringLocalizer;
             _userManager = userManager;
             _signInManager = signInManager;
             _authenticationService = authenticationService;
+            _applicationUserService = applicationUserService;
         }
         #endregion
         #region Handle Functions
@@ -124,6 +129,31 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
             catch (Exception ex)
             {
                 return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.BadRequest] + " : " + ex.Message);
+            }
+        }
+
+        public async Task<Response<string>> Handle(ResendConfirmEmailCommand request, CancellationToken cancellationToken)
+        {
+            // استدعاء الخدمة لمعالجة كل شيء
+            var result = await _applicationUserService.ResendConfirmEmailAsync(request.Email);
+
+            // إرجاع الرد المناسب بناءً على نتيجة الخدمة
+            switch (result)
+            {
+                case "Success":
+                    return Success<string>("A new confirmation link has been sent to your email.");
+
+                case "UserNotFound":
+                    return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.UserNotFound]);
+
+                case "AlreadyConfirmed":
+                    return BadRequest<string>("Email is already confirmed. You can log in directly.");
+
+                case "FailedToSendEmail":
+                    return BadRequest<string>("Failed to send the email. Please try again later.");
+
+                default:
+                    return BadRequest<string>("An unexpected error occurred.");
             }
         }
         #endregion

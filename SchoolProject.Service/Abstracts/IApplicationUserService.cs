@@ -10,5 +10,6 @@ namespace SchoolProject.Service.Abstracts
     public interface IApplicationUserService
     {
         Task <string> AddApplicationUserAsync(User user, string password);
+        Task<string> ResendConfirmEmailAsync(string email);
     }
 }

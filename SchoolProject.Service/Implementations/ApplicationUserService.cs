@@ -82,6 +82,32 @@ namespace SchoolProject.Service.Implementations
             // else return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.FailedToAddUser]);
             else return "Failed";
         }
+        public async Task<string> ResendConfirmEmailAsync(string email)
+        {
+            // 1. البحث عن المستخدم
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null)
+                return "UserNotFound";
+
+            // 2. التحقق مما إذا كان مؤكداً بالفعل (لا نريد إرسال إيميل لشخص حسابه مفعل!)
+            if (user.EmailConfirmed)
+                return "AlreadyConfirmed";
+
+            // 3. إنشاء رمز أمان جديد وبناء الرابط
+            var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
+            var encodedCode = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
+            var requestAccessor = _httpContextAccessor.HttpContext.Request;
+            var returnUrl = $"{requestAccessor.Scheme}://{requestAccessor.Host}/Api/V1/Authentication/ConfirmEmail?userId={user.Id}&code={encodedCode}";
+
+            // 4. صياغة الرسالة الجديدة وإرسالها
+            var message = $"Welcome back to School Project! Please confirm your email by clicking this new link: <a href='{returnUrl}'>Click Here</a>";
+            var sendEmailResult = await _emailService.SendEmailAsync(user.Email, message);
+
+            if (sendEmailResult == "Success")
+                return "Success";
+            else
+                return "FailedToSendEmail";
+        }
         #endregion
     }
 }
