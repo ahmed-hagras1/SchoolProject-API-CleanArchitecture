@@ -306,6 +306,23 @@ namespace SchoolProject.Service.Implementations
                 return "ErrorConfirming";
             }
         }
+
+        public async Task<string> ResetPasswordAsync(string email, string code, string newPassword)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null) return "UserNotFound";
+
+            // Pass the 6-digit code and new password directly to Identity
+            var result = await _userManager.ResetPasswordAsync(user, code, newPassword);
+
+            if (result.Succeeded)
+            {
+                return "Success";
+            }
+
+            // If the 6-digit code is wrong/expired, or password is too weak, return the exact error
+            return result.Errors.FirstOrDefault()?.Description ?? "Failed";
+        }
         #endregion
     }
 }

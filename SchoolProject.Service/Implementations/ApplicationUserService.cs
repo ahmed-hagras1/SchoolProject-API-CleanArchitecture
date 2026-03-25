@@ -108,6 +108,26 @@ namespace SchoolProject.Service.Implementations
             else
                 return "FailedToSendEmail";
         }
+
+        public async Task<string> SendResetPasswordCodeAsync(string email)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+
+            // Security Check 1: Does the user exist?
+            if (user == null) return "UserNotFound";
+
+            // Security Check 2: Did they confirm their email?
+            if (!user.EmailConfirmed) return "EmailNotConfirmed";
+
+            // Generate the 6-Digit Code
+            var code = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+            // Send the Email
+            var message = $"Hello! Your 6-digit password reset code is: <b>{code}</b>. This code will expire shortly.";
+            var sendEmailResult = await _emailService.SendEmailAsync(user.Email, message);
+
+            return sendEmailResult == "Success" ? "Success" : "FailedToSendEmail";
+        }
         #endregion
     }
 }

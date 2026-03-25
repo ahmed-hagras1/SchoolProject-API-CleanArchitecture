@@ -25,7 +25,9 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
         IRequestHandler<SignInCommand, Response<JWTAuthResult>>,
         IRequestHandler<RefreshTokenCommand, Response<JWTAuthResult>>,
         IRequestHandler<LogoutCommand, Response<string>>,
-        IRequestHandler<ResendConfirmEmailCommand, Response<string>>
+        IRequestHandler<ResendConfirmEmailCommand, Response<string>>,
+        IRequestHandler<SendResetPasswordCommand, Response<string>>,
+        IRequestHandler<ResetPasswordCommand, Response<string>>
 
     {
         #region Fields
@@ -154,6 +156,46 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
 
                 default:
                     return BadRequest<string>("An unexpected error occurred.");
+            }
+        }
+
+        public async Task<Response<string>> Handle(SendResetPasswordCommand request, CancellationToken cancellationToken)
+        {
+            var result = await _applicationUserService.SendResetPasswordCodeAsync(request.Email);
+
+            switch (result)
+            {
+                case "Success":
+                    return Success<string>("A password reset link has been sent to your email if it exists in our system.");
+                case "UserNotFound":
+                    return NotFound<string>(_stringLocalizer[SharedResourcesKeys.UserNotFound]);
+                case "EmailNotConfirmed":
+                    return BadRequest<string>("Email is not confirmed. Please confirm your email before requesting a password reset.");
+
+                case "FailedToSendEmail":
+                    return BadRequest<string>("Failed to send the email. Please try again later.");
+
+                default:
+                    return BadRequest<string>("An unexpected error occurred.");
+            }
+        }
+
+        public async Task<Response<string>> Handle(ResetPasswordCommand request, CancellationToken cancellationToken)
+        {
+            var result = await _authenticationService.ResetPasswordAsync(request.Email, request.Code, request.NewPassword);
+
+            if (result == "Success")
+            {
+                return Success<string>("Password has been reset successfully. You can now log in.");
+            }
+            else if (result == "UserNotFound")
+            {
+                return BadRequest<string>("Invalid request.");
+            }
+            else
+            {
+                // Returns the specific Identity error (e.g., "Invalid Token" or "Password requires uppercase")
+                return BadRequest<string>(result);
             }
         }
         #endregion
