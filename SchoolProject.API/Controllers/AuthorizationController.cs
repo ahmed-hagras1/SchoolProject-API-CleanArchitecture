@@ -4,15 +4,16 @@ using Microsoft.AspNetCore.Mvc;
 using SchoolProject.API.Base;
 using SchoolProject.Core.Features.Authorization.Commands.Models;
 using SchoolProject.Core.Features.Authorization.Queries.Models;
+using SchoolProject.Core.Filters;
 using Router = SchoolProject.Core.AppMetaData.Router;
 
 namespace SchoolProject.API.Controllers
 {
     [ApiController]
     // This controller is protected by the Authorize attribute, allowing only users with "Admin" or "User" roles to access its endpoints.
-    [Authorize(Roles = "Admin,User")]
+    //[Authorize(Roles = "Admin,User")]
     // This controller is protected by the Authorize attribute, allowing only users with "Admin", and "User" roles to access its endpoints.
-    //[Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin")]
     //[Authorize(Roles = "User")]
 
     public class AuthorizationController : AppControllerBase
@@ -45,6 +46,8 @@ namespace SchoolProject.API.Controllers
             return NewResult(response);
         }
         [HttpGet(Router.AuthorizationRouting.RoleList)]
+        [ServiceFilter(typeof(AuthenticationFilter))]
+
         public async Task<IActionResult> GetRoleList()
         {
             // Let your base controller handle the HTTP status codes automatically!

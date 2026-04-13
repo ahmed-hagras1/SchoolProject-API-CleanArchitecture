@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using SchoolProject.API.Base;
 using SchoolProject.Core.Features.Authentication.Commands.Models;
+using SchoolProject.Core.Features.Authentication.Queries.Models;
 using Route = SchoolProject.Core.AppMetaData.Router;
 
 namespace SchoolProject.API.Controllers
@@ -68,6 +69,34 @@ namespace SchoolProject.API.Controllers
             }
 
             return BadRequest(response);
+        }
+        [HttpGet(Route.AuthenticationRouting.ConfirmEmail)]
+        // لا تضع [Authorize] هنا، لأن المستخدم لم يقم بتسجيل الدخول بعد!
+        public async Task<IActionResult> ConfirmEmail([FromQuery] ConfirmEmailQuery query)
+        {
+            var response = await Mediator.Send(query);
+            return NewResult(response);
+        }
+        [HttpPost(Route.AuthenticationRouting.ResendConfirmEmail)]
+        // لا نضع Authorize هنا لأن المستخدم لا يمتلك Token بعد
+        public async Task<IActionResult> ResendConfirmEmail([FromBody] ResendConfirmEmailCommand command)
+        {
+            var response = await Mediator.Send(command);
+            return NewResult(response);
+        }
+
+        [HttpPost(Route.AuthenticationRouting.SendResetPasswordCode)]
+        public async Task<IActionResult> SendResetPasswordCode([FromBody] SendResetPasswordCommand command)
+        {
+            var response = await Mediator.Send(command);
+            return NewResult(response);
+        }
+
+        [HttpPost(Route.AuthenticationRouting.ResetPassword)]
+        public async Task<IActionResult> ResetPassword([FromBody] ResetPasswordCommand command)
+        {
+            var response = await Mediator.Send(command);
+            return NewResult(response);
         }
     }
 }

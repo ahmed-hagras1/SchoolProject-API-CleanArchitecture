@@ -11,6 +11,7 @@ using SchoolProject.Core.Resources;
 using SchoolProject.Data.Entities.Identity;
 using SchoolProject.Data.Helpers;
 using SchoolProject.Service.Abstracts;
+using SchoolProject.Service.Implementations;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -23,7 +24,10 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
     public class AuthenticationCommandHandler : ResponseHandler,
         IRequestHandler<SignInCommand, Response<JWTAuthResult>>,
         IRequestHandler<RefreshTokenCommand, Response<JWTAuthResult>>,
-        IRequestHandler<LogoutCommand, Response<string>>
+        IRequestHandler<LogoutCommand, Response<string>>,
+        IRequestHandler<ResendConfirmEmailCommand, Response<string>>,
+        IRequestHandler<SendResetPasswordCommand, Response<string>>,
+        IRequestHandler<ResetPasswordCommand, Response<string>>
 
     {
         #region Fields
@@ -31,18 +35,21 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
         private readonly UserManager<User> _userManager;
         private readonly SignInManager<User> _signInManager;
         private readonly IAuthenticationService _authenticationService;
+        private readonly IApplicationUserService _applicationUserService;
         #endregion
 
         #region Constructor
         public AuthenticationCommandHandler(IStringLocalizer<SharedResources> stringLocalizer,
             UserManager<User> userManager,
             SignInManager<User> signInManager,
-            IAuthenticationService authenticationService) : base(stringLocalizer)
+            IAuthenticationService authenticationService,
+            IApplicationUserService applicationUserService) : base(stringLocalizer)
         {
             _stringLocalizer = stringLocalizer;
             _userManager = userManager;
             _signInManager = signInManager;
             _authenticationService = authenticationService;
+            _applicationUserService = applicationUserService;
         }
         #endregion
         #region Handle Functions
@@ -56,6 +63,10 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
             var result = await _signInManager.CheckPasswordSignInAsync(user, request.Password, false);
 
             if (!result.Succeeded) return BadRequest<JWTAuthResult>(_stringLocalizer[SharedResourcesKeys.InvalidPassword]);
+
+            // Check if email is confirmed.
+
+            if(!user.EmailConfirmed ) return BadRequest<JWTAuthResult>(_stringLocalizer[SharedResourcesKeys.EmailNotConfirmed]);
 
             // If the user exists and the password is correct, return token.
             // Generate Token.
@@ -120,6 +131,71 @@ namespace SchoolProject.Core.Features.Authentication.Commands.Handlers
             catch (Exception ex)
             {
                 return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.BadRequest] + " : " + ex.Message);
+            }
+        }
+
+        public async Task<Response<string>> Handle(ResendConfirmEmailCommand request, CancellationToken cancellationToken)
+        {
+            // استدعاء الخدمة لمعالجة كل شيء
+            var result = await _applicationUserService.ResendConfirmEmailAsync(request.Email);
+
+            // إرجاع الرد المناسب بناءً على نتيجة الخدمة
+            switch (result)
+            {
+                case "Success":
+                    return Success<string>("A new confirmation link has been sent to your email.");
+
+                case "UserNotFound":
+                    return BadRequest<string>(_stringLocalizer[SharedResourcesKeys.UserNotFound]);
+
+                case "AlreadyConfirmed":
+                    return BadRequest<string>("Email is already confirmed. You can log in directly.");
+
+                case "FailedToSendEmail":
+                    return BadRequest<string>("Failed to send the email. Please try again later.");
+
+                default:
+                    return BadRequest<string>("An unexpected error occurred.");
+            }
+        }
+
+        public async Task<Response<string>> Handle(SendResetPasswordCommand request, CancellationToken cancellationToken)
+        {
+            var result = await _applicationUserService.SendResetPasswordCodeAsync(request.Email);
+
+            switch (result)
+            {
+                case "Success":
+                    return Success<string>("A password reset link has been sent to your email if it exists in our system.");
+                case "UserNotFound":
+                    return NotFound<string>(_stringLocalizer[SharedResourcesKeys.UserNotFound]);
+                case "EmailNotConfirmed":
+                    return BadRequest<string>("Email is not confirmed. Please confirm your email before requesting a password reset.");
+
+                case "FailedToSendEmail":
+                    return BadRequest<string>("Failed to send the email. Please try again later.");
+
+                default:
+                    return BadRequest<string>("An unexpected error occurred.");
+            }
+        }
+
+        public async Task<Response<string>> Handle(ResetPasswordCommand request, CancellationToken cancellationToken)
+        {
+            var result = await _authenticationService.ResetPasswordAsync(request.Email, request.Code, request.NewPassword);
+
+            if (result == "Success")
+            {
+                return Success<string>("Password has been reset successfully. You can now log in.");
+            }
+            else if (result == "UserNotFound")
+            {
+                return BadRequest<string>("Invalid request.");
+            }
+            else
+            {
+                // Returns the specific Identity error (e.g., "Invalid Token" or "Password requires uppercase")
+                return BadRequest<string>(result);
             }
         }
         #endregion

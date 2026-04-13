@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
 using SchoolProject.API.MiddleWares;
 using SchoolProject.Core;
+using SchoolProject.Core.Filters;
 using SchoolProject.Data.Entities.Identity;
 using SchoolProject.Infrastructure.Data;
 using SchoolProject.Infrastructure.Dependencies;
@@ -63,6 +64,8 @@ namespace SchoolProject.API
             builder.Services.AddEndpointsApiExplorer();
             builder.Services.AddSwaggerGen();
 
+            // Add Custom Filters
+            builder.Services.AddScoped<AuthenticationFilter>();
 
 
             var app = builder.Build();

@@ -42,5 +42,6 @@ namespace SchoolProject.Core.Resources
         public const string CannotDeleteSystemRole = "CannotDeleteSystemRole";
         public const string RoleAssignedToUsers = "RoleAssignedToUsers";
         public const string SystemError = "SystemError";
+        public const string EmailNotConfirmed = "EmailNotConfirmed";
     }
 }

@@ -14,6 +14,7 @@ using System.Security.Cryptography;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.AspNetCore.WebUtilities;
 
 namespace SchoolProject.Service.Implementations
 {
@@ -149,6 +150,9 @@ namespace SchoolProject.Service.Implementations
             
             var claims = new List<Claim>
             {
+                // ADD THIS LINE so the token carries the User's ID!
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+
                 new Claim(nameof(UserClaimModel.UserName), user.UserName ?? string.Empty),
                 new Claim(nameof(UserClaimModel.Email), user.Email ?? string.Empty),
                 new Claim(nameof(UserClaimModel.PhoneNumber), user.PhoneNumber ?? string.Empty),
@@ -277,6 +281,50 @@ namespace SchoolProject.Service.Implementations
             await _RefreshTokenRepository.UpdateAsync(userRefreshToken);
 
             return "LoggedOutSuccessfully"; // We will add this key to your localization files
+        }
+
+        public async Task<string> ConfirmEmailAsync(int userId, string code)
+        {
+            // 1. Check if user exists
+            var user = await _userManager.FindByIdAsync(userId.ToString());
+            if (user == null)
+                return "UserNotFound";
+
+            try
+            {
+                // 2. Decode the code back to its original format
+                var decodedCode = Encoding.UTF8.GetString(WebEncoders.Base64UrlDecode(code));
+
+                // 3. Confirm the email
+                var result = await _userManager.ConfirmEmailAsync(user, decodedCode);
+
+                if (result.Succeeded)
+                    return "Success";
+
+                return "ErrorConfirming";
+            }
+            catch (Exception)
+            {
+                // Catch invalid Base64 strings safely
+                return "ErrorConfirming";
+            }
+        }
+
+        public async Task<string> ResetPasswordAsync(string email, string code, string newPassword)
+        {
+            var user = await _userManager.FindByEmailAsync(email);
+            if (user == null) return "UserNotFound";
+
+            // Pass the 6-digit code and new password directly to Identity
+            var result = await _userManager.ResetPasswordAsync(user, code, newPassword);
+
+            if (result.Succeeded)
+            {
+                return "Success";
+            }
+
+            // If the 6-digit code is wrong/expired, or password is too weak, return the exact error
+            return result.Errors.FirstOrDefault()?.Description ?? "Failed";
         }
         #endregion
     }

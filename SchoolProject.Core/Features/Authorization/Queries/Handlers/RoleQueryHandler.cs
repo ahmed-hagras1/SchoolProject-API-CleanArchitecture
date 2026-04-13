@@ -51,11 +51,11 @@ namespace SchoolProject.Core.Features.Authorization.Queries.Handlers
 
         public async Task<Response<GetRoleResult>> Handle(GetRoleByIdQuery request, CancellationToken cancellationToken)
         {
-            var role = await _authorizationService.GetRoleById(request.Id);
-            if (role == null)
+            var roles = await _authorizationService.GetRoleById(request.Id);
+            if (roles == null)
                 return NotFound<GetRoleResult>(_stringLocalizer[SharedResourcesKeys.NotFound]);
 
-            var result = _mapper.Map<GetRoleResult>(role);
+            var result = _mapper.Map<GetRoleResult>(roles);
 
             return Success(result);
         }
