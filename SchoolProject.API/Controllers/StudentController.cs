@@ -14,12 +14,14 @@ namespace SchoolProject.API.Controllers
     //[Route("api/[controller]")]
     [ApiController]
     [Authorize] // This means all endpoints in this controller require authentication. You can override this with [AllowAnonymous] on specific actions if needed.
+    [Authorize(Roles = "Instructor")]
     public class StudentController : AppControllerBase
     {
        
         #region Endpoints
         //[HttpGet("GetStudentsList")]
         [HttpGet(Router.StudentRouting.List)]
+        [Authorize(Roles = "Admin")]
         public async Task<IActionResult> GetStudentsListAsync()
         {
             return NewResult(await Mediator.Send(new GetStudentListQuery()));

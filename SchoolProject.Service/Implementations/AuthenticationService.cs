@@ -150,6 +150,9 @@ namespace SchoolProject.Service.Implementations
             
             var claims = new List<Claim>
             {
+                // ADD THIS LINE so the token carries the User's ID!
+                new Claim(ClaimTypes.NameIdentifier, user.Id.ToString()),
+
                 new Claim(nameof(UserClaimModel.UserName), user.UserName ?? string.Empty),
                 new Claim(nameof(UserClaimModel.Email), user.Email ?? string.Empty),
                 new Claim(nameof(UserClaimModel.PhoneNumber), user.PhoneNumber ?? string.Empty),
