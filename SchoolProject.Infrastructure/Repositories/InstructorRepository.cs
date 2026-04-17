@@ -23,9 +23,21 @@ namespace SchoolProject.Infrastructure.Repositories
             _instructors = context.Set<Instructor>();
 
         }
+
+
         #endregion
 
         #region Methods
+        public async Task<int> UpdateInstructorSalaryAsync(int instructorId, decimal newSalary)
+        {
+            // ExecuteSqlInterpolatedAsync is used for INSERT, UPDATE, DELETE stored procedures
+            // It returns the number of rows affected.
+            var rowsAffected = await _dbContext.Database.ExecuteSqlInterpolatedAsync(
+                $"EXEC sp_UpdateInstructorSalary @InstructorId = {instructorId}, @NewSalary = {newSalary}"
+            );
+
+            return rowsAffected;
+        }
         #endregion
     }
 }
