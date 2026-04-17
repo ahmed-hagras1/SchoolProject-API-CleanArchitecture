@@ -31,6 +31,7 @@ namespace SchoolProject.Core.AppMetaData
         {
             public const string Prefix = Rule + "Department";
             public const string List = Prefix + "/List";
+            public const string ListWithStudentsCount = Prefix + "/ListWithStudentsCount";
             public const string GetById = Prefix + "/GetById";
         }
         public static class ApplicationUserRouting

@@ -6,6 +6,7 @@ using SchoolProject.Core.Features.Students.Queries.Models;
 using SchoolProject.API.Base;
 using SchoolProject.Core.Features.Departments.Queries.Models;
 using Router = SchoolProject.Core.AppMetaData.Router;
+using SchoolProject.Core.Features.ApplicationUser.Queries.Models;
 
 namespace SchoolProject.API.Controllers
 {
@@ -22,6 +23,12 @@ namespace SchoolProject.API.Controllers
         {
             var response = await Mediator.Send(query);
             return Ok(response);
+        }
+        [HttpGet(Router.DepartmentRouting.ListWithStudentsCount)]
+        public async Task<IActionResult> GetDepartmentStudentCount()
+        {
+            var response = await Mediator.Send(new SchoolProject.Core.Features.Views.Queries.Models.GetDepartmentStudentCountListQuery());
+            return NewResult(response);
         }
     }
 }

@@ -2,8 +2,10 @@
 using Microsoft.Extensions.DependencyInjection;
 using SchoolProject.Data.Entities.Identity;
 using SchoolProject.Service.Abstracts;
+using SchoolProject.Service.Abstracts.Views;
 using SchoolProject.Service.BackgroundServices;
 using SchoolProject.Service.Implementations;
+using SchoolProject.Service.Implementations.Views;
 
 namespace SchoolProject.Service;
 
@@ -20,6 +22,7 @@ public static class ModuleServiceDependencies
         services.AddScoped<IEmailService, EmailService>();
         services.AddScoped<IApplicationUserService, ApplicationUserService>();
         services.AddScoped<ICurrentUserService, CurrentUserService>();
+        services.AddScoped<IViewService, ViewService>();
 
         // Register the RefreshTokenCleanupService as a Hosted Service (Background Service)
         services.AddHostedService<RefreshTokenCleanupService>();

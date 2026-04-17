@@ -1,10 +1,13 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
+using SchoolProject.Data.Entities.Views;
 using SchoolProject.Infrastructure.Data;
 using SchoolProject.Infrastructure.InfrastructureBases;
 using SchoolProject.Infrastructure.Repositories;
+using SchoolProject.Infrastructure.Repositories.Views;
 using SchoolProject.Service.Abstracts;
+using SchoolProject.Service.Abstracts.Views;
 
 namespace SchoolProject.Infrastructure.Dependencies;
 
@@ -26,6 +29,7 @@ public static class ModuleInfrastructureDependencies
         services.AddScoped<ISubjectRepository, SubjectRepository>();
         services.AddScoped<IInstructorRepository, InstructorRepository>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
+        services.AddScoped<IViewRepository<ViewDepartmentStudentCount>, ViewDepartmentWithStudentsCountRepository>();
 
         // Register Generic Repository
         services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));

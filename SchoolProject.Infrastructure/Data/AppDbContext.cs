@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using SchoolProject.Data.Entities;
 using SchoolProject.Data.Entities.Identity;
+using SchoolProject.Data.Entities.Views;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -33,8 +34,12 @@ public class AppDbContext : IdentityDbContext<
     public DbSet<DepartmentSubject> DepartmentSubjects { get; set; }
     public DbSet<StudentSubject> StudentSubjects { get; set; }
     public DbSet<UserRefreshToken> UserRefreshTokens { get; set; }
-    
-    
+
+
+    #region Views
+    public DbSet<ViewDepartmentStudentCount> ViewDepartmentStudentCounts { get; set; }
+    #endregion
+
     // Fluent API.
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -70,7 +75,16 @@ public class AppDbContext : IdentityDbContext<
         //    .HasMaxLength(200);
 
         // This will automatically apply all configurations from the current assembly, including DepartmentConfigurations.
-        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly()); 
+        modelBuilder.ApplyConfigurationsFromAssembly(Assembly.GetExecutingAssembly());
+
+        #region Views
+        // Configure the View
+        modelBuilder.Entity<ViewDepartmentStudentCount>(entity =>
+        {
+            entity.HasNoKey(); // Views usually don't have a primary key
+            entity.ToView("vw_DepartmentStudentCount"); // The exact name of the view in SQL
+        });
+        #endregion
 
     }
 }
