@@ -10,29 +10,50 @@ namespace SchoolProject.Service.Implementations
 {
     public class InstructorService : IInstructorService
     {
-        #region Fields
-        private readonly IInstructorRepository _InstructorRepository;
-        #endregion
+        private readonly IInstructorRepository _instructorRepository;
 
-        #region Constructor
+        // 1. Inject the Infrastructure Repository
         public InstructorService(IInstructorRepository instructorRepository)
         {
-            _InstructorRepository = instructorRepository;
+            _instructorRepository = instructorRepository;
         }
 
-        #endregion
+        // ==========================================
+        // 🟢 Add New Instructor
+        // ==========================================
+        public async Task<string> AddInstructorAsync(Instructor instructor)
+        {
+            // Note: The file upload is handled cleanly in the MediatR handler.
+            // By the time the entity gets here, the 'Image' property already holds the string path!
 
-        #region Methods / Handle functions
+            try
+            {
+                // Use the generic repository to save the entity
+                await _instructorRepository.AddAsync(instructor);
+                return "Success";
+            }
+            catch (Exception)
+            {
+                // In an enterprise app, you might log the exception here
+                return "Failed";
+            }
+        }
 
+        // ==========================================
+        // 🟢 Update Salary via Stored Procedure
+        // ==========================================
         public async Task<string> UpdateSalaryProcedureAsync(int instructorId, decimal newSalary)
         {
-            var rowsAffected = await _InstructorRepository.UpdateInstructorSalaryAsync(instructorId, newSalary);
+            // Call the custom repository method that executes the raw SQL
+            var rowsAffected = await _instructorRepository.UpdateInstructorSalaryAsync(instructorId, newSalary);
 
+            // If at least one row was updated, it was successful
             if (rowsAffected > 0)
+            {
                 return "Success";
+            }
 
             return "Failed";
         }
-        #endregion
     }
 }

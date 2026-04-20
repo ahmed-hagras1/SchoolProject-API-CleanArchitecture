@@ -24,6 +24,7 @@ public static class ModuleServiceDependencies
         services.AddScoped<ICurrentUserService, CurrentUserService>();
         services.AddScoped<IViewService, ViewService>();
         services.AddScoped<IInstructorService, InstructorService>();
+        //services.AddScoped<IFileService,FileService>();
 
         // Register the RefreshTokenCleanupService as a Hosted Service (Background Service)
         services.AddHostedService<RefreshTokenCleanupService>();

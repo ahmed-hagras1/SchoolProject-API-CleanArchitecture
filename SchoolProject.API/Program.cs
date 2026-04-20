@@ -70,6 +70,8 @@ namespace SchoolProject.API
 
             var app = builder.Build();
 
+            app.UseStaticFiles(); // 🟢 Allows serving files from the wwwroot folder
+
             // ==========================================
             // 🟢 SEED DATABASE DATA
             // ==========================================

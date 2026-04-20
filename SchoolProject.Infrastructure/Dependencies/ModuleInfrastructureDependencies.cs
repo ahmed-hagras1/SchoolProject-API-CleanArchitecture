@@ -8,6 +8,7 @@ using SchoolProject.Infrastructure.Repositories;
 using SchoolProject.Infrastructure.Repositories.Views;
 using SchoolProject.Service.Abstracts;
 using SchoolProject.Service.Abstracts.Views;
+using SchoolProject.Service.Implementations;
 
 namespace SchoolProject.Infrastructure.Dependencies;
 
@@ -30,6 +31,7 @@ public static class ModuleInfrastructureDependencies
         services.AddScoped<IInstructorRepository, InstructorRepository>();
         services.AddScoped<IRefreshTokenRepository, RefreshTokenRepository>();
         services.AddScoped<IViewRepository<ViewDepartmentStudentCount>, ViewDepartmentWithStudentsCountRepository>();
+        services.AddScoped<IFileService, FileService>();
 
         // Register Generic Repository
         services.AddTransient(typeof(IGenericRepositoryAsync<>), typeof(GenericRepositoryAsync<>));

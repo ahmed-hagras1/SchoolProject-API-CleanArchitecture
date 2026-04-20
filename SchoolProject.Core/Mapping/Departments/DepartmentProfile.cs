@@ -11,9 +11,8 @@ namespace SchoolProject.Core.Mapping.Departments
     {
         public DepartmentProfile()
         {
-            // Department Mapping.
-            GetDepartmentListMapping();
             GetDepartmentByIdMapping();
+            GetDepartmentListMapping();
         }
     }
 }

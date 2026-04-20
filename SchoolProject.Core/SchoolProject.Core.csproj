@@ -34,6 +34,7 @@
     <Folder Include="Features\Instructors\Queries\Models\" />
     <Folder Include="Features\Instructors\Queries\Results\" />
     <Folder Include="Mapping\Departments\CommandMapping\" />
+    <Folder Include="Mapping\Instructors\QueryMapping\" />
     <Folder Include="Mapping\Roles\CommandMapping\" />
   </ItemGroup>
 

@@ -24,5 +24,11 @@ namespace SchoolProject.API.Controllers
             // Return the formatted response
             return NewResult(response);
         }
+        [HttpPost("Create")]
+        public async Task<IActionResult> Create([FromForm] AddInstructorCommand command) // MUST BE [FromForm]
+        {
+            var response = await Mediator.Send(command);
+            return NewResult(response);
+        }
     }
 }
