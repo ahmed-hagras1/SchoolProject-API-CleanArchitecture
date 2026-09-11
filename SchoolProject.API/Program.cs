@@ -1,7 +1,7 @@
-﻿
-using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Localization;
 using Microsoft.EntityFrameworkCore;
+using Microsoft.OpenApi.Models; // 🟢 تم إضافة هذا الـ Namespace لتعريفات Swagger
 using Serilog;
 using SchoolProject.API.MiddleWares;
 using SchoolProject.Core;
@@ -76,13 +76,64 @@ namespace SchoolProject.API
                 builder.Services.AddControllers();
                 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
                 builder.Services.AddEndpointsApiExplorer();
-                builder.Services.AddSwaggerGen();
+                
+                // ==========================================
+                // 🟢 SWAGGER AUTHENTICATION CONFIGURATION
+                // ==========================================
+                builder.Services.AddSwaggerGen(c =>
+                {
+                    c.SwaggerDoc("v1", new OpenApiInfo { Title = "SchoolProject API", Version = "v1" });
+
+                    // تعريف زر الـ Authorize وطريقة استقبال الـ Token
+                    c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
+                    {
+                        Name = "Authorization",
+                        Type = SecuritySchemeType.ApiKey,
+                        Scheme = "Bearer",
+                        BearerFormat = "JWT",
+                        In = ParameterLocation.Header,
+                        Description = "الرجاء كتابة كلمة Bearer مسافة ثم الـ Token الخاص بك.\r\n\r\nمثال: \"Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9\""
+                    });
+
+                    // إجبار Swagger على إرسال الـ Token مع كل طلب
+                    c.AddSecurityRequirement(new OpenApiSecurityRequirement
+                    {
+                        {
+                            new OpenApiSecurityScheme
+                            {
+                                Reference = new OpenApiReference
+                                {
+                                    Type = ReferenceType.SecurityScheme,
+                                    Id = "Bearer"
+                                }
+                            },
+                            new string[] {}
+                        }
+                    });
+                });
 
                 // Add Custom Filters
                 builder.Services.AddScoped<AuthenticationFilter>();
 
 
                 var app = builder.Build();
+
+                // --- بداية كود الـ Migrations ---
+                using (var scope = app.Services.CreateScope())
+                {
+                    var services = scope.ServiceProvider;
+                    try
+                    {
+                        // استبدل YourDbContext باسم الـ DbContext الخاص بمشروعك (مثل SchoolDbContext)
+                        var context = services.GetRequiredService<AppDbContext>();
+                        await context.Database.MigrateAsync();
+                    }
+                    catch (Exception ex)
+                    {
+                        var logger = services.GetRequiredService<ILogger<Program>>();
+                        logger.LogError(ex, "حدث خطأ أثناء تطبيق الـ Migrations.");
+                    }
+                }
 
                 // ==========================================
                 // 🟢 4. SERILOG REQUEST LOGGING MIDDLEWARE

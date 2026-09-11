@@ -19,10 +19,15 @@ public static class ModuleInfrastructureDependencies
     public static IServiceCollection AddInfrastructureDependencies(this IServiceCollection services, IConfiguration configuration)
     {
         // Configure Database Connection String
-        services.AddDbContext<AppDbContext>(options =>
-        {
-            options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"));
-        });
+       services.AddDbContext<AppDbContext>(options =>
+{
+    options.UseSqlServer(configuration.GetConnectionString("DefaultConnection"),
+        sqlOptions => sqlOptions.EnableRetryOnFailure(
+            maxRetryCount: 5,
+            maxRetryDelay: TimeSpan.FromSeconds(30),
+            errorNumbersToAdd: null)
+    );
+});
 
         // Register your infrastructure services here
         services.AddScoped<IStudentRepository, StudentRepository>();

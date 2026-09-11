@@ -1,0 +1,35 @@
+version: "3.8"
+
+services:
+  sqlserver:
+    image: mcr.microsoft.com/mssql/server:2022-latest
+    ports:
+      - "1433:1433"
+    environment:
+      - ACCEPT_EULA=Y
+      - MSSQL_SA_PASSWORD=YourStrong!Passw0rd123
+    volumes:
+      - sql_volume:/var/opt/mssql
+
+  api:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080" # تأكد أن ملف الـ Dockerfile يحتوي على EXPOSE 8080
+    depends_on:
+      - sqlserver
+    environment:
+      - ASPNETCORE_ENVIRONMENT=Development
+      # --- إعدادات قواعد البيانات (EF Core + Serilog) ---
+      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=SchoolProjectDB;User Id=sa;Password=YourStrong!Passw0rd123;TrustServerCertificate=True;MultipleActiveResultSets=True;
+      - Serilog__WriteTo__1__Args__connectionString=Server=sqlserver;Database=SchoolProjectDB;User Id=sa;Password=YourStrong!Passw0rd123;TrustServerCertificate=True;MultipleActiveResultSets=True;
+
+      # --- إعدادات JWT السرية ---
+      - JwtSettings__Key=ThisIsMySuperSecretKeyForSchoolProjectThatIsAtLeast32CharsLong!
+
+      # --- إعدادات الإيميل السرية ---
+      - EmailSettings__Password=qdtwznrbfwgtbnfs
+
+volumes:
+  sql_volume:
