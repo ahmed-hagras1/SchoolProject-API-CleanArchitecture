@@ -18,7 +18,7 @@ using System.Threading.Tasks;
 
 namespace SchoolProject.Core.Features.ApplicationUser.Queries.Handlers
 {
-    public class UserQueryHandler : ResponseHandler,
+    public class GetDepartmentStudentCountListQueryHandler : ResponseHandler,
         IRequestHandler<GetUserPaginatedListQuery, PaginatedResult<GetUserPaginatedListResponse>>,
         IRequestHandler<GetUserByIdQuery, Response<GetUserByIdResponse>>
     {
@@ -29,7 +29,7 @@ namespace SchoolProject.Core.Features.ApplicationUser.Queries.Handlers
         #endregion
 
         #region Constructor
-        public UserQueryHandler(IMapper mapper, IStringLocalizer<SharedResources> stringLocalizer, UserManager<User> userManager) : base(stringLocalizer)
+        public GetDepartmentStudentCountListQueryHandler(IMapper mapper, IStringLocalizer<SharedResources> stringLocalizer, UserManager<User> userManager) : base(stringLocalizer)
         {
             _mapper = mapper;
             _stringLocalizer = stringLocalizer;
@@ -48,7 +48,7 @@ namespace SchoolProject.Core.Features.ApplicationUser.Queries.Handlers
             return paginatedList;
         }
 
-        public async Task<Response<GetUserByIdResponse>> Handle(GetUserByIdQuery request, CancellationToken cancellationToken)
+        public async Task<Response<GetUserByIdResponse>> Handle(Models.GetUserByIdQuery request, CancellationToken cancellationToken)
         {
             var user = await _userManager.Users.FirstOrDefaultAsync(x => x.Id == request.Id);
             //var user = await _userManager.FindByIdAsync(request.Id.ToString());

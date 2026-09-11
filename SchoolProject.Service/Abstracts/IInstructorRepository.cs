@@ -9,5 +9,5 @@ namespace SchoolProject.Service.Abstracts;
 
 public interface IInstructorRepository: IGenericRepositoryAsync<Instructor>
 {
-
+    Task<int> UpdateInstructorSalaryAsync(int instructorId, decimal newSalary);
 }

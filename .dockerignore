@@ -1,0 +1,16 @@
+# تجاهل مجلدات البناء
+**/bin
+**/obj
+
+# تجاهل إعدادات بيئة التطوير
+**/appsettings.Development.json
+
+# تجاهل ملفات Git
+.git
+.gitignore
+
+# تجاهل ملفات Visual Studio
+.vs
+.vscode
+**/*.user
+**/*.suo

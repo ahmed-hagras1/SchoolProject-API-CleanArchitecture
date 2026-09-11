@@ -1,4 +1,5 @@
-﻿using SchoolProject.Core.Features.Departments.Queries.Results;
+﻿using AutoMapper;
+using SchoolProject.Core.Features.Departments.Queries.Results;
 using SchoolProject.Data.Entities;
 using System;
 using System.Collections.Generic;
