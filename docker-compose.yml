@@ -7,11 +7,14 @@ services:
       - "1433:1433"
     environment:
       - ACCEPT_EULA=Y
-      - MSSQL_SA_PASSWORD=YourStrong!Passw0rd123
+      - MSSQL_SA_PASSWORD=${SA_PASSWORD}
     volumes:
       - sql_volume:/var/opt/mssql
 
   api:
+    # ملاحظة: لو هترفع الملف ده للسيرفر عشان تسحب بيه، يفضل تستخدم السطر بتاع image وتمسح الـ build
+    # لأن السيرفر معليهوش الكود المصدري عشان يبني منه.
+    image: hadras/schoolproject-api:latest
     build:
       context: .
       dockerfile: Dockerfile
@@ -22,14 +25,14 @@ services:
     environment:
       - ASPNETCORE_ENVIRONMENT=Development
       # --- إعدادات قواعد البيانات (EF Core + Serilog) ---
-      - ConnectionStrings__DefaultConnection=Server=sqlserver;Database=SchoolProjectDB;User Id=sa;Password=YourStrong!Passw0rd123;TrustServerCertificate=True;MultipleActiveResultSets=True;
-      - Serilog__WriteTo__1__Args__connectionString=Server=sqlserver;Database=SchoolProjectDB;User Id=sa;Password=YourStrong!Passw0rd123;TrustServerCertificate=True;MultipleActiveResultSets=True;
+      - ConnectionStrings__DefaultConnection=${DB_CONNECTION}
+      - Serilog__WriteTo__1__Args__connectionString=${DB_CONNECTION}
 
       # --- إعدادات JWT السرية ---
-      - JwtSettings__Key=ThisIsMySuperSecretKeyForSchoolProjectThatIsAtLeast32CharsLong!
+      - JwtSettings__Key=${JWT_KEY}
 
       # --- إعدادات الإيميل السرية ---
-      - EmailSettings__Password=qdtwznrbfwgtbnfs
+      - EmailSettings__Password=${EMAIL_PASS}
 
 volumes:
   sql_volume:
